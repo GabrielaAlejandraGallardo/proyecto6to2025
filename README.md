@@ -32,7 +32,7 @@ Casos de Uso  y Casos de Prueba:
 ________________________________________________________________________________________________
 
 Grupo 4
-Integrantes:
+Integrantes: Teo, Franco, juan, luciana
 
 Historia de Usuario:
 
