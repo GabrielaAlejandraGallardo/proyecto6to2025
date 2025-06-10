@@ -65,11 +65,11 @@ Casos de Uso  y Casos de Prueba:
 ________________________________________________________________________________________________
 
 Grupo 7
-Integrantes:
+Integrantes: Bautista Serrano, Ludmila Luna, Pablo Perez, Morena Castillo 
 
-Historia de Usuario:
+Historia de Usuario: https://docs.google.com/document/d/1Ut7-_JTwDnkPIYRu1wz8Iejjdz-rnOh6yzc12i7qtvU/edit?usp=sharing
 
-Casos de Uso  y Casos de Prueba:
+Casos de Uso  y Casos de Prueba: https://docs.google.com/document/d/1lyKOMc_kxi-8WzulgupKY_lzSceKHnSB0i5jMzGOCgw/edit?usp=sharing
 
 
 ________________________________________________________________________________________________
