@@ -1,80 +1,168 @@
 # proyecto6to2025
 
 Grupo:1
-Integrantes: Marco Fichetti, Nahiara Nieto y Benja Corina
+*Integrantes: Marco Fichetti, Nahiara Nieto y Benja Corina
 
-Historia de Usuario: https://docs.google.com/document/d/1jIe9Eq3tHq6z5T_yinMCVz96VfYXgomL7-2FqFp7OQ8/edit?usp=sharing
+*Historia de Usuario: https://docs.google.com/document/d/1jIe9Eq3tHq6z5T_yinMCVz96VfYXgomL7-2FqFp7OQ8/edit?usp=sharing
 
-Casos de Uso  y Casos de Prueba: https://docs.google.com/document/d/1jIe9Eq3tHq6z5T_yinMCVz96VfYXgomL7-2FqFp7OQ8/edit?usp=sharing
+*Casos de Uso  y Casos de Prueba: https://docs.google.com/document/d/1jIe9Eq3tHq6z5T_yinMCVz96VfYXgomL7-2FqFp7OQ8/edit?usp=sharing
+
+
+*Modelos
+Clase Nombre:
+Nombre atributo | tipo de dato |
+----------------|--------------|
+----------------|--------------|
+----------------|--------------|
+----------------|--------------|
+----------------|--------------|
+----------------|--------------|
+----------------|--------------|
+
+
 
 
 ________________________________________________________________________________________________
 
 Grupo 2
-Integrantes:
+*Integrantes:
 
 Historia de Usuario:
 
-Casos de Uso  y Casos de Prueba:
+*Casos de Uso  y Casos de Prueba:
 
 
+*Modelos
+Clase Nombre:
+Nombre atributo | tipo de dato |
+----------------|--------------|
+----------------|--------------|
+----------------|--------------|
+----------------|--------------|
+----------------|--------------|
+----------------|--------------|
+----------------|--------------|
 
 ________________________________________________________________________________________________
 
 Grupo 3
-Integrantes:
+*Integrantes:
 
-Historia de Usuario:
+*Historia de Usuario:
 
-Casos de Uso  y Casos de Prueba:
+*Casos de Uso  y Casos de Prueba:
 
+*Modelos
+Clase Nombre:
+Nombre atributo | tipo de dato |
+----------------|--------------|
+----------------|--------------|
+----------------|--------------|
+----------------|--------------|
+----------------|--------------|
+----------------|--------------|
+----------------|--------------|
 
 ________________________________________________________________________________________________
 
 Grupo 4
-Integrantes: Teo, Franco, juan, luciana
+*Integrantes: Teo, Franco, juan, luciana
 
-Historia de Usuario:
+*Historia de Usuario:
 
-Casos de Uso  y Casos de Prueba:
+*Casos de Uso  y Casos de Prueba:
+
+*Modelos
+Clase Nombre:
+Nombre atributo | tipo de dato |
+----------------|--------------|
+----------------|--------------|
+----------------|--------------|
+----------------|--------------|
+----------------|--------------|
+----------------|--------------|
+----------------|--------------|
 
 
 ________________________________________________________________________________________________
 
 Grupo 5
-Integrantes:
+*Integrantes:
 
-Historia de Usuario:
+*Historia de Usuario:
 
-Casos de Uso  y Casos de Prueba:
+*Casos de Uso  y Casos de Prueba:
+
+*Modelos
+Clase Nombre:
+Nombre atributo | tipo de dato |
+----------------|--------------|
+----------------|--------------|
+----------------|--------------|
+----------------|--------------|
+----------------|--------------|
+----------------|--------------|
+----------------|--------------|
+
 
 
 ________________________________________________________________________________________________
 
 Grupo 6
-Integrantes:
+*Integrantes:
 
-Historia de Usuario:
+*Historia de Usuario:
 
-Casos de Uso  y Casos de Prueba:
+*Casos de Uso  y Casos de Prueba:
 
 
+*Modelos
+Clase Nombre:
+Nombre atributo | tipo de dato |
+----------------|--------------|
+----------------|--------------|
+----------------|--------------|
+----------------|--------------|
+----------------|--------------|
+----------------|--------------|
+----------------|--------------|
 
 ________________________________________________________________________________________________
 
 Grupo 7
-Integrantes:
+*Integrantes:
 
-Historia de Usuario:
+*Historia de Usuario:
 
-Casos de Uso  y Casos de Prueba:
+*Casos de Uso  y Casos de Prueba:
 
+*Modelos
+Clase Nombre:
+Nombre atributo | tipo de dato |
+----------------|--------------|
+----------------|--------------|
+----------------|--------------|
+----------------|--------------|
+----------------|--------------|
+----------------|--------------|
+----------------|--------------|
 
 ________________________________________________________________________________________________
 
 Grupo 8
-Integrantes:
+*Integrantes:
 
-Historia de Usuario:
+*Historia de Usuario:
 
-Casos de Uso  y Casos de Prueba:
+*Casos de Uso  y Casos de Prueba:
+
+*Modelos
+Clase Nombre:
+Nombre atributo | tipo de dato |
+----------------|--------------|
+----------------|--------------|
+----------------|--------------|
+----------------|--------------|
+----------------|--------------|
+----------------|--------------|
+----------------|--------------|
