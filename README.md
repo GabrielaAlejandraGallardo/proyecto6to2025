@@ -34,10 +34,12 @@ ________________________________________________________________________________
 Grupo 4
 Integrantes: Teo, Franco, juan, luciana
 
-Historia de Usuario:
+Historia de Usuario y Casos de uso:
+https://docs.google.com/document/d/1kXqtq0SjL1fl1F63e_QgSFPpKCo7bz7oHtx5sjFouCk/edit?usp=sharing
 
-Casos de Uso  y Casos de Prueba:
+Casos de Prueba:
 
+https://docs.google.com/document/d/1Tyv7i1LYKgDrfkioOA2hKltpr8ggle6x/edit?usp=sharing&ouid=104322610521228299031&rtpof=true&sd=true
 
 ________________________________________________________________________________________________
 
