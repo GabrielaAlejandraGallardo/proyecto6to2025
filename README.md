@@ -10,7 +10,7 @@ Casos de Uso  y Casos de Prueba: https://docs.google.com/document/d/1jIe9Eq3tHq6
 
 ________________________________________________________________________________________________
 
-Grupo 
+Grupo 2
 Integrantes:
 
 Historia de Usuario:
@@ -21,7 +21,7 @@ Casos de Uso  y Casos de Prueba:
 
 ________________________________________________________________________________________________
 
-Grupo 
+Grupo 3
 Integrantes:
 
 Historia de Usuario:
@@ -31,7 +31,48 @@ Casos de Uso  y Casos de Prueba:
 
 ________________________________________________________________________________________________
 
-Grupo 
+Grupo 4
+Integrantes:
+
+Historia de Usuario:
+
+Casos de Uso  y Casos de Prueba:
+
+
+________________________________________________________________________________________________
+
+Grupo 5
+Integrantes:
+
+Historia de Usuario:
+
+Casos de Uso  y Casos de Prueba:
+
+
+________________________________________________________________________________________________
+
+Grupo 6
+Integrantes:
+
+Historia de Usuario:
+
+Casos de Uso  y Casos de Prueba:
+
+
+
+________________________________________________________________________________________________
+
+Grupo 7
+Integrantes:
+
+Historia de Usuario:
+
+Casos de Uso  y Casos de Prueba:
+
+
+________________________________________________________________________________________________
+
+Grupo 8
 Integrantes:
 
 Historia de Usuario:
