@@ -9,26 +9,20 @@ Casos de Uso  y Casos de Prueba: https://docs.google.com/document/d/1jIe9Eq3tHq6
 
 * Modelos
 Clase Nombre: Servicios
-Nombre atributo | tipo de dato                     |
-__id_servicio______________|___________autofield____________________|
-__descripcion______________|___________integer______________________|
-__precio ________|_________floatField_________________________|
-________________|__________________________________|
-________________|__________________________________|
-________________|__________________________________|
-________________|__________________________________|
-________________|__________________________________|
+Nombre atributo | tipo de dato                    |
+id_servicio     |   autofield                     |
+descripcion     |   integerField                  |
+precio          |   floatField                    |
+________________|_________________________________|
 
-Clase Nombre: Contrataciones
-Nombre atributo | tipo de dato                     |
-____id_administrador____________|______autofield___FK_________________|
-____id_servicio____________|___________autofield___FK___________|
-____id_contratacion____________|_______autofield___PK___________|
-____nombre-apellido____________|_______text_____________________|
-____seña____________|__________________floatfield________________|
-____saldo__________|___________________floatfield_______________|
-________________|__________________________________|
-________________|__________________________________|
+Nombre atributo | tipo de dato          |
+id_administrador| autofield FK|         |
+id_servicio     |  autofield FK         |
+id_contratacion |  autofield PK         |
+nombre-apellido |  text                 |
+senia           |   floatfield          |
+saldo           |   floatfield          |
+________________|_______________________|
 
 
 
