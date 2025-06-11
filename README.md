@@ -95,17 +95,7 @@ https://docs.google.com/document/d/1Tyv7i1LYKgDrfkioOA2hKltpr8ggle6x/edit?usp=sh
 
 * Modelos
 Clase Nombre:Eventos
-| Nombre atributo      | Tipo de dato          |
-|----------------------|-----------------------|
-| id_evento            | AutoField             |
-| nombre_evento        | TextField             |
-| fecha                | DataFlied             |
-| lugar                | TextField             |
-| descripcion          | TextField             |
-| id_Administrador     | IntegerField          |
-| fecha_creacion       | DataTimeField         |
-| ultima_modificacion  | DataTimeField         |
-| estado               | TextField             |
+
 
 |Nombre atributo      |  tipo de dato         |
 |---------------------|-----------------------
