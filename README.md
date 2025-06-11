@@ -8,7 +8,18 @@ Historia de Usuario: https://docs.google.com/document/d/1jIe9Eq3tHq6z5T_yinMCVz9
 Casos de Uso  y Casos de Prueba: https://docs.google.com/document/d/1jIe9Eq3tHq6z5T_yinMCVz96VfYXgomL7-2FqFp7OQ8/edit?usp=sharing
 
 * Modelos
-Clase Nombre:
+Clase Nombre: Servicios
+Nombre atributo | tipo de dato                     |
+________________|__________________________________|
+________________|__________________________________|
+________________|__________________________________|
+________________|__________________________________|
+________________|__________________________________|
+________________|__________________________________|
+________________|__________________________________|
+________________|__________________________________|
+
+Clase Nombre: Contrataciones
 Nombre atributo | tipo de dato                     |
 ________________|__________________________________|
 ________________|__________________________________|
