@@ -18,7 +18,7 @@ Clase Nombre: Servicios
 | precio            | floatField        |
 
 Nombre atributo | tipo de dato          |
-|---------------|-    ------------------|
+|---------------|-----------------------|
 id_administrador| autofield FK|         |
 id_servicio     |  autofield FK         |
 id_contratacion |  autofield PK         |
