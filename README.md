@@ -110,11 +110,11 @@ ________________|__________________________________|
 ________________________________________________________________________________________________
 
 Grupo 5
-Integrantes:
+Integrantes: Alvaro Capdevila, Ana Moyano, Alexa Villada y Simon Oyola
 
-Historia de Usuario:
+Historia de Usuario: https://docs.google.com/document/d/1ZPSIrqVMJD7ejSeNGMYLkku5SQ8dKEsICTMMt-bH5uc/edit?usp=sharing
 
-Casos de Uso  y Casos de Prueba:
+Casos de Uso  y Casos de Prueba: https://docs.google.com/document/d/1HnpchmA9sOiAc5XKZigmrkwDr8Ja23_ml53VI9uOKBo/edit?usp=sharing
 
 
 ________________________________________________________________________________________________
