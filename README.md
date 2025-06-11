@@ -95,17 +95,17 @@ https://docs.google.com/document/d/1Tyv7i1LYKgDrfkioOA2hKltpr8ggle6x/edit?usp=sh
 
 * Modelos
 Clase Nombre:Eventos
-|Nombre atributo     | tipo de dato    |
-|--------------------|-----------------|
-|id_evento           | Entero / UUID   |
-|nombre_evento       | Cadena de texto |
-|fecha               | Fecha           |
-|lugar               | Cadena de texto |
-|descripcion         | texto largo     |
-|creado_por          | id_Administrador|
-|fecha_creacion      | DataTimeField   |
-|ultima_modificacion | DataTimeField   |
-|estado              | TextField       |
+| Nombre atributo      | Tipo de dato          |
+|----------------------|-----------------------|
+| id_evento            | AutoField             |
+| nombre_evento        | TextField             |
+| fecha                | DataFlied             |
+| lugar                | TextField             |
+| descripcion          | TextField             |
+| id_Administrador     | IntegerField          |
+| fecha_creacion       | DataTimeField         |
+| ultima_modificacion  | DataTimeField         |
+| estado               | TextField             |
 
 
 
