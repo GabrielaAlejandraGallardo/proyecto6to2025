@@ -42,7 +42,7 @@ Casos de Uso  y Casos de Prueba:
 
 * Modelos
 Clase Nombre:
-Nombre atributo | tipo de dato                     |
+|Nombre atributo | tipo de dato                     |
 |---------------|----------------------------------|
 |---------------|----------------------------------|
 |---------------|----------------------------------|
