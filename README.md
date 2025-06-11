@@ -106,7 +106,7 @@ Clase Nombre:Eventos
 |fecha_creacion      | DataTimeField   |
 |ultima_modificacion | DataTimeField   |
 |estado              | TextField       |
-|--------------------|-----------------|
+
 
 
 
