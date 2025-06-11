@@ -66,7 +66,7 @@ Casos de Uso  y Casos de Prueba:
 
 * Modelos
 Clase Nombre:
-Nombre atributo | tipo de dato                     |
+Nombre atributo | tipo de dato      |
 |---------------|-------------------|
 |---------------|-------------------|
 |---------------|-------------------|
@@ -95,7 +95,7 @@ https://docs.google.com/document/d/1Tyv7i1LYKgDrfkioOA2hKltpr8ggle6x/edit?usp=sh
 
 * Modelos
 Clase Nombre:
-Nombre atributo | tipo de dato                     |
+Nombre atributo | tipo de dato      |
 |---------------|-------------------|
 |---------------|-------------------|
 |---------------|-------------------|
@@ -146,7 +146,7 @@ Casos de Uso  y Casos de Prueba:
 
 * Modelos
 Clase Nombre:
-Nombre atributo | tipo de dato                     |
+Nombre atributo | tipo de dato      |
 |---------------|-------------------|
 |---------------|-------------------|
 |---------------|-------------------|
