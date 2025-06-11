@@ -107,6 +107,18 @@ Clase Nombre:Eventos
 | ultima_modificacion  | DataTimeField         |
 | estado               | TextField             |
 
+|Nombre atributo      |  tipo de dato         |
+|---------------------|-----------------------
+|id_evento            | AutoField             |
+| nombre_evento       | TextField             |
+| fecha               | DataFlied             |
+| lugar               | TextField             |
+| descripcion         | TextField             |
+| id_Administrador    | IntegerField          |
+| fecha_creacion      | DataTimeField         |
+| ultima_modificacion | DataTimeField         |
+| estado              | TextField             |
+
 
 
 
@@ -126,7 +138,7 @@ Casos de Uso  y Casos de Prueba:https://docs.google.com/document/d/1HnpchmA9sOiA
 
 * Modelos
 Clase Nombre:
-Nombre atributo | tipo de dato           
+|Nombre atributo|  tipo de dato     |
 |---------------|-------------------|
 |---------------|-------------------|
 |---------------|-------------------|
@@ -135,6 +147,7 @@ Nombre atributo | tipo de dato
 |---------------|-------------------|
 |---------------|-------------------|
 |---------------|-------------------|
+
 
 
 ________________________________________________________________________________________________
@@ -149,7 +162,7 @@ Casos de Uso  y Casos de Prueba:
 
 * Modelos
 Clase Nombre:
-Nombre atributo | tipo de dato      |
+|Nombre atributo|  tipo de dato     |
 |---------------|-------------------|
 |---------------|-------------------|
 |---------------|-------------------|
@@ -174,7 +187,7 @@ Casos de Uso  y Casos de Prueba: https://docs.google.com/document/d/1lyKOMc_kxi-
 
 * Modelos
 Clase Nombre:
-Nombre atributo | tipo de dato      |
+|Nombre atributo|  tipo de dato     |
 |---------------|-------------------|
 |---------------|-------------------|
 |---------------|-------------------|
@@ -183,6 +196,8 @@ Nombre atributo | tipo de dato      |
 |---------------|-------------------|
 |---------------|-------------------|
 |---------------|-------------------|
+
+
 
 
 
@@ -197,7 +212,7 @@ Casos de Uso  y Casos de Prueba:
 
 * Modelos
 Clase Nombre:
-Nombre atributo | tipo de dato               
+|Nombre atributo|  tipo de dato     |
 |---------------|-------------------|
 |---------------|-------------------|
 |---------------|-------------------|
@@ -205,5 +220,7 @@ Nombre atributo | tipo de dato
 |---------------|-------------------|
 |---------------|-------------------|
 |---------------|-------------------|
+|---------------|-------------------|
+
 
 
