@@ -94,17 +94,17 @@ https://docs.google.com/document/d/1Tyv7i1LYKgDrfkioOA2hKltpr8ggle6x/edit?usp=sh
 
 
 * Modelos
-Clase Nombre:
-Nombre atributo | tipo de dato      |
-|---------------|-------------------|
-|---------------|-------------------|
-|---------------|-------------------|
-|---------------|-------------------|
-|---------------|-------------------|
-|---------------|-------------------|
-|---------------|-------------------|
-|---------------|-------------------|
-
+Clase Nombre:Eventos
+Nombre atributo     | tipo de dato
+id_evento| Entero / UUID|
+nombre_evento| Cadena de texto|
+fecha| Fecha|
+lugar| Cadena de texto|
+descripcion| texto largo|
+creado_por| id_Administrador|
+fecha_creacion| DataTimeField|
+ultima_modificacion| DataTimeField|
+estado| Cadena de texto (ej: activo, cancelado)|
 
 
 
