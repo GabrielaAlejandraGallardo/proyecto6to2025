@@ -25,7 +25,7 @@ id_contratacion |  autofield PK         |
 nombre-apellido |  text                 |
 senia           |   floatfield          |
 saldo           |   floatfield          |
-________________|_______________________|
+
 
 
 
