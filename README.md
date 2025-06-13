@@ -101,7 +101,7 @@ Clase Nombre:Eventos
 |---------------------|-----------------------
 |id_evento            | AutoField    PK       |
 | nombre_evento       | TextField             |
-| fecha               | DataFlied             |
+| fecha               | DataTimeFlied         |
 | lugar               | TextField             |
 | descripcion         | TextField             |
 | id_Administrador    | IntegerField   FK     |
