@@ -129,7 +129,7 @@ Casos de Uso  y Casos de Prueba:https://docs.google.com/document/d/1HnpchmA9sOiA
 * Modelos
 Clase Nombre: socios
 |Nombre atributo      |  tipo de dato         |
-|---------------------|-----------------------
+|---------------------|-----------------------|
 |id_socio             | AutoField       PK    |
 |nombre_apellido_socio| TextField             |
 | Direccion           | TextField             |
