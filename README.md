@@ -128,16 +128,7 @@ Casos de Uso  y Casos de Prueba:https://docs.google.com/document/d/1HnpchmA9sOiA
 
 * Modelos
 Clase Nombre: socios
-|Nombre atributo      |  tipo de dato         |
-|---------------------|-----------------------|
-|id_socio             | AutoField       PK    |
-|nombre_apellido_socio| TextField             |
-| Direccion           | TextField             |
-| telefono            | TextField             |
-| id_Administrador    | IntegerField      FK  |
-| fecha_registro      | DataTimeField         |
-| ultima_actualizacion| DataTimeField         |
-| estado              | TextField             |
+
 
 
 |Nombre atributo       | tipo de dato          |
