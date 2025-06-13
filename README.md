@@ -140,6 +140,21 @@ Clase Nombre: socios
 | estado              | TextField             |
 
 
+|Nombre atributo       | tipo de dato          |
+|---------------------|-----------------------|
+|id_socio             | AutoField       PK    |
+|nombre_apellido_socio| TextField             |
+| Direccion           | TextField             |
+| telefono            | TextField             |
+| id_Administrador    | IntegerField      FK  |
+| fecha_registro      | DataTimeField         |
+| ultima_actualizacion| DataTimeField         |
+| estado              | TextField             |
+
+
+
+
+
 
 ________________________________________________________________________________________________
 
