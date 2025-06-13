@@ -1,180 +1,71 @@
-# proyecto6to2025
-
-Grupo:1
-Integrantes: Marco Fichetti, Nahiara Nieto y Benja Corina
-
-Historia de Usuario: https://docs.google.com/document/d/1jIe9Eq3tHq6z5T_yinMCVz96VfYXgomL7-2FqFp7OQ8/edit?usp=sharing
-
-Casos de Uso  y Casos de Prueba: https://docs.google.com/document/d/1jIe9Eq3tHq6z5T_yinMCVz96VfYXgomL7-2FqFp7OQ8/edit?usp=sharing
-
-* Modelos
-Clase Nombre:
-Nombre atributo | tipo de dato                     |
-________________|__________________________________|
-________________|__________________________________|
-________________|__________________________________|
-________________|__________________________________|
-________________|__________________________________|
-________________|__________________________________|
-________________|__________________________________|
-________________|__________________________________|
+# Django-Crud
+.
+# ClubTennis
+REQUERIMIENTO:
 
 
 
+DIAGRAMA ENTIDAD RELACIÓN:
 
 
-________________________________________________________________________________________________
-
-Grupo 2
-Integrantes:
-
-Historia de Usuario:
-
-Casos de Uso  y Casos de Prueba:
-
-* Modelos
-Clase Nombre:
-Nombre atributo | tipo de dato                     |
-________________|__________________________________|
-________________|__________________________________|
-________________|__________________________________|
-________________|__________________________________|
-________________|__________________________________|
-________________|__________________________________|
-________________|__________________________________|
-________________|__________________________________|
+HISTORIA DE USUARIO:
 
 
-________________________________________________________________________________________________
-
-Grupo 3
-Integrantes:
-
-Historia de Usuario:
-
-Casos de Uso  y Casos de Prueba:
+CASOS DE USO:
 
 
-* Modelos
-Clase Nombre:
-Nombre atributo | tipo de dato                     |
-________________|__________________________________|
-________________|__________________________________|
-________________|__________________________________|
-________________|__________________________________|
-________________|__________________________________|
-________________|__________________________________|
-________________|__________________________________|
-________________|__________________________________|
+CASOS DE PRUEBA:
+
+
+ATRIBUTOS DE CASOS DE PRUEBA:
+
+
+DESARROLLO PROYECTO EN DJANGO:
+*proyecto gral
+setting.py
+urls
+*app asiganada
+modelo.py
+forms.py
+urls.py
+templates
+Alta.html
+baja.html
+modificacionbes.html
+listado.html
+
+
+BASE DE DATOS:
+phpMyAdmin
+
+
+PRUEBAS FUNCIONALES BAJO SELENIUM:
+
+PRUEBAS DE PERFOMANCE bajo JMeter: 
+Material de Clase https://docs.google.com/document/d/1f0R_bPUdOWxhkwos8upw5Vkg1KjPbFUEYmopZkTdsv4/edit?usp=sharing
+
+
+Tutorial: https://www.youtube.com/watch?v=T1IinYFdSsA&list=PL9qpFd_9rkKULbsCdjpPBbU_n60sFsTbn&index=2
 
 
 
-_______________________
-
-Grupo 4
-Integrantes: Teo, Franco, juan, luciana
-
-Historia de Usuario y Casos de uso:
-https://docs.google.com/document/d/1kXqtq0SjL1fl1F63e_QgSFPpKCo7bz7oHtx5sjFouCk/edit?usp=sharing
-
-Casos de Prueba:
-
-https://docs.google.com/document/d/1Tyv7i1LYKgDrfkioOA2hKltpr8ggle6x/edit?usp=sharing&ouid=104322610521228299031&rtpof=true&sd=true
-
-
-* Modelos
-Clase Nombre:
-Nombre atributo | tipo de dato                     |
-________________|__________________________________|
-________________|__________________________________|
-________________|__________________________________|
-________________|__________________________________|
-________________|__________________________________|
-________________|__________________________________|
-________________|__________________________________|
-________________|__________________________________|
 
 
 
-________________________________________________________________________________________________
+Añadiendo seguridad al template base.html
 
-Grupo 5
-Integrantes:
+https://docs.google.com/document/d/13BPGjZfaw2u4iwg7DhpdUMu8e2ESNrrKeT2ixAWnzUQ/edit?usp=sharing
 
-Historia de Usuario:
-
-Casos de Uso  y Casos de Prueba:
+Testing: https://drive.google.com/drive/folders/1esLtgh4yBusUSAfd6Z0u-SKsqr2s3pYt?usp=sharing
 
 
-________________________________________________________________________________________________
+Evaluación Testing 15 de Noviembre de 2024: https://docs.google.com/forms/d/e/1FAIpQLSdJiUhIrzn06-7OiE0dJmMNdcyPlIfDkCKbJydk9LyON_Svdg/viewform?usp=sf_link
 
-Grupo 6
-Integrantes:
-
-Historia de Usuario:
-
-Casos de Uso  y Casos de Prueba:
-
-
-* Modelos
-Clase Nombre:
-Nombre atributo | tipo de dato                     |
-________________|__________________________________|
-________________|__________________________________|
-________________|__________________________________|
-________________|__________________________________|
-________________|__________________________________|
-________________|__________________________________|
-________________|__________________________________|
-________________|__________________________________|
-
-
-----------------|----------------------------------|
-
-
-________________________________________________________________________________________________
-
-Grupo 7
-Integrantes: Bautista Serrano, Ludmila Luna, Pablo Perez, Morena Castillo 
-
-Historia de Usuario: https://docs.google.com/document/d/1Ut7-_JTwDnkPIYRu1wz8Iejjdz-rnOh6yzc12i7qtvU/edit?usp=sharing
-
-Casos de Uso  y Casos de Prueba: https://docs.google.com/document/d/1lyKOMc_kxi-8WzulgupKY_lzSceKHnSB0i5jMzGOCgw/edit?usp=sharing
-
-
-* Modelos
-Clase Nombre:
-Nombre atributo | tipo de dato                     |
-________________|__________________________________|
-________________|__________________________________|
-________________|__________________________________|
-________________|__________________________________|
-________________|__________________________________|
-________________|__________________________________|
-________________|__________________________________|
-________________|__________________________________|
+PROGRAMACIÓN CON PYTHON PARA EL ANALISIS DE DATOS: https://cursos.desafiolatam.com/courses/data-analysis
 
 
 
-________________________________________________________________________________________________
+Evaluación Programación 20 de Noviembre:https://forms.gle/qcDT8U1Q2UTj7EF59
 
-Grupo 8
-Integrantes:
-
-Historia de Usuario:
-
-Casos de Uso  y Casos de Prueba:
-
-* Modelos
-Clase Nombre:
-Nombre atributo | tipo de dato                     |
-________________|__________________________________|
-________________|__________________________________|
-________________|__________________________________|
-________________|__________________________________|
-________________|__________________________________|
-________________|__________________________________|
-________________|__________________________________|
-________________|__________________________________|
-
-
+Pasantías en linkedIn
+https://www.linkedin.com/posts/internship-jobs-for-freshers4u_interested-email-hiring-activity-7265349639082541056-sqnN?utm_source=share&utm_medium=member_desktop
