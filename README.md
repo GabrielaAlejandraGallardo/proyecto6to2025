@@ -99,12 +99,12 @@ Clase Nombre:Eventos
 
 |Nombre atributo      |  tipo de dato         |
 |---------------------|-----------------------
-|id_evento            | AutoField             |
+|id_evento            | AutoField    PK       |
 | nombre_evento       | TextField             |
 | fecha               | DataFlied             |
 | lugar               | TextField             |
 | descripcion         | TextField             |
-| id_Administrador    | IntegerField          |
+| id_Administrador    | IntegerField   FK     |
 | fecha_creacion      | DataTimeField         |
 | ultima_modificacion | DataTimeField         |
 | estado              | TextField             |
