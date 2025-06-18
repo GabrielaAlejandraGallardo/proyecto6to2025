@@ -27,4 +27,4 @@ class Evento(models.Model):
     
     
     
- 
+    
