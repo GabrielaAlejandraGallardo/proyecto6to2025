@@ -149,17 +149,8 @@ Historia de Usuario: https://docs.google.com/document/d/1Ut7-_JTwDnkPIYRu1wz8Iej
 Casos de Uso  y Casos de Prueba: https://docs.google.com/document/d/1lyKOMc_kxi-8WzulgupKY_lzSceKHnSB0i5jMzGOCgw/edit?usp=sharing
 
 
-* Modelos
-Clase Nombre:
-|Nombre atributo|  tipo de dato     |
-|---------------|-------------------|
-|---------------|-------------------|
-|---------------|-------------------|
-|---------------|-------------------|
-|---------------|-------------------|
-|---------------|-------------------|
-|---------------|-------------------|
-|---------------|-------------------|
+
+Modelo Clase: Deportes
 
 | Nombre atributo       | Tipo de dato             |
 | --------------------- | ------------------------ |
