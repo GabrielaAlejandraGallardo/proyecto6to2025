@@ -161,8 +161,14 @@ Modelo Clase: Deportes
 | fecha\_creacion       | Campo de tiempo de datos |
 | ultima\_actualizacion | Campo de tiempo de datos |
 
-
-
+| Nombre atributo   | Tipo de dato             |
+| ----------------- | ------------------------ |
+| id\_categoria     | PK de campo automático   |
+| nombre\_categoria | Campo de texto           |
+| descripcion       | Campo de texto           |
+| edad\_minima      | Campo entero             |
+| edad\_maxima      | Campo entero             |
+| fecha\_creacion   | Campo de tiempo de datos |
 
 ________________________________________________________________________________________________
 
