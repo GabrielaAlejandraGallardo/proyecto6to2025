@@ -161,6 +161,14 @@ Clase Nombre:
 |---------------|-------------------|
 |---------------|-------------------|
 
+| Nombre atributo       | Tipo de dato             |
+| --------------------- | ------------------------ |
+| id\_deporte           | PK de campo automático   |
+| nombre\_deporte       | Campo de texto           |
+| descripcion           | Campo de texto           |
+| cupos\_disponibles    | Campo entero             |
+| fecha\_creacion       | Campo de tiempo de datos |
+| ultima\_actualizacion | Campo de tiempo de datos |
 
 
 
