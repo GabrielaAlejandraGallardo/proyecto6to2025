@@ -19,7 +19,7 @@ class Jugador(models.Model):
     cd=models.CharField(max_length=6,verbose_name="codigo postal")
     talla=models.CharField(max_length=6,verbose_name="numero de talla indumentaria")
     descripcion=models.ForeignKey(Deporte, verbose_name="descripcion", on_delete=models.CASCADE)
-    historia=models.TextField(max_length=500,verbose_name="historia del jugador")
+    #historia=models.TextField(max_length=500,verbose_name="historia del jugador")
     #nummac=models.IntegerField(verbose_name="numero de macc")
     
     def __str__(self):
