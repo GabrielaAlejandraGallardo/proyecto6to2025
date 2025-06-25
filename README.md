@@ -154,6 +154,10 @@ Historia de Usuario: https://docs.google.com/document/d/1Ut7-_JTwDnkPIYRu1wz8Iej
 
 Casos de Uso  y Casos de Prueba: https://docs.google.com/document/d/1lyKOMc_kxi-8WzulgupKY_lzSceKHnSB0i5jMzGOCgw/edit?usp=sharing
 
+CATEGORIAS:Voley,Basquet,Tela,Patin,Yoga,Pileta,Funcional,Frontal
+competitivo pot categoria de voley y basquet.
+formativas juntas ,femenino y masculino
+Sub 13,sub 15 y 17,Desarrollo y Primera
 
 
 Modelo Clase: Deportes
