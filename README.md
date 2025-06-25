@@ -28,7 +28,7 @@ ________________________________________________________________________________
 
 Grupo 2 Integrantes: Gonzalo, Antü y lucas
 
-Historial de usuario:
+Historial de usuario:!
 
 Casos de Uso: https://lucid.app/lucidchart/dfcd86d7-2de8-4fde-8307-0370d333ff13/edit?viewport_loc=-471%2C160%2C2465%2C1118%2C0_0&invitationId=inv_56be0290-abfd-4fcb-81e0-17673f9362ed
 
