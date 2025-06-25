@@ -173,21 +173,22 @@ Modelo Clase: Deportes
 ________________________________________________________________________________________________
 
 Grupo 8
-Integrantes:
+Integrantes:Octavio Valles, Santino Gadea, Fernando López
 
-Historia de Usuario:
+Historia de Usuario: https://docs.google.com/document/d/1_q2GTvpaEPmQ4I0n5rEYUpU0H-Br2dbrBbeiLvGO7e0/edit?usp=drivesdk
 
-Casos de Uso  y Casos de Prueba:
+Casos de Uso  y Casos de Prueba: https://docs.google.com/document/d/1_q2GTvpaEPmQ4I0n5rEYUpU0H-Br2dbrBbeiLvGO7e0/edit?usp=drivesdk
 
 * Modelos
 Clase Nombre:
 |Nombre atributo|  tipo de dato     |
-|---------------|-------------------|
-|---------------|-------------------|
-|---------------|-------------------|
-|---------------|-------------------|
-|---------------|-------------------|
-|---------------|-------------------|
-|---------------|-------------------|
-|---------------|-------------------|
+|id_cuota       |autofield PK       |
+|id socio       |integerfield PK    |
+|mes correspondiente|charfield      |
+|anio correspondiente|integerfield  |
+|monto total    |floatfield         |
+|fecha_pago     |datetimefield      |
+|estado_pago    |textfield          |
+|fecha_registro |datetimefield      |
+|ultima_modificacion|datetimefield  |
 
