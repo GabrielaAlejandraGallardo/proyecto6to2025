@@ -1,0 +1,10 @@
+#1- Crear un programa que guarde en un diccionario datos:
+#2- nombreCompleto en una tupla,
+#3- edad, 
+#4-dirección,
+#5- y actividadesFavoritas en una lista,
+#6- luego recorrer el diccionario con la estructura de control for USANDO LA FUNCIÓN items()    
+
+
+
+

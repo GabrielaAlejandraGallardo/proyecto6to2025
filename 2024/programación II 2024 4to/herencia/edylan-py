@@ -1,0 +1,44 @@
+class Empleado:
+    def __init__(self, nombre, edad, salario):
+        self.nombre = nombre
+        self.edad = edad
+        self.salario = salario
+
+
+    def printemple(self):
+        print(self.nombre, self.edad, self.salario)
+
+
+    def printgeren(self):
+        print(self.nombre, self.edad, self.salario, self.departamento)
+
+
+    def printinge(self):
+        print(self.nombre, self.edad, self.salario, self.especialidad)
+
+
+
+
+
+
+class Gerente(Empleado):
+    def __init__(self, nombre, edad, salario, departamento):
+        super().__init__(nombre, edad, salario)
+        self.departamento = departamento
+
+
+class Ingeniero(Empleado):
+    def __init__(self, nombre, edad, salario, especialidad):
+        super().__init__(nombre, edad, salario)
+        self.especialidad = especialidad
+
+
+x1 = Gerente("matias","34","100000","depto4")
+x1.printgeren()
+
+
+x2 = Ingeniero("tiago", "41", "250000", "mecanica")
+x2.printinge()
+
+
+

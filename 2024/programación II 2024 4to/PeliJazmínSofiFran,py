@@ -1,0 +1,33 @@
+inventario = []
+
+def agregar_pelicula():
+    nombre = input("Ingrese el nombre de la película: ")
+   # genero = input("Ingrese el género de la película: ")
+    inventario.append(nombre)#, genero)
+    print("Película agregada correctamente.")
+
+def mostrar_peliculas_por_genero():
+  #  genero = input("Ingrese el género para mostrar películas: ")
+    if inventario[0:1]:
+       print("Películas de :")
+       for pelicula in inventario:
+           print(pelicula)
+    else:
+           print("No hay películas de en stock.")
+
+while True:
+   """ print("\n1. Agregar película")
+    print("2. Mostrar películas por género")
+    print("3. Salir")"""
+
+   opcion = input("Seleccione una opción: \n1. Agregar película\n 2. Mostrar películas por género \n3. Salir  ")
+
+   if opcion == "1":
+      agregar_pelicula()
+   elif opcion == "2":
+        mostrar_peliculas_por_genero()
+   elif opcion == "3":
+        print("¡Hasta luego!")
+        break
+   else:
+        print("Opción inválida. Por favor, seleccione una opción válida.")

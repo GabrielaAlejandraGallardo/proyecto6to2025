@@ -1,0 +1,52 @@
+class Empleado:
+   def __init__(self, nombre, edad, salario):
+       self.nombre = nombre
+       self.edad = edad
+       self.salario = salario
+  
+   def detalles(self):
+       print(f"Nombre: {self.nombre}, Edad: {self.edad}, Salario: ${self.salario}")
+
+
+
+
+# Definición de la clase Gerente que hereda de Empleado
+class Gerente(Empleado):
+   def __init__(self, nombre, edad, salario, departamento):
+       super().__init__(nombre, edad, salario)
+       self.departamento = departamento
+  
+   def detalles(self):
+       print(f"Nombre: {self.nombre}, Edad: {self.edad}, Salario: ${self.salario}, Departamento: {self.departamento}")
+
+
+
+
+# Definición de la clase Ingeniero que hereda de Empleado
+class Ingeniero(Empleado):
+   def __init__(self, nombre, edad, salario, especialidad):
+       super().__init__(nombre, edad, salario)
+       self.especialidad = especialidad
+  
+   def detalles(self):
+       print(f"Nombre: {self.nombre}, Edad: {self.edad}, Salario: ${self.salario}, Especialidad: {self.especialidad}")
+
+
+
+
+# Creación de instancias y llamada al método detalles
+gerente1 = Gerente("Juan", 35, 102.561, "Tecnología")
+ingeniero1 = Ingeniero("Ana", 28, 864.583, "Software")
+
+
+print("Detalles del Gerente:")
+gerente1.detalles()
+
+
+print("\nDetalles del Ingeniero:")
+ingeniero1.detalles()
+
+
+
+
+

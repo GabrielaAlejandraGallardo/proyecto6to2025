@@ -1,0 +1,59 @@
+class Vehiculo:
+   def __init__(self, marca, modelo, anio):
+       self.marca = marca
+       self.modelo = modelo
+       self.anio = anio
+  
+   def mostrar_informacion(self):
+       print(f"Marca: {self.marca}, Modelo: {self.modelo}, Año: {self.anio}")
+
+
+class Auto(Vehiculo):
+   def __init__(self, marca, modelo, anio, puertas):
+       super().__init__(marca, modelo, anio)
+       self.puertas = puertas
+  
+   def mostrar_informacion(self):
+       super().mostrar_informacion()
+       print(f"Puertas: {self.puertas}")
+
+
+class Motocicleta(Vehiculo):
+   def __init__(self, marca, modelo, anio, cilindrada):
+       super().__init__(marca, modelo, anio)
+       self.cilindrada = cilindrada
+  
+   def mostrar_informacion(self):
+       super().mostrar_informacion()
+       print(f"Cilindrada: {self.cilindrada} cc")
+
+
+class Camion(Vehiculo):
+   def __init__(self, marca, modelo, anio, capacidad_carga):
+       super().__init__(marca, modelo, anio)
+       self.capacidad_carga = capacidad_carga
+  
+   def mostrar_informacion(self):
+       super().mostrar_informacion()
+       print(f"Capacidad de carga: {self.capacidad_carga} kg")
+
+
+# Ejemplo de uso
+if __name__ == "__main__":
+   # Crear instancias de cada tipo de vehículo
+   auto1 = Auto("Toyota", "Corolla", 2022, 4)
+   moto1 = Motocicleta("Honda", "CBR", 2021, 1000)
+   camion1 = Camion("Ford", "F-150", 2020, 2000)
+
+
+   # Mostrar información de cada vehículo
+   print("Información del Auto:")
+   auto1.mostrar_informacion()
+
+
+   print("\nInformación de la Motocicleta:")
+   moto1.mostrar_informacion()
+
+
+   print("\nInformación del Camión:")
+   camion1.mostrar_informacion()

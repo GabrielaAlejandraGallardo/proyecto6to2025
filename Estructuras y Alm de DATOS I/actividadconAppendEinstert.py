@@ -1,0 +1,3 @@
+"""
+Un cliente nos solicita añadir a su lista de libros en la que tiene un solo libro cargado titulado “ Los árboles mueren de pie” los siguientes libros:
+“Nunca renuncies a tus sueños”, “El tunel”, “Cien años de Soledad”. Además solicita poder observar la lista con el primer libro y luego con los demás libros cargados en la lista, por lo tanto deberán realizar un primer print que muestre la lista inicial y otro para mostrar los demás libros cargados 
