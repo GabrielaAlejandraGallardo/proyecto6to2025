@@ -43,11 +43,11 @@ Modelos Clase Nombre:cuotas de usuario
 | estado            | TextField         |
 | fecha_pago        | DateTimeField     |
 __________________________________________________________________________________
-Grupo 3 Integrantes:
+Grupo 3 Integrantes: Valentin Chacoma, Khalil Maccagno, Aileen Koning
 
-Historial de usuario:
+Historial de usuario:https://docs.google.com/document/d/1LBT1cmzwNFe60B2__iOJUBPxASC7cXkq_rjfWBvrgxY/edit?tab=t.0
 
-Casos de Uso y Casos de Prueba:
+Casos de Uso y Casos de Prueba:https://docs.google.com/document/d/1LBT1cmzwNFe60B2__iOJUBPxASC7cXkq_rjfWBvrgxY/edit?tab=t.0
 
 Modelos Clase Nombre: Nombre atributo | tipo de dato | |---------------|-------------------| |---------------|-------------------| |---------------|-------------------| |---------------|-------------------| |---------------|-------------------| |---------------|-------------------| |---------------|-------------------| |---------------|-------------------| |---------------|-------------------| |---------------|-------------------|
 
