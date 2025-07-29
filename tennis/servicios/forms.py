@@ -26,7 +26,8 @@ class ServicioForm(forms.ModelForm):
 class ContratacionForm(forms.ModelForm):
   class Meta:
         model=Contratacion
-       #fields='__all__'
+    
+    
         fields=('fecha','idServicio','nomContratante')
         labels ={
             
@@ -35,7 +36,10 @@ class ContratacionForm(forms.ModelForm):
             'nomContratante':'Nombre del Contratante',
                               
         }
-        
+        widgets = {
+            'fecha': forms.DateInput(attrs={'type': 'date'}),
+         }
+
     
   def __init__(self, *args, **kwargs):
         super(ContratacionForm,self).__init__(*args,**kwargs)
