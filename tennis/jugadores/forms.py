@@ -1,27 +1,27 @@
 from socket import fromshare
 from django import forms 
-from .models import Jugador
+from .models import Jugador, Talla
 
 class JugadorForm(forms.ModelForm):
   class Meta:
         model=Jugador
        #fields='__all__'
-        fields=('DNI','nom','fechan','altura',"peso","dire","cd","talla","descripcion")
+        fields=('DNI','nom','fechan','altura',"peso","dire","cd","talla","descripcion", "qr")
         labels ={
-            "DNI" : "DNI" ,
-            'nom': 'nombre y apellido',
-            "fechan" : "Fecha de nacimiento MES/DÍA/AÑO" ,
-            "altura" : "Altura" ,
-            "peso" : "Peso" , 
-            "dire" : "Direccion",
-            "cd" : "Código postal",
-            "talla" : "Talla de indumentaria ",
-            "descripcion" : "Deporte al que pertenece",
-          #  "nummac" : "numero de macc " ,
+           "DNI": "DNI",
+          'nom': 'nombre y apellido',
+          "fechan": "Fecha de nacimiento MES/DÍA/AÑO",
+          "altura": "Altura",
+          "peso": "Peso",
+          "dire": "Direccion",
+          "cd": "Código postal",
+          "talla": "Talla de indumentaria ",
+          "descripcion": "Deporte al que pertenece",
+          "qr": "Código QR",
+      }
+         
            
                    
-        
-        }
         
     
   def __init__(self, *args, **kwargs):

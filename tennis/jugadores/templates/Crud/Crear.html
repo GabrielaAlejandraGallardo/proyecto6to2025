@@ -4,15 +4,15 @@
 
 {% block titulo %}Página Nuevo Jugador{% endblock titulo %}
 {% block contenido %}
-    <div class="bg-success-subtle p-2 text-white">
-        <div class="card-header">
-            Crear Nuevo Jugador
-        </div>
+  
+  
+      
         <div class="card-body">
             <h4 class="card-title">Jugador</h4>
             <form action="" method="post"  enctype="multipart/form-data" autocomplete="off">
                 {% csrf_token %}
-               
+             
+             
                 {{formulario.DNI|as_crispy_field}}
                 {{formulario.nom|as_crispy_field}}
                 {{formulario.fechan|as_crispy_field}}

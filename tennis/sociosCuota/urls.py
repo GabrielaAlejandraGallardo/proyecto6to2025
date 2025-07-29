@@ -11,6 +11,7 @@ urlpatterns = [
     path('sociosCuota/crear_editarSocioCuota/<int:id>/',views.crear_editarSocioCuota,name='crear_editarSocioCuota'),
     path('sociosCuota/eliminarCuotaSocio/<int:id>',views.eliminarCuotaSocio,name='eliminarCuotaSocio'),
     
+    
 
 
 ]+ static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

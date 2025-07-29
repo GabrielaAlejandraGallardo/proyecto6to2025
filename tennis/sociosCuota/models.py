@@ -1,8 +1,8 @@
 from django.db import models
-
 from socios.models import Socio
-
-
+from django.db import models  
+from django.db.models import ForeignKey
+from django.db.models import ForeignKey
     
 # Create your models here.
 class SociosCuota(models.Model):

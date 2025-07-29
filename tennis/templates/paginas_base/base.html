@@ -11,7 +11,13 @@
 
     <!-- Bootstrap CSS v5.0.2 -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"  integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
+     <style>
+/* filepath: tu_archivo.css o dentro de una etiqueta <style> */
+.img-fade:hover {
+    opacity: 0.7;         /* Hace la imagen más transparente */
+    filter: blur(2px);    /* Aplica un desenfoque suave */
+}
+</style>
 
   </head>
   <body class="bg-success p-2 text-white">
@@ -70,6 +76,9 @@
               </li>
               <li class="nav-item">
                 <a class="nav-link protected-link" href="{% url 'listaContratacion' %}" data-protected="true">Contratación</a>
+              </li>
+               <li class="nav-item">
+              <a class="nav-link protected-link" href="{% url 'listaServicio' %}" data-protected="true">Servicio</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link protected-link" href="{% url 'nosotros' %}" data-protected="true">

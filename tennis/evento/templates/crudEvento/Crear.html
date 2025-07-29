@@ -20,7 +20,19 @@ al Sistema{% endblock titulo %}
                 
                 {{formulario.idEvento|as_crispy_field}}
               {% endcomment %}
-                {{formulario.nom|as_crispy_field}}    
+                {{formulario.nom|as_crispy_field}}   
+                {% if formulario.fecha.value and formulario.ubicacion.value %}
+                    {% for evento in eventos_existentes %}
+                        {% if evento.fecha == formulario.fecha.value and evento.ubicacion == formulario.ubicacion.value %}
+                            <span class="alert alert-warning mt-2 d-inline-block p-2 rounded" role="alert">
+                                Ya existe un evento en esta ubicación y fecha. Por favor, cambie la fecha, hora o ubicación.
+                            </span>
+                               <h4> Ya existe un evento en esta ubicación y fecha. Por favor, cambie la fecha, hora o ubicación.</h4>
+
+                            
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
                 {{formulario.fecha|as_crispy_field}}
                 {{formulario.ubicacion|as_crispy_field}}
                 {{formulario.idOrganizador|as_crispy_field}}

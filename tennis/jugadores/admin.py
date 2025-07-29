@@ -1,9 +1,10 @@
 
 from django.contrib import admin
 from .models import *
-
-# Register your models here.
+from .models import Deporte,Talla# Register your models here.
 
 admin.site.register(Jugador)
 admin.site.register(Deporte)
+admin.site.register(Talla)
+
 
