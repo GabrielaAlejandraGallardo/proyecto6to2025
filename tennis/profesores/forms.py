@@ -18,7 +18,11 @@ class ProfesorForm(forms.ModelForm):
            
                    
         
-        }
+        }   
+        widgets = {
+        'fechan': forms.DateInput(attrs={'type': 'date'}),
+       }
+  
         
     
   def __init__(self, *args, **kwargs):

@@ -22,6 +22,11 @@ class SocioCuotaForm(forms.ModelForm):
         
         }
         
+        widgets = {
+        "cuotaMes": forms.DateInput(attrs={'type': 'date'}),
+        'fechap': forms.DateInput(attrs={'type': 'date'}),
+        }
+        
   def __init__(self, *args, **kwargs):
     super(SocioCuotaForm, self).__init__(*args, **kwargs)
     self.fields['nom'].required = True

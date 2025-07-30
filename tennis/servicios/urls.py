@@ -14,6 +14,6 @@ urlpatterns = [
     path('servicios/crear_editarContratacion/<int:idContratacion>',views.crear_editarContratacion,name='crear_editarContratacion'),
     path('servicios/eliminarContratacion/<int:idContratacion>/',views.eliminarContratacion,name='eliminarContratacion'),
     
-
+    
 
 ]+ static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

@@ -19,7 +19,10 @@ class JugadorForm(forms.ModelForm):
           "descripcion": "Deporte al que pertenece",
           "qr": "Código QR",
       }
-         
+        widgets = {
+         'fechan': forms.DateInput(attrs={'type': 'date'}),
+      }
+  
            
                    
         

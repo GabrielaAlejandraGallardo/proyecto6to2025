@@ -32,7 +32,13 @@
                         <td>{{ s.cp}}</td>
                         <td>{{ s.tel}}</td>
                    
-                   
+                      <td>
+                   {% if ju.qr %}
+                    <img src="{{ ju.qr.url }}" alt="QR {{ ju.qr_code_data }}" width="100" height="100">
+                   {% else %}
+                    Sin QR
+                    {% endif %}
+                     </td>
                    
                         
                         
@@ -43,7 +49,7 @@
                         </td>  {% endcomment %}
                         <td>
                             <a name="bteditar" id="bteditar" class="btn btn-info" href="{% url 'crear_editarSocio' s.id  %}" role="button">Editar</a>
-                            <a name="bteliminar" id="bteliminar" class="btn btn-danger" href="{% url 'eliminarS' s.id  %}" role="button">Eliminar</a>
+                            <a name="bteliminar" id="bteliminar" class="btn btn-danger" href="{% url 'eliminarSO' s.id  %}" role="button">Eliminar</a>
                         </td>                        
                     </tr>
                     {% endfor %}
@@ -60,4 +66,76 @@
    
    
 
+<!-- Incluye la librería y el script de escaneo -->
+<script src="https://unpkg.com/html5-qrcode"></script>
+<script>
+const qrReaderDiv = document.getElementById('qr-reader');
+const qrResultDiv = document.getElementById('qr-result');
+const startBtn = document.getElementById('start-scan');
+const stopBtn = document.getElementById('stop-scan');
+
+let qrScanner = null;
+
+// Función para iniciar el escáner
+function startScanner() {
+    qrReaderDiv.style.display = 'block';
+    startBtn.style.display = 'none';
+    stopBtn.style.display = 'inline-block';
+
+    Html5Qrcode.getCameras().then(cameras => {
+        if (cameras && cameras.length) {
+            const cameraId = cameras[0].id;
+            qrScanner = new Html5Qrcode("qr-reader");
+            qrScanner.start(
+                cameraId,
+                { fps: 10, qrbox: { width: 250, height: 250 } },
+                (decodedText, decodedResult) => {
+                    // Detenemos la escaneo cuando detecta un QR
+                    qrScanner.stop().then(() => {
+                        qrReaderDiv.style.display = 'none';
+                        startBtn.style.display = 'inline-block';
+                        stopBtn.style.display = 'none';
+                        document.getElementById('qr-result').innerT
+                        // Aquí puedes hacer algo con el texto, com
+                        // window.location.href = `/buscar/?qr=${en
+                    });
+                },
+                (errorMessage) => {
+                    // Error en cada frame, opcional
+                    console.log('Error en frame:', errorMessage);
+                }
+            ).catch(err => {
+                console.error('Error al iniciar:', err);
+                qrResultDiv.innerText = 'Error al iniciar cámara: '
+            });
+        } else {
+            qrResultDiv.innerText = 'No se detectaron cámaras en es
+        }
+    }).catch(err => {
+        console.error('Error al acceder a cámaras:', err);
+        qrResultDiv.innerText = 'Error al acceder a cámaras: ' + er
+    });
+}
+
+// Función para detener el escáner
+function stopScanner() {
+    if (qrScanner) {
+        qrScanner.stop().then(() => {
+            qrReaderDiv.style.display = 'none';
+            startBtn.style.display = 'inline-block';
+            stopBtn.style.display = 'none';
+            qrResultDiv.innerText = 'Escaneo detenido.';
+        }).catch(err => {
+            console.error('Error al detener:', err);
+        });
+    }
+}
+
+// Manejadores botones
+startBtn.addEventListener('click', startScanner);
+stopBtn.addEventListener('click', stopScanner);
+
+</script>
 {% endblock contenido %}
+
+

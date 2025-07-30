@@ -17,6 +17,9 @@ class SocioForm(forms.ModelForm):
                       #  "nummac" : "numero de macc " ,
                    
         }
+        widgets = {
+        'fechan': forms.DateInput(attrs={'type': 'date'}),
+       }
         
     
   def __init__(self, *args, **kwargs):
