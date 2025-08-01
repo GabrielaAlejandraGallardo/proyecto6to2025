@@ -32,16 +32,17 @@ Historial de usuario:!
 
 Casos de Uso: https://lucid.app/lucidchart/dfcd86d7-2de8-4fde-8307-0370d333ff13/edit?viewport_loc=-471%2C160%2C2465%2C1118%2C0_0&invitationId=inv_56be0290-abfd-4fcb-81e0-17673f9362ed
 
-Modelos Clase Nombrei:cuotas de usuaro 
-| Nombre atributo   | Tipo de dato      |
+Modelos Clase Nombre:cuotas de usuario 
+||-----------------------|----------------| Nombre atributo   | Tipo de dato      |
 |-------------------|-------------------|
-| id_cuota          |AutoField (PK      |
+| id_cuota          | AutoField(PK      |
 | id_jugador        | ForeignKey        |
-| monto             | FloatField        |
-| fecha emision     | DateTimeField     |
-| fecha_vencimiento | DateTimeField     |
-| estado            | TextField         |
-| fecha_pago        | DateTimeField     |
+| Monto             | FloatField        |
+| Fecha_emision     | DateTimeField     |
+| Fecha_vencimiento | DateTimeField     |
+| Estado            | TextField         |
+| Fecha_pago        | DateTimeField     |
+
 __________________________________________________________________________________
 Grupo 3 Integrantes:
 
