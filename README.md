@@ -136,8 +136,16 @@ Clase Nombre: Jugadores
 |Nombre atributo        |  tipo de dato     |
 |-----------------------|-------------------|
 |id-jugadores           |Autofield   PK     |
-|nombre-apellido-jugador|textfield          |
-|dni-jugador            |integerfield       |
+|nom                    |textfield          |
+|dni                    |integerfield       |
+|fechan                 |date               |
+|altura                 |double             |
+|peso                   |double             |
+|dire                   |varchar            |
+|cd                     |varchar            |
+|qr                     |varchar            |
+|descripcion-id         |bigint             |
+|talla-id               |bigint             |
 
 ________________________________________________________________________________________________
 
