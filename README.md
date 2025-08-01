@@ -32,8 +32,8 @@ Historial de usuario:!
 
 Casos de Uso: https://lucid.app/lucidchart/dfcd86d7-2de8-4fde-8307-0370d333ff13/edit?viewport_loc=-471%2C160%2C2465%2C1118%2C0_0&invitationId=inv_56be0290-abfd-4fcb-81e0-17673f9362ed
 
-Modelos Clase Nombre:cuotas de usuario 
-||-----------------------|----------------| Nombre atributo   | Tipo de dato      |
+Modelos Clase Nombrei:cuotas de usuaro 
+| Nombre atributo   | Tipo de dato      |
 |-------------------|-------------------|
 | id_cuota          |AutoField (PK      |
 | id_jugador        | ForeignKey        |
@@ -102,11 +102,11 @@ Casos de Uso  y Casos de Prueba:https://docs.google.com/document/d/1HnpchmA9sOiA
 
 
 * Modelos
-Clase Nombre: socios
+Clase Nombre: Socios
 
 
 
-|Nombre atributo       | tipo de dato          |
+|Nombre atributo      | tipo de dato          |
 |---------------------|-----------------------|
 |id_socio             | AutoField       PK    |
 |nombre_apellido_socio| TextField             |
@@ -132,11 +132,11 @@ Casos de Uso y Casos de Prueba:https://docs.google.com/document/d/1LBT1cmzwNFe60
 
 * Modelos
 Clase Nombre: Jugadores
-|Nombre atributo|  tipo de dato     |
-|---------------------|-----------------------|
-|id-jugadores|Autofield   PK        |
-|nombre-apellido-jugador|textfield  |
-|dni-jugador|integerfield           |
+|Nombre atributo        |  tipo de dato     |
+|-----------------------|-------------------|
+|id-jugadores           |Autofield   PK     |
+|nombre-apellido-jugador|textfield          |
+|dni-jugador            |integerfield       |
 
 ________________________________________________________________________________________________
 
@@ -184,15 +184,14 @@ Casos de Uso  y Casos de Prueba:
 https://docs.google.com/document/d/1_q2GTvpaEPmQ4I0n5rEYUpU0H-Br2dbrBbeiLvGO7e0/edit?usp=drivesdk
 
 * Modelo clase: Cuotas
-* 
-Nombre atributo	tipo de dato
-
-id_cuota	AutoField PK
-id_socio	IntegerField FK
-mes_correspondiente	CharField
-anio_correspondiente	IntegerField
-monto_total	FloatField
-fecha_pago	DateTimeField
-estado_pago	TextField
-fecha_registro	DateTimeField
-ultima_modificacion	DateTimeField
+| Nombre atributo    | Tipo de dato             |
+| ------------------ | ------------------------ |
+|id_cuota	           | AutoField PK             |
+|id_socio	v          | IntegerField FK          |
+|mes_correspondiente |	CharField               |
+|anio_correspondiente|	IntegerField            |
+|monto_total          |	FloatField              |
+|fecha_pago	         | DateTimeField            |
+|estado_pago	         | TextField                | 
+|fecha_registro       |	DateTimeField           |
+|ultima_modificacion  |  DateTimeField           | 
