@@ -184,6 +184,7 @@ Casos de Uso  y Casos de Prueba:
 https://docs.google.com/document/d/1_q2GTvpaEPmQ4I0n5rEYUpU0H-Br2dbrBbeiLvGO7e0/edit?usp=drivesdk
 
 * Modelo clase: Cuotas
+  
 | Nombre atributo    | Tipo de dato             |
 | ------------------ | ------------------------ |
 | id_cuota	         |  AutoField PK            |
