@@ -186,12 +186,12 @@ https://docs.google.com/document/d/1_q2GTvpaEPmQ4I0n5rEYUpU0H-Br2dbrBbeiLvGO7e0/
 * Modelo clase: Cuotas
 | Nombre atributo    | Tipo de dato             |
 | ------------------ | ------------------------ |
-|id_cuota	           |  AutoField PK            |
-|id_socio	v          |  IntegerField FK         |
-|mes_correspondiente |	CharField               |
-|anio_correspondiente|	IntegerField            |
-|monto_total         |	FloatField              |
-|fecha_pago	         |  DateTimeField           |
-|estado_pago	       |  TextField               | 
-|fecha_registro      |	DateTimeField           |
-|ultima_modificacion |  DateTimeField           | 
+| id_cuota	         |  AutoField PK            |
+| id_socio	v        |  IntegerField FK         |
+| mes_correspondiente|	CharField               |
+| anio_correspondiente|	IntegerField            |
+| monto_total        |	FloatField              |
+| fecha_pago	       |  DateTimeField           |
+| estado_pago	       |  TextField               | 
+| fecha_registro     |	DateTimeField           |
+| ultima_modificacion|  DateTimeField           | 
