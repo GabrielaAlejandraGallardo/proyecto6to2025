@@ -3,6 +3,8 @@ from django import forms
 from .models import Evento, Organizador
 
 
+
+
 class EventoForm(forms.ModelForm):
   class Meta:
         model=Evento
@@ -19,10 +21,10 @@ class EventoForm(forms.ModelForm):
         
         }
         widgets = {
-          'fechan': forms.DateInput(attrs={'type': 'date'}),
-      
+          'fecha': forms.DateTimeInput(attrs={'type': 'datetime-local'}),
+         }
 
-      }
+      
   
         
     
