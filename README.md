@@ -32,8 +32,8 @@ Historial de usuario:!
 
 Casos de Uso: https://lucid.app/lucidchart/dfcd86d7-2de8-4fde-8307-0370d333ff13/edit?viewport_loc=-471%2C160%2C2465%2C1118%2C0_0&invitationId=inv_56be0290-abfd-4fcb-81e0-17673f9362ed
 
-Modelos Clase Nombre:cuotas de usuario 
-||-----------------------|----------------| Nombre atributo   | Tipo de dato      |
+Modelos Clase Nombre:cuotas de jugador 
+| Nombre atributo   | Tipo de dato      |
 |-------------------|-------------------|
 | id_cuota          | AutoField(PK      |
 | id_jugador        | ForeignKey        |
