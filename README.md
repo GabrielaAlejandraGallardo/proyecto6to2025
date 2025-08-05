@@ -9,18 +9,18 @@ Clase Nombre: Servicios
 
 | Nombre atributo   | Tipo de dato      |
 |-------------------|-------------------|
-| id_servicio       | autofield         |
-| descripcion       | integerField      |
-| precio            | floatField        |
+| id_servicio       | Autofield         |
+| descripcion       | IntegerField      |
+| precio            | FloatField        |
 
 Clase Nombre: Contrataciones
 Nombre atributo | tipo de dato          |
 |---------------|-----------------------|
-id_administrador| autofield FK|         |
-id_servicio     |  autofield FK         |
-id_contratacion |  autofield PK         |
-nombre-apellido |  text                 |
-senia           |   floatfield          |
+id_administrador|   Autofield FK|       |
+id_servicio     |   Autofield FK        |
+id_contratacion |   Autofield PK        |
+nombre-apellido |   TextField           |
+senia           |   Floatfield          |
 saldo           |   floatfield          |
 
 ________________________________________________________________________________________________
@@ -145,7 +145,7 @@ Clase Nombre: Jugadores
 |cd                     |varchar            |
 |qr                     |varchar            |
 |descripcion-id         |bigint             |
-|talla-id               |bigint             |
+|talla-i             |bigint             |
 
 ________________________________________________________________________________________________
 
