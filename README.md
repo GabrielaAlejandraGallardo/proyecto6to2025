@@ -156,6 +156,10 @@ Historia de Usuario: https://docs.google.com/document/d/1Ut7-_JTwDnkPIYRu1wz8Iej
 
 Casos de Uso  y Casos de Prueba: https://docs.google.com/document/d/1lyKOMc_kxi-8WzulgupKY_lzSceKHnSB0i5jMzGOCgw/edit?usp=sharing
 
+Equipo 3, el link que han presentado  en casos de Uso y casos prueba es de otro equipoEquipo y para otro requerimientos
+Requerimiento: Contrataciones
+
+
 CATEGORIAS:Voley,Basquet,Tela,Patin,Yoga,Pileta,Funcional,Frontal
 competitivo pot categoria de voley y basquet.
 formativas juntas ,femenino y masculino
