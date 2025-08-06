@@ -96,7 +96,7 @@ def crear_editarJugador(request, id=0):
             jugador.save()
         return redirect('lista')
 
-def descargar_qr_pdf(request, id):
+"""def descargar_qr_pdf(request, id):
     jugador = Jugador.objects.get(pk=id)
     buffer = BytesIO()
     p = canvas.Canvas(buffer, pagesize=letter)
@@ -108,10 +108,11 @@ def descargar_qr_pdf(request, id):
     p.save()
     buffer.seek(0)
     return FileResponse(buffer, as_attachment=True, filename=f'qr_{jugador.nom}.pdf')
+    """
         
 def eliminar(request, id):
     bc=Jugador.objects.get(pk=id)
     bc.delete()
     return redirect('lista')
 def pagina_scanner(request):
-    return render(request, 'Crud/scan_qr.html')        
+    return render(request, 'CrudSocio/scan_qr.html')        

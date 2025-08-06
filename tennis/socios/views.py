@@ -1,6 +1,6 @@
 from io import BytesIO
 import json
-from quopri import decode
+import qrcode
 from tkinter import Canvas
 from tkinter.tix import Meter
 from django.shortcuts import render, redirect
@@ -10,6 +10,14 @@ from django.http import FileResponse, HttpResponse, JsonResponse
 from .models import Socio
 from .forms import SocioForm
 from django.core.files.base import ContentFile
+from reportlab.pdfgen import canvas
+from reportlab.lib.pagesizes import letter
+from reportlab.pdfgen import canvas
+from reportlab.lib.pagesizes import letter
+from reportlab.lib.units import mm
+from reportlab.lib import colors
+
+
 
 # Create your views here
 def listaSocio(request):
@@ -22,24 +30,6 @@ def inicio(request):
 
 def nosotros(request):
     return render(request,'paginas_base/nosotros.html')        
-
-def crear_editarSocio(request,id=0):
-      if request.method=="GET":
-        if id==0:
-            formulario=SocioForm()   
-        else:
-            Socioid=Socio.objects.get(pk=id)
-            formulario=SocioForm(instance=Socioid)
-        return render(request,'CrudSocio/Crear.html',{'formulario':formulario})
-      else:
-        if id==0:
-            formulario=SocioForm(request.POST or None, request.FILES or None)
-        else:
-            Socioid=Socio.objects.get(pk=id)
-            formulario=SocioForm(request.POST or None, request.FILES or None ,instance=Socioid)            
-        if formulario.is_valid():
-            formulario.save()
-        return redirect('listaSocio')
 
 def buscar_por_qr(request):
     if request.method == "POST":
@@ -70,20 +60,21 @@ def buscar_por_qr(request):
         else:
             return JsonResponse({'status': 'error', 'message': 'No QR data provided'})
     # Para otras solicitudes, renderiza la página de escaneo
-    return render(request, 'Crud/scan_qr.html')
-def crear_editarJugador(request, id=0):
+    return render(request, 'CrudSocio/scan_qr.html')
+
+def crear_editarSocio(request, id=0):
     if request.method == "GET":
         if id == 0:
             formulario = SocioForm()
         else:
             socioid = Socio.objects.get(pk=id)
-            formulario = SocioForm(instance=jugadorid)
-        return render(request, 'Crud/Crear.html', {'formulario': formulario})
+            formulario = SocioForm(instance=socioid)
+        return render(request, 'CrudSocio/Crear.html', {'formulario': formulario})
     else:
         if id == 0:
             formulario = SocioForm(request.POST or None, request.FILES or None)
         else:
-            jugadorid = Socio.objects.get(pk=id)
+            socioid = Socio.objects.get(pk=id)
             formulario = SocioForm(request.POST or None, request.FILES or None, instance=socioid)   
         if formulario.is_valid():
             socio= formulario.save(commit=False)
@@ -100,25 +91,636 @@ def crear_editarJugador(request, id=0):
             socio.qr_code_data = qr_data  # Asume que tienes este campo en tu modelo
             socio.save()  # Guardar primero para asegurar que el ID existe y qr_code_dat
             # Generar imagen QR
-            qr_img = decode.make(qr_data)
+            qr_img = qrcode.make(qr_data)
             buffer = BytesIO()
             qr_img.save(buffer, format='PNG')
             socio.qr.save(f"qr_{socio.id}.png",ContentFile(buffer.getvalue()), save=False)  # Usar el ID para el nombre del archivo
             socio.save()
-        return redirect('lista')
+        return redirect('listaSocio')
 
 def descargar_qr_pdf(request, id):
-    socio= Socio.objects.get(pk=id)
+    socio = Socio.objects.get(pk=id)
     buffer = BytesIO()
-    p = Canvas.Canvas(buffer, pagesize=Meter)
-    p.drawString(100, 750, f"QR de {socio.nom}")
-    # Insertar imagen QR
-    if socio.qr_code:
-        p.drawInlineImage(socio.qr_code.path, 100, 600, width=250, height=250)
+    p = canvas.Canvas(buffer, pagesize=letter)
+
+    # Título
+    p.setFont("Helvetica-Bold", 18)
+    p.drawCentredString(300, 770, f"Carnet de Socio - Club de Tenis")
+
+    # Línea separadora
+    p.setStrokeColor(colors.blue)
+    p.line(50, 755, 550, 755)
+
+    # Datos del socio
+    p.setFont("Helvetica", 12)
+    y = 720
+    p.drawString(80, y, f"Nombre: {socio.nom}")
+    p.drawString(80, y - 20, f"DNI: {socio.DNI}")
+    p.drawString(80, y - 40, f"Fecha de Nacimiento: {socio.fechan}")
+    p.drawString(80, y - 60, f"Dirección: {socio.dire}")
+    p.drawString(80, y - 80, f"Código Postal: {socio.cp}")
+    p.drawString(80, y - 100, f"Teléfono: {socio.tel}")
+
+    # QR centrado
+    if socio.qr:
+        p.drawInlineImage(socio.qr.path, 400, 580, width=120, height=120)
+
+    # Footer
+    p.setFont("Helvetica-Oblique", 10)
+    p.drawCentredString(300, 40, "Escaneá este código para verificar los datos del socio")
+
     p.showPage()
     p.save()
     buffer.seek(0)
-    return FileResponse(buffer, as_attachment=True, filename=f'qr_{socio.nom}.pdf')     
+    return FileResponse(buffer, as_attachment=True, filename=f'Carnet_{socio.nom}.pdf')
+
+def descargar_qr_pdf(request, id):
+    socio = Socio.objects.get(pk=id)
+    buffer = BytesIO()
+    p = canvas.Canvas(buffer, pagesize=letter)
+
+    # Título
+    p.setFont("Helvetica-Bold", 18)
+    p.drawCentredString(300, 770, f"Carnet de Socio - Club de Tenis")
+
+    # Línea separadora
+    p.setStrokeColor(colors.blue)
+    p.line(50, 755, 550, 755)
+
+    # Datos del socio
+    p.setFont("Helvetica", 12)
+    y = 720
+    p.drawString(80, y, f"Nombre: {socio.nom}")
+    p.drawString(80, y - 20, f"DNI: {socio.DNI}")
+    p.drawString(80, y - 40, f"Fecha de Nacimiento: {socio.fechan}")
+    p.drawString(80, y - 60, f"Dirección: {socio.dire}")
+    p.drawString(80, y - 80, f"Código Postal: {socio.cp}")
+    p.drawString(80, y - 100, f"Teléfono: {socio.tel}")
+
+    # QR centrado
+    if socio.qr:
+        p.drawInlineImage(socio.qr.path, 400, 580, width=120, height=120)
+
+    # Footer
+    p.setFont("Helvetica-Oblique", 10)
+    p.drawCentredString(300, 40, "Escaneá este código para verificar los datos del socio")
+
+    p.showPage()
+    p.save()
+    buffer.seek(0)
+    return FileResponse(buffer, as_attachment=True, filename=f'Carnet_{socio.nom}.pdf')
+
+def descargar_qr_pdf(request, id):
+    socio = Socio.objects.get(pk=id)
+    buffer = BytesIO()
+    p = canvas.Canvas(buffer, pagesize=letter)
+
+    # Título
+    p.setFont("Helvetica-Bold", 18)
+    p.drawCentredString(300, 770, f"Carnet de Socio - Club de Tenis")
+
+    # Línea separadora
+    p.setStrokeColor(colors.blue)
+    p.line(50, 755, 550, 755)
+
+    # Datos del socio
+    p.setFont("Helvetica", 12)
+    y = 720
+    p.drawString(80, y, f"Nombre: {socio.nom}")
+    p.drawString(80, y - 20, f"DNI: {socio.DNI}")
+    p.drawString(80, y - 40, f"Fecha de Nacimiento: {socio.fechan}")
+    p.drawString(80, y - 60, f"Dirección: {socio.dire}")
+    p.drawString(80, y - 80, f"Código Postal: {socio.cp}")
+    p.drawString(80, y - 100, f"Teléfono: {socio.tel}")
+
+    # QR centrado
+    if socio.qr:
+        p.drawInlineImage(socio.qr.path, 400, 580, width=120, height=120)
+
+    # Footer
+    p.setFont("Helvetica-Oblique", 10)
+    p.drawCentredString(300, 40, "Escaneá este código para verificar los datos del socio")
+
+    p.showPage()
+    p.save()
+    buffer.seek(0)
+    return FileResponse(buffer, as_attachment=True, filename=f'Carnet_{socio.nom}.pdf')
+
+def descargar_qr_pdf(request, id):
+    socio = Socio.objects.get(pk=id)
+    buffer = BytesIO()
+    p = canvas.Canvas(buffer, pagesize=letter)
+
+    # Título
+    p.setFont("Helvetica-Bold", 18)
+    p.drawCentredString(300, 770, f"Carnet de Socio - Club de Tenis")
+
+    # Línea separadora
+    p.setStrokeColor(colors.blue)
+    p.line(50, 755, 550, 755)
+
+    # Datos del socio
+    p.setFont("Helvetica", 12)
+    y = 720
+    p.drawString(80, y, f"Nombre: {socio.nom}")
+    p.drawString(80, y - 20, f"DNI: {socio.DNI}")
+    p.drawString(80, y - 40, f"Fecha de Nacimiento: {socio.fechan}")
+    p.drawString(80, y - 60, f"Dirección: {socio.dire}")
+    p.drawString(80, y - 80, f"Código Postal: {socio.cp}")
+    p.drawString(80, y - 100, f"Teléfono: {socio.tel}")
+
+    # QR centrado
+    if socio.qr:
+        p.drawInlineImage(socio.qr.path, 400, 580, width=120, height=120)
+
+    # Footer
+    p.setFont("Helvetica-Oblique", 10)
+    p.drawCentredString(300, 40, "Escaneá este código para verificar los datos del socio")
+
+    p.showPage()
+    p.save()
+    buffer.seek(0)
+    return FileResponse(buffer, as_attachment=True, filename=f'Carnet_{socio.nom}.pdf')
+
+def descargar_qr_pdf(request, id):
+    socio = Socio.objects.get(pk=id)
+    buffer = BytesIO()
+    p = canvas.Canvas(buffer, pagesize=letter)
+
+    # Título
+    p.setFont("Helvetica-Bold", 18)
+    p.drawCentredString(300, 770, f"Carnet de Socio - Club de Tenis")
+
+    # Línea separadora
+    p.setStrokeColor(colors.blue)
+    p.line(50, 755, 550, 755)
+
+    # Datos del socio
+    p.setFont("Helvetica", 12)
+    y = 720
+    p.drawString(80, y, f"Nombre: {socio.nom}")
+    p.drawString(80, y - 20, f"DNI: {socio.DNI}")
+    p.drawString(80, y - 40, f"Fecha de Nacimiento: {socio.fechan}")
+    p.drawString(80, y - 60, f"Dirección: {socio.dire}")
+    p.drawString(80, y - 80, f"Código Postal: {socio.cp}")
+    p.drawString(80, y - 100, f"Teléfono: {socio.tel}")
+
+    # QR centrado
+    if socio.qr:
+        p.drawInlineImage(socio.qr.path, 400, 580, width=120, height=120)
+
+    # Footer
+    p.setFont("Helvetica-Oblique", 10)
+    p.drawCentredString(300, 40, "Escaneá este código para verificar los datos del socio")
+
+    p.showPage()
+    p.save()
+    buffer.seek(0)
+    return FileResponse(buffer, as_attachment=True, filename=f'Carnet_{socio.nom}.pdf')
+
+def descargar_qr_pdf(request, id):
+    socio = Socio.objects.get(pk=id)
+    buffer = BytesIO()
+    p = canvas.Canvas(buffer, pagesize=letter)
+
+    # Título
+    p.setFont("Helvetica-Bold", 18)
+    p.drawCentredString(300, 770, f"Carnet de Socio - Club de Tenis")
+
+    # Línea separadora
+    p.setStrokeColor(colors.blue)
+    p.line(50, 755, 550, 755)
+
+    # Datos del socio
+    p.setFont("Helvetica", 12)
+    y = 720
+    p.drawString(80, y, f"Nombre: {socio.nom}")
+    p.drawString(80, y - 20, f"DNI: {socio.DNI}")
+    p.drawString(80, y - 40, f"Fecha de Nacimiento: {socio.fechan}")
+    p.drawString(80, y - 60, f"Dirección: {socio.dire}")
+    p.drawString(80, y - 80, f"Código Postal: {socio.cp}")
+    p.drawString(80, y - 100, f"Teléfono: {socio.tel}")
+
+    # QR centrado
+    if socio.qr:
+        p.drawInlineImage(socio.qr.path, 400, 580, width=120, height=120)
+
+    # Footer
+    p.setFont("Helvetica-Oblique", 10)
+    p.drawCentredString(300, 40, "Escaneá este código para verificar los datos del socio")
+
+    p.showPage()
+    p.save()
+    buffer.seek(0)
+    return FileResponse(buffer, as_attachment=True, filename=f'Carnet_{socio.nom}.pdf')
+
+def descargar_qr_pdf(request, id):
+    socio = Socio.objects.get(pk=id)
+    buffer = BytesIO()
+    p = canvas.Canvas(buffer, pagesize=letter)
+
+    # Título
+    p.setFont("Helvetica-Bold", 18)
+    p.drawCentredString(300, 770, f"Carnet de Socio - Club de Tenis")
+
+    # Línea separadora
+    p.setStrokeColor(colors.blue)
+    p.line(50, 755, 550, 755)
+
+    # Datos del socio
+    p.setFont("Helvetica", 12)
+    y = 720
+    p.drawString(80, y, f"Nombre: {socio.nom}")
+    p.drawString(80, y - 20, f"DNI: {socio.DNI}")
+    p.drawString(80, y - 40, f"Fecha de Nacimiento: {socio.fechan}")
+    p.drawString(80, y - 60, f"Dirección: {socio.dire}")
+    p.drawString(80, y - 80, f"Código Postal: {socio.cp}")
+    p.drawString(80, y - 100, f"Teléfono: {socio.tel}")
+
+    # QR centrado
+    if socio.qr:
+        p.drawInlineImage(socio.qr.path, 400, 580, width=120, height=120)
+
+    # Footer
+    p.setFont("Helvetica-Oblique", 10)
+    p.drawCentredString(300, 40, "Escaneá este código para verificar los datos del socio")
+
+    p.showPage()
+    p.save()
+    buffer.seek(0)
+    return FileResponse(buffer, as_attachment=True, filename=f'Carnet_{socio.nom}.pdf')
+
+def descargar_qr_pdf(request, id):
+    socio = Socio.objects.get(pk=id)
+    buffer = BytesIO()
+    p = canvas.Canvas(buffer, pagesize=letter)
+
+    # Título
+    p.setFont("Helvetica-Bold", 18)
+    p.drawCentredString(300, 770, f"Carnet de Socio - Club de Tenis")
+
+    # Línea separadora
+    p.setStrokeColor(colors.blue)
+    p.line(50, 755, 550, 755)
+
+    # Datos del socio
+    p.setFont("Helvetica", 12)
+    y = 720
+    p.drawString(80, y, f"Nombre: {socio.nom}")
+    p.drawString(80, y - 20, f"DNI: {socio.DNI}")
+    p.drawString(80, y - 40, f"Fecha de Nacimiento: {socio.fechan}")
+    p.drawString(80, y - 60, f"Dirección: {socio.dire}")
+    p.drawString(80, y - 80, f"Código Postal: {socio.cp}")
+    p.drawString(80, y - 100, f"Teléfono: {socio.tel}")
+
+    # QR centrado
+    if socio.qr:
+        p.drawInlineImage(socio.qr.path, 400, 580, width=120, height=120)
+
+    # Footer
+    p.setFont("Helvetica-Oblique", 10)
+    p.drawCentredString(300, 40, "Escaneá este código para verificar los datos del socio")
+
+    p.showPage()
+    p.save()
+    buffer.seek(0)
+    return FileResponse(buffer, as_attachment=True, filename=f'Carnet_{socio.nom}.pdf')
+
+def descargar_qr_pdf(request, id):
+    socio = Socio.objects.get(pk=id)
+    buffer = BytesIO()
+    p = canvas.Canvas(buffer, pagesize=letter)
+
+    # Título
+    p.setFont("Helvetica-Bold", 18)
+    p.drawCentredString(300, 770, f"Carnet de Socio - Club de Tenis")
+
+    # Línea separadora
+    p.setStrokeColor(colors.blue)
+    p.line(50, 755, 550, 755)
+
+    # Datos del socio
+    p.setFont("Helvetica", 12)
+    y = 720
+    p.drawString(80, y, f"Nombre: {socio.nom}")
+    p.drawString(80, y - 20, f"DNI: {socio.DNI}")
+    p.drawString(80, y - 40, f"Fecha de Nacimiento: {socio.fechan}")
+    p.drawString(80, y - 60, f"Dirección: {socio.dire}")
+    p.drawString(80, y - 80, f"Código Postal: {socio.cp}")
+    p.drawString(80, y - 100, f"Teléfono: {socio.tel}")
+
+    # QR centrado
+    if socio.qr:
+        p.drawInlineImage(socio.qr.path, 400, 580, width=120, height=120)
+
+    # Footer
+    p.setFont("Helvetica-Oblique", 10)
+    p.drawCentredString(300, 40, "Escaneá este código para verificar los datos del socio")
+
+    p.showPage()
+    p.save()
+    buffer.seek(0)
+    return FileResponse(buffer, as_attachment=True, filename=f'Carnet_{socio.nom}.pdf')
+
+def descargar_qr_pdf(request, id):
+    socio = Socio.objects.get(pk=id)
+    buffer = BytesIO()
+    p = canvas.Canvas(buffer, pagesize=letter)
+
+    # Título
+    p.setFont("Helvetica-Bold", 18)
+    p.drawCentredString(300, 770, f"Carnet de Socio - Club de Tenis")
+
+    # Línea separadora
+    p.setStrokeColor(colors.blue)
+    p.line(50, 755, 550, 755)
+
+    # Datos del socio
+    p.setFont("Helvetica", 12)
+    y = 720
+    p.drawString(80, y, f"Nombre: {socio.nom}")
+    p.drawString(80, y - 20, f"DNI: {socio.DNI}")
+    p.drawString(80, y - 40, f"Fecha de Nacimiento: {socio.fechan}")
+    p.drawString(80, y - 60, f"Dirección: {socio.dire}")
+    p.drawString(80, y - 80, f"Código Postal: {socio.cp}")
+    p.drawString(80, y - 100, f"Teléfono: {socio.tel}")
+
+    # QR centrado
+    if socio.qr:
+        p.drawInlineImage(socio.qr.path, 400, 580, width=120, height=120)
+
+    # Footer
+    p.setFont("Helvetica-Oblique", 10)
+    p.drawCentredString(300, 40, "Escaneá este código para verificar los datos del socio")
+
+    p.showPage()
+    p.save()
+    buffer.seek(0)
+    return FileResponse(buffer, as_attachment=True, filename=f'Carnet_{socio.nom}.pdf')
+
+def descargar_qr_pdf(request, id):
+    socio = Socio.objects.get(pk=id)
+    buffer = BytesIO()
+    p = canvas.Canvas(buffer, pagesize=letter)
+
+    # Título
+    p.setFont("Helvetica-Bold", 18)
+    p.drawCentredString(300, 770, f"Carnet de Socio - Club de Tenis")
+
+    # Línea separadora
+    p.setStrokeColor(colors.blue)
+    p.line(50, 755, 550, 755)
+
+    # Datos del socio
+    p.setFont("Helvetica", 12)
+    y = 720
+    p.drawString(80, y, f"Nombre: {socio.nom}")
+    p.drawString(80, y - 20, f"DNI: {socio.DNI}")
+    p.drawString(80, y - 40, f"Fecha de Nacimiento: {socio.fechan}")
+    p.drawString(80, y - 60, f"Dirección: {socio.dire}")
+    p.drawString(80, y - 80, f"Código Postal: {socio.cp}")
+    p.drawString(80, y - 100, f"Teléfono: {socio.tel}")
+
+    # QR centrado
+    if socio.qr:
+        p.drawInlineImage(socio.qr.path, 400, 580, width=120, height=120)
+
+    # Footer
+    p.setFont("Helvetica-Oblique", 10)
+    p.drawCentredString(300, 40, "Escaneá este código para verificar los datos del socio")
+
+    p.showPage()
+    p.save()
+    buffer.seek(0)
+    return FileResponse(buffer, as_attachment=True, filename=f'Carnet_{socio.nom}.pdf')
+
+def descargar_qr_pdf(request, id):
+    socio = Socio.objects.get(pk=id)
+    buffer = BytesIO()
+    p = canvas.Canvas(buffer, pagesize=letter)
+
+    # Título
+    p.setFont("Helvetica-Bold", 18)
+    p.drawCentredString(300, 770, f"Carnet de Socio - Club de Tenis")
+
+    # Línea separadora
+    p.setStrokeColor(colors.blue)
+    p.line(50, 755, 550, 755)
+
+    # Datos del socio
+    p.setFont("Helvetica", 12)
+    y = 720
+    p.drawString(80, y, f"Nombre: {socio.nom}")
+    p.drawString(80, y - 20, f"DNI: {socio.DNI}")
+    p.drawString(80, y - 40, f"Fecha de Nacimiento: {socio.fechan}")
+    p.drawString(80, y - 60, f"Dirección: {socio.dire}")
+    p.drawString(80, y - 80, f"Código Postal: {socio.cp}")
+    p.drawString(80, y - 100, f"Teléfono: {socio.tel}")
+
+    # QR centrado
+    if socio.qr:
+        p.drawInlineImage(socio.qr.path, 400, 580, width=120, height=120)
+
+    # Footer
+    p.setFont("Helvetica-Oblique", 10)
+    p.drawCentredString(300, 40, "Escaneá este código para verificar los datos del socio")
+
+    p.showPage()
+    p.save()
+    buffer.seek(0)
+    return FileResponse(buffer, as_attachment=True, filename=f'Carnet_{socio.nom}.pdf')
+
+def descargar_qr_pdf(request, id):
+    socio = Socio.objects.get(pk=id)
+    buffer = BytesIO()
+    p = canvas.Canvas(buffer, pagesize=letter)
+
+    # Título
+    p.setFont("Helvetica-Bold", 18)
+    p.drawCentredString(300, 770, f"Carnet de Socio - Club de Tenis")
+
+    # Línea separadora
+    p.setStrokeColor(colors.blue)
+    p.line(50, 755, 550, 755)
+
+    # Datos del socio
+    p.setFont("Helvetica", 12)
+    y = 720
+    p.drawString(80, y, f"Nombre: {socio.nom}")
+    p.drawString(80, y - 20, f"DNI: {socio.DNI}")
+    p.drawString(80, y - 40, f"Fecha de Nacimiento: {socio.fechan}")
+    p.drawString(80, y - 60, f"Dirección: {socio.dire}")
+    p.drawString(80, y - 80, f"Código Postal: {socio.cp}")
+    p.drawString(80, y - 100, f"Teléfono: {socio.tel}")
+
+    # QR centrado
+    if socio.qr:
+        p.drawInlineImage(socio.qr.path, 400, 580, width=120, height=120)
+
+    # Footer
+    p.setFont("Helvetica-Oblique", 10)
+    p.drawCentredString(300, 40, "Escaneá este código para verificar los datos del socio")
+
+    p.showPage()
+    p.save()
+    buffer.seek(0)
+    return FileResponse(buffer, as_attachment=True, filename=f'Carnet_{socio.nom}.pdf')
+
+
+def descargar_qr_pdf(request, id):
+    socio = Socio.objects.get(pk=id)
+    buffer = BytesIO()
+    p = canvas.Canvas(buffer, pagesize=letter)
+    p.drawString(100, 750, f"QR de {socio.nom}")
+    
+    if socio.qr:
+        p.drawInlineImage(socio.qr.path, 100, 500, width=200, height=200)
+
+    p.showPage()
+    p.save()
+    buffer.seek(0)
+    return FileResponse(buffer, as_attachment=True, filename=f'qr_{socio.nom}.pdf')
+
+def descargar_qr_pdf(request, id):
+    socio = Socio.objects.get(pk=id)
+    buffer = BytesIO()
+    p = canvas.Canvas(buffer, pagesize=letter)
+    p.drawString(100, 750, f"QR de {socio.nom}")
+    
+    if socio.qr:
+        p.drawInlineImage(socio.qr.path, 100, 500, width=200, height=200)
+
+    p.showPage()
+    p.save()
+    buffer.seek(0)
+    return FileResponse(buffer, as_attachment=True, filename=f'qr_{socio.nom}.pdf')
+
+def descargar_qr_pdf(request, id):
+    socio = Socio.objects.get(pk=id)
+    buffer = BytesIO()
+    p = canvas.Canvas(buffer, pagesize=letter)
+    p.drawString(100, 750, f"QR de {socio.nom}")
+    
+    if socio.qr:
+        p.drawInlineImage(socio.qr.path, 100, 500, width=200, height=200)
+
+    p.showPage()
+    p.save()
+    buffer.seek(0)
+    return FileResponse(buffer, as_attachment=True, filename=f'qr_{socio.nom}.pdf')
+
+def descargar_qr_pdf(request, id):
+    socio = Socio.objects.get(pk=id)
+    buffer = BytesIO()
+    p = canvas.Canvas(buffer, pagesize=letter)
+    p.drawString(100, 750, f"QR de {socio.nom}")
+    
+    if socio.qr:
+        p.drawInlineImage(socio.qr.path, 100, 500, width=200, height=200)
+
+    p.showPage()
+    p.save()
+    buffer.seek(0)
+    return FileResponse(buffer, as_attachment=True, filename=f'qr_{socio.nom}.pdf')
+
+def descargar_qr_pdf(request, id):
+    socio = Socio.objects.get(pk=id)
+    buffer = BytesIO()
+    p = canvas.Canvas(buffer, pagesize=letter)
+    p.drawString(100, 750, f"QR de {socio.nom}")
+    
+    if socio.qr:
+        p.drawInlineImage(socio.qr.path, 100, 500, width=200, height=200)
+
+    p.showPage()
+    p.save()
+    buffer.seek(0)
+    return FileResponse(buffer, as_attachment=True, filename=f'qr_{socio.nom}.pdf')
+
+def descargar_qr_pdf(request, id):
+    socio = Socio.objects.get(pk=id)
+    buffer = BytesIO()
+    p = canvas.Canvas(buffer, pagesize=letter)
+    p.drawString(100, 750, f"QR de {socio.nom}")
+    
+    if socio.qr:
+        p.drawInlineImage(socio.qr.path, 100, 500, width=200, height=200)
+
+    p.showPage()
+    p.save()
+    buffer.seek(0)
+    return FileResponse(buffer, as_attachment=True, filename=f'qr_{socio.nom}.pdf')
+
+def descargar_qr_pdf(request, id):
+    socio = Socio.objects.get(pk=id)
+    buffer = BytesIO()
+    p = canvas.Canvas(buffer, pagesize=letter)
+    p.drawString(100, 750, f"QR de {socio.nom}")
+    
+    if socio.qr:
+        p.drawInlineImage(socio.qr.path, 100, 500, width=200, height=200)
+
+    p.showPage()
+    p.save()
+    buffer.seek(0)
+    return FileResponse(buffer, as_attachment=True, filename=f'qr_{socio.nom}.pdf')
+
+def descargar_qr_pdf(request, id):
+    socio = Socio.objects.get(pk=id)
+    buffer = BytesIO()
+    p = canvas.Canvas(buffer, pagesize=letter)
+    p.drawString(100, 750, f"QR de {socio.nom}")
+    
+    if socio.qr:
+        p.drawInlineImage(socio.qr.path, 100, 500, width=200, height=200)
+
+    p.showPage()
+    p.save()
+    buffer.seek(0)
+    return FileResponse(buffer, as_attachment=True, filename=f'qr_{socio.nom}.pdf')
+
+def descargar_qr_pdf(request, id):
+    socio = Socio.objects.get(pk=id)
+    buffer = BytesIO()
+    p = canvas.Canvas(buffer, pagesize=letter)
+    p.drawString(100, 750, f"QR de {socio.nom}")
+    
+    if socio.qr:
+        p.drawInlineImage(socio.qr.path, 100, 500, width=200, height=200)
+
+    p.showPage()
+    p.save()
+    buffer.seek(0)
+    return FileResponse(buffer, as_attachment=True, filename=f'qr_{socio.nom}.pdf')
+
+def descargar_qr_pdf(request, id):
+    socio = Socio.objects.get(pk=id)
+    buffer = BytesIO()
+    p = canvas.Canvas(buffer, pagesize=letter)
+    p.drawString(100, 750, f"QR de {socio.nom}")
+    
+    if socio.qr:
+        p.drawInlineImage(socio.qr.path, 100, 500, width=200, height=200)
+
+    p.showPage()
+    p.save()
+    buffer.seek(0)
+    return FileResponse(buffer, as_attachment=True, filename=f'qr_{socio.nom}.pdf')
+
+def descargar_qr_pdf(request, id):
+    socio = Socio.objects.get(pk=id)
+    buffer = BytesIO()
+    p = canvas.Canvas(buffer, pagesize=letter)
+    p.drawString(100, 750, f"QR de {socio.nom}")
+    
+    if socio.qr:
+        p.drawInlineImage(socio.qr.path, 100, 500, width=200, height=200)
+
+    p.showPage()
+    p.save()
+    buffer.seek(0)
+    return FileResponse(buffer, as_attachment=True, filename=f'qr_{socio.nom}.pdf')
+
    
 def eliminarSO(request, id):
     bc=Socio.objects.get(pk=id)

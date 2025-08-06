@@ -11,7 +11,8 @@ class Socio(models.Model):
     dire=models.CharField(max_length=50,verbose_name="Direccion")
     cp=models.CharField(max_length=6,verbose_name="codigo postal")
     tel=models.CharField(max_length=15,verbose_name="telefono")
- 
+    qr = models.ImageField(upload_to='qrs/', blank=True, null=True)
+
     
     
     def __str__(self):

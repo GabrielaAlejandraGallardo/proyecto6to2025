@@ -6,7 +6,7 @@ class SocioForm(forms.ModelForm):
   class Meta:
         model=Socio
        #fields='__all__'
-        fields=('DNI','nom','fechan',"dire","cp","tel")
+        fields=('DNI','nom','fechan',"dire","cp","tel","qr")
         labels ={
             "DNI" : "DNI del socio" ,
             'nom': 'nombre y apellido del socio:',
@@ -15,6 +15,7 @@ class SocioForm(forms.ModelForm):
             "cp" : "codigo postal del socio",
             "tel":"Telefono",
                       #  "nummac" : "numero de macc " ,
+            "qr": "Código QR del socio",      
                    
         }
         widgets = {

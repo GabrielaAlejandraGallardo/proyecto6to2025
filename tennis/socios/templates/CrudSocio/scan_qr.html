@@ -1,0 +1,73 @@
+{% extends 'paginas_base/base.html' %}
+{% block titulo %}Escanear QR{% endblock titulo %}
+
+{% block contenido %}
+<h2>Escanear QR</h2>
+<div id="reader" style="width: 500px; margin: auto; border: 2px solid #ccc; padding: 10px;"></div>
+<h3>Resultado:</h3>
+<div id="resultado" style="white-space: pre-wrap; border: 1px solid #ccc; padding: 10px; min-height:150px;"></div>
+
+<!-- Librería para escaneo QR -->
+<script src="https://unpkg.com/html5-qrcode"></script>
+<script src="https://unpkg.com/html5-qrcode"></script>
+<script>
+function onScanSuccess(decodedText, decodedResult) {
+    console.log('QR escaneado:', decodedText);
+    // Enviar al backend
+    fetch("{% url 'buscar_por_qr' %}", {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': '{{ csrf_token }}'
+        },
+        body: JSON.stringify({ 'qr_data': decodedText })
+    })
+    .then(res => res.json())
+    .then(data => {
+        if (data.status === 'success') {
+            const j = data.jugador;
+            document.getElementById('resultado').innerHTML =
+                `<strong>Nombre:</strong> ${j.nom}<br>
+                 <strong>DNI:</strong> ${j.DNI}<br>
+                 <strong>Fecha Nacimiento:</strong> ${j.fechan[.'Fecha Nacimiento']}<br>
+                 <strong>Dirección:</strong> ${j.dire}<br>
+                 <strong>Código Postal:</strong> ${j.cp['Código Postal']}<br>
+                 <strong>Telefono:</strong> ${j.tel}<br>
+             
+        } else if (data.status === 'not_found') {
+            document.getElementById('resultado').innerText = 'Jugador no encontrado.';
+        } else {
+            document.getElementById('resultado').innerText = 'Error: ' + data.message;
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        document.getElementById('resultado').innerText = 'Error al comunicar con el servidor.';
+    });
+}
+
+// Intentar acceder a la cámara y arrancar el escáner
+console.log('Intentando acceder a la cámara...');
+Html5Qrcode.getCameras().then(cameras => {
+    console.log('Cámaras detectadas:', cameras);
+    if (cameras && cameras.length) {
+        const cameraId = cameras[0].id;
+        const scanner = new Html5Qrcode("reader");
+        scanner.start(cameraId, { fps: 10, qrbox: 250 }, onScanSuccess)
+            .then(() => {
+                console.log('Escáner iniciado con cámara:', cameraId);
+            })
+            .catch(err => {
+                console.error('Error al iniciar el escáner:', err);
+                alert('No se pudo iniciar el escáner: ' + err);
+            });
+    } else {
+        alert('No se detectaron cámaras en tu dispositivo.');
+        console.log('No hay cámaras disponibles');
+    }
+}).catch(err => {
+    alert('Error al acceder a las cámaras: ' + err);
+    console.error('Error en getCameras:', err);
+});
+</script>
+{% endblock %}

@@ -12,6 +12,7 @@ urlpatterns = [
     path('socios/eliminarSO/<int:id>',views.eliminarSO,name='eliminarSO'),
     path('socios/buscar_por_qr', views.buscar_por_qr, name='buscar_por_qr'),
     path('socios/descargar_qr_pdf', views.descargar_qr_pdf, name='descargar_qr_pdf'),
+   # path('scan_qr/', views.pagina_scanner, name='pagina_scanner'),
   
 
 ]+ static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
