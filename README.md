@@ -135,17 +135,17 @@ Casos de Uso y Casos de Prueba:https://docs.google.com/document/d/1LBT1cmzwNFe60
 Clase Nombre: Jugadores
 |Nombre atributo        |  tipo de dato     |
 |-----------------------|-------------------|
-|id-jugadores           |Autofield   PK     |
-|nom                    |textfield          |
-|dni                    |integerfield       |
-|fechan                 |date               |
-|altura                 |double             |
-|peso                   |double             |
-|dire                   |varchar            |
-|cd                     |varchar            |
-|qr                     |varchar            |
-|descripcion-id         |bigint             |
-|talla-i             |bigint             |
+|id           |Autofield   PK     |
+|DNI                    |textfield          |
+|nom                    |charfield          |
+|fechan                 |integerfield       |
+|altura                 |floatfield         |
+|peso                   |floatfield         |
+|dire                   |charfield          |
+|cd                     |charfield          |
+|talla                  |FK                 |
+|descripcion            |FK                 |
+|qr                     |imagefield         |
 
 ________________________________________________________________________________________________
 
