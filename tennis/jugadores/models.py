@@ -37,7 +37,7 @@ class Jugador(models.Model):
 
   def save(self, *args, **kwargs):
     # Generar el contenido del QR (puedes personalizar esto)
-    qr_content = f'Jugador: {self.nom}, DNI: {self.DNI}'
+    qr_content = f'Jugador: {self.nom}, DNI: {self.DNI}, Fecha Nacimiento: {self.fechan}, Altura: {self.altura}, Peso: {self.peso}, Direccion: {self.dire}, Codigo Postal: {self.cd}, Talla: {self.talla}, Deporte: {self.descripcion}'
     qr_img = qrcode.make(qr_content)
     buffer = BytesIO()
     qr_img.save(buffer, format='PNG')

@@ -95,21 +95,7 @@ def crear_editarJugador(request, id=0):
             jugador.qr.save(f"qr_{jugador.id}.png", ContentFile(buffer.getvalue()), save=False)  # Usar el ID para el nombre del archivo
             jugador.save()
         return redirect('lista')
-
-"""def descargar_qr_pdf(request, id):
-    jugador = Jugador.objects.get(pk=id)
-    buffer = BytesIO()
-    p = canvas.Canvas(buffer, pagesize=letter)
-    p.drawString(100, 750, f"QR de {jugador.nom}")
-    # Insertar imagen QR
-    if jugador.qr_code:
-        p.drawInlineImage(jugador.qr_code.path, 100, 600, width=250, height=250)
-    p.showPage()
-    p.save()
-    buffer.seek(0)
-    return FileResponse(buffer, as_attachment=True, filename=f'qr_{jugador.nom}.pdf')
-    """
-        
+    
 def eliminar(request, id):
     bc=Jugador.objects.get(pk=id)
     bc.delete()

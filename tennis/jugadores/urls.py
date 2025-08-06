@@ -11,6 +11,6 @@ urlpatterns = [
     path('jugadores/<int:id>/',views.crear_editarJugador,name='crear_editarJugador'),
     path('jugadores/eliminar/<int:id>',views.eliminar,name='eliminar'),
     path('jugadores/buscar_por_qr', views.buscar_por_qr, name='buscar_por_qr'),
-    path('jugadores/descargar_qr_pdf', views.descargar_qr_pdf, name='descargar_qr_pdf'),
+ #   path('jugadores/descargar_qr_pdf', views.descargar_qr_pdf, name='descargar_qr_pdf'),
     path('scan_qr/', views.pagina_scanner, name='pagina_scanner'),
 ]+ static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
