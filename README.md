@@ -9,18 +9,18 @@ Clase Nombre: Servicios
 
 | Nombre atributo   | Tipo de dato      |
 |-------------------|-------------------|
-| id_servicio       | autofield         |
-| descripcion       | integerField      |
-| precio            | floatField        |
+| id_servicio       | Autofield         |
+| descripcion       | IntegerField      |
+| precio            | FloatField        |
 
 Clase Nombre: Contrataciones
 Nombre atributo | tipo de dato          |
 |---------------|-----------------------|
-id_administrador| autofield FK|         |
-id_servicio     |  autofield FK         |
-id_contratacion |  autofield PK         |
-nombre-apellido |  text                 |
-senia           |   floatfield          |
+id_administrador|   Autofield FK|       |
+id_servicio     |   Autofield FK        |
+id_contratacion |   Autofield PK        |
+nombre-apellido |   TextField           |
+senia           |   Floatfield          |
 saldo           |   floatfield          |
 
 ________________________________________________________________________________________________
@@ -32,16 +32,17 @@ Historial de usuario:!
 
 Casos de Uso: https://lucid.app/lucidchart/dfcd86d7-2de8-4fde-8307-0370d333ff13/edit?viewport_loc=-471%2C160%2C2465%2C1118%2C0_0&invitationId=inv_56be0290-abfd-4fcb-81e0-17673f9362ed
 
-Modelos Clase Nombre:cuotas de usuario 
-||-----------------------|----------------| Nombre atributo   | Tipo de dato      |
+Modelos Clase Nombre:cuotas de jugador 
+| Nombre atributo   | Tipo de dato      |
 |-------------------|-------------------|
-| id_cuota          |AutoField (PK      |
+| id_cuota          | AutoField(PK      |
 | id_jugador        | ForeignKey        |
-| monto             | FloatField        |
-| fecha emision     | DateTimeField     |
-| fecha_vencimiento | DateTimeField     |
-| estado            | TextField         |
-| fecha_pago        | DateTimeField     |
+| Monto             | FloatField        |
+| Fecha_emision     | DateTimeField     |
+| Fecha_vencimiento | DateTimeField     |
+| Estado            | TextField         |
+| Fecha_pago        | DateTimeField     |
+
 __________________________________________________________________________________
 Grupo 3 Integrantes:
 
@@ -73,7 +74,7 @@ Clase Nombre:Eventos
 
 
 |Nombre atributo      |  tipo de dato         |
-|---------------------|-----------------------
+|---------------------|-----------------------|
 |id_evento            | AutoField    PK       |
 | nombre_evento       | TextField             |
 | fecha               | DataTimeFlied         |
@@ -102,11 +103,11 @@ Casos de Uso  y Casos de Prueba:https://docs.google.com/document/d/1HnpchmA9sOiA
 
 
 * Modelos
-Clase Nombre: socios
+Clase Nombre: Socios
 
 
 
-|Nombre atributo       | tipo de dato          |
+|Nombre atributo      | tipo de dato          |
 |---------------------|-----------------------|
 |id_socio             | AutoField       PK    |
 |nombre_apellido_socio| TextField             |
@@ -132,11 +133,19 @@ Casos de Uso y Casos de Prueba:https://docs.google.com/document/d/1LBT1cmzwNFe60
 
 * Modelos
 Clase Nombre: Jugadores
-|Nombre atributo|  tipo de dato     |
-|---------------------|-----------------------|
-|id-jugadores|Autofield   PK        |
-|nombre-apellido-jugador|textfield  |
-|dni-jugador|integerfield           |
+|Nombre atributo        |  tipo de dato     |
+|-----------------------|-------------------|
+|id           |Autofield   PK     |
+|DNI                    |textfield          |
+|nom                    |charfield          |
+|fechan                 |integerfield       |
+|altura                 |floatfield         |
+|peso                   |floatfield         |
+|dire                   |charfield          |
+|cd                     |charfield          |
+|talla                  |FK                 |
+|descripcion            |FK                 |
+|qr                     |imagefield         |
 
 ________________________________________________________________________________________________
 
@@ -147,6 +156,10 @@ Historia de Usuario: https://docs.google.com/document/d/1Ut7-_JTwDnkPIYRu1wz8Iej
 
 Casos de Uso  y Casos de Prueba: https://docs.google.com/document/d/1lyKOMc_kxi-8WzulgupKY_lzSceKHnSB0i5jMzGOCgw/edit?usp=sharing
 
+Equipo 3, el link que han presentado  en casos de Uso y casos prueba es de otro equipoEquipo y para otro requerimientos
+Requerimiento: Contrataciones
+
+
 CATEGORIAS:Voley,Basquet,Tela,Patin,Yoga,Pileta,Funcional,Frontal
 competitivo pot categoria de voley y basquet.
 formativas juntas ,femenino y masculino
@@ -156,7 +169,7 @@ Sub 13,sub 15 y 17,Desarrollo y Primera
 Modelo Clase: Deportes
 
 | Nombre atributo       | Tipo de dato             |
-| --------------------- | ------------------------ |
+| --------------------- | -------------------------|
 | id\_deporte           | PK de campo automático   |
 | nombre\_deporte       | Campo de texto           |
 | descripcion           | Campo de texto           |
@@ -184,15 +197,12 @@ Casos de Uso  y Casos de Prueba:
 https://docs.google.com/document/d/1_q2GTvpaEPmQ4I0n5rEYUpU0H-Br2dbrBbeiLvGO7e0/edit?usp=drivesdk
 
 * Modelo clase: Cuotas
-* 
-Nombre atributo	tipo de dato
-
-id_cuota	AutoField PK
-id_socio	IntegerField FK
-mes_correspondiente	CharField
-anio_correspondiente	IntegerField
-monto_total	FloatField
-fecha_pago	DateTimeField
-estado_pago	TextField
-fecha_registro	DateTimeField
-ultima_modificacion	DateTimeField
+  
+| Nombre atributo    | Tipo de dato             |
+| ------------------ | ------------------------ |
+| idCuota	         |  AutoField PK            |
+| id                 |  ForeignKey FK           |
+| nom                |	CharField               |
+| cuotaMes           |	DateField               |
+| fechap             |	DateField               |
+| importe   	       |  DateField               |
