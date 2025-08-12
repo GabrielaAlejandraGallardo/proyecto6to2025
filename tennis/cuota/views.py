@@ -1,3 +1,4 @@
+from collections import defaultdict
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, JsonResponse
 from crispy_forms.helper import FormHelper
@@ -9,8 +10,25 @@ from cuota.models import Cuota, Jugador
 # Create your views here
 
 def listaCuota(request):
-    cuotas=Cuota.objects.all()
-    return render(request,"crudCuotas/listado.html",{'cuotas':cuotas})
+    
+    cuota = Cuota.objects.all().order_by('cuotaMes')
+    pagos_por_mes = defaultdict(list)
+    total_por_mes = defaultdict(float)
+
+    for sc in cuota:
+        mes = sc.cuotaMes
+        pagos_por_mes[mes].append(sc)
+        total_por_mes[mes] += float(sc.importe)
+
+    # Convertir a lista de tuplas para el template
+    pagos_y_totales = [
+        (mes, pagos_por_mes[mes], total_por_mes[mes])
+        for mes in pagos_por_mes
+    ]
+
+    return render(request, 'CrudCuotas/listado.html', {
+        'pagos_y_totales': pagos_y_totales,
+    })
 
 
 def inicio(request):

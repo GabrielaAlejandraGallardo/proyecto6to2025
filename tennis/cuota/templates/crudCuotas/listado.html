@@ -2,57 +2,50 @@
 
 {% block titulo %}Página Lista de Cuotas Jugadores {% endblock titulo %}
 {% block contenido %}
-    <div class="card">
-        <div class="card-header">
-            <a name="btnuevo" id="btnuevo" class="btn btn-primary" href="{% url 'crear_editarCuota' idCuota=0  %}" role="button">Nueva Cuota</a>
-        </div>
-        <div class="card-body">
-            <h4 class="card-title">Cuota Jugador</h4>
-            <table class="table">
-                <thead>
+<div class="card">
+    <div class="card-header">
+        <a class="btn btn-primary" href="{% url 'crear_editarCuota' idCuota=0 %}" role="button">Nueva Cuota Jugador</a>
+    </div>
+    <div class="card-body">
+        <h4 class="card-title">Cuota Jugador</h4>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Mes</th>
+                    <th>Nro. Registro</th>
+                    <th>Nombre</th>
+                    <th>Fecha de Pago</th>
+                    <th>Importe</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for mes, lista_cuotas, total in pagos_y_totales %}
+                    {% for cuota in lista_cuotas %}
                     <tr>
-                        <th>Nro. Registro</th>
-                        <th>Nombre</th>    
-                        <th>Mes</th>                       
-                        <th>Fecha de Pago</th>
-                        <th>importe</th>
-                       
-                        
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for ju in cuotas %}
-                    <tr>  
-                        <td>{{ ju.id}}</td>     
-                        <td>{{ ju.nom}}</td>       
-                        <td>{{ ju.cuotaMes}}</td>
-                        <td>{{ ju.fechap }}</td>
-                        <td>{{ ju.importe }}</td>
-                       
-                      {% comment %}
+                        {% if forloop.first %}
+                            <td rowspan="{{ lista_cuotas|length }}">{{ mes }}</td>
+                        {% endif %}
+                        <td>{{ cuota.id }}</td>
+                        <td>{{ cuota.nom }}</td>
+                        <td>{{ cuota.fechap }}</td>
+                        <td>${{ cuota.importe }}</td>
                         <td>
-
-
-                            
-                            <img src="{{ cl.foto.url }}" height="60">
-                        </td>  {% endcomment %}
-                        <td>
-                            <a name="bteditar" id="bteditar" class="btn btn-info" href="{% url 'crear_editarCuota' ju.idCuota  %}" role="button">Editar</a>
-                            <a name="bteliminar" id="bteliminar" class="btn btn-danger" href="{% url 'eliminaCuota' ju.idCuota %}" role="button">Eliminar</a>
-                        </td>                        
+                            <a class="btn btn-info" href="{% url 'crear_editarCuota' idCuota=cuota.pk %}">Editar</a>
+                            <a class="btn btn-danger" href="{% url 'eliminaCuota' idCuota=cuota.pk %}">Eliminar</a>
+                        </td>
                     </tr>
                     {% endfor %}
-                    
-                </tbody>
-            </table>
-            
-            
-        </div>
-        <div class="card-footer text-muted">
-        
-        </div>
+                    <tr>
+                        <td colspan="4" class="text-right"><strong>Total {{ mes }}:</strong></td>
+                        <td><strong>${{ total }}</strong></td>
+                        <td><strong>Pago Administrador (10%):</strong></td>
+                        <td><strong>${% widthratio total 10 1 %}</strong></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
     </div>
-   
-   
-
+    <div class="card-footer text-muted"></div>
+</div>
 {% endblock contenido %}
