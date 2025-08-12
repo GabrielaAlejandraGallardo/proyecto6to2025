@@ -15,17 +15,27 @@ class Servicio(models.Model):
     
     
 # Create your models here.
-class Contratacion(models.Model):
+"""class Contratacion(models.Model):
     idContratacion = models.AutoField(primary_key=True, db_column='idContratacion')
-    servicios = models.ManyToManyField(Servicio, verbose_name="Servicios")
+    servicios = models.ManyToManyField(Servicio, verbose_name="Servicios", related_name="contrataciones")
     fecha=models.DateField(verbose_name="fecha")
-    idServicio= models.ForeignKey(Servicio,verbose_name="idServicio",on_delete=models.CASCADE)
+    idServicio= models.ForeignKey(Servicio,verbose_name="idServicio",on_delete=models.CASCADE, related_name="contrataciones_id")
     nomContratante=models.CharField(max_length=25,verbose_name="nomContratante")
     
        
     def __str__(self):
-        fila=str(self.idContratacion)+"-"+self.fecha+"-"+self.nomContaratante
+        fila=str(self.idContratacion)+"-"+str(self.fecha)+"-"+self.nomContratante
         return fila
     
-
+"""
+class Contratacion(models.Model):
+    idContratacion = models.AutoField(primary_key=True, db_column='idContratacion')
+    servicios = models.ManyToManyField(Servicio, verbose_name="Servicios", related_name="contrataciones")
+    fecha=models.DateField(verbose_name="fecha")
+    idServicio= models.ForeignKey(Servicio,verbose_name="idServicio",on_delete=models.CASCADE, related_name="contrataciones_id")
+    nomContratante=models.CharField(max_length=25,verbose_name="nomContratante")
     
+       
+    def __str__(self):
+        fila=str(self.idContratacion)+"-"+str(self.fecha)+"-"+self.nomContratante
+        return fila    

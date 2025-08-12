@@ -35,8 +35,50 @@
             
         </div>
     </div>
+   <script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Ajusta los IDs según los que genera Django
+    const idField = document.getElementById('id_id');
+    const nomField = document.getElementById('id_nom');
+
+    if (idField && nomField) {
+        idField.addEventListener('change', function() {
+            const selectedId = this.value;
+            if (selectedId) {
+                fetch(`/api/jugador/${selectedId}/nom/`)
+                    .then(response => {
+                        if (!response.ok) throw new Error('Error en la respuesta del servidor');
+                        return response.json();
+                    })
+                    .then(data => {
+                        nomField.value = data.nom || '';
+                    })
+                    .catch(() => {
+                        nomField.value = '';
+                        alert('No se pudo obtener el nombre del jugador. Verifica la conexión o el servidor.');
+                    });
+            } else {
+                nomField.value = '';
+            }
+        });
+    }
+});
+</script>
+        
+        </div>
+        <div class="card-footer text-muted">
+            
+        </div>
+    </div>
     
    
+            
+        </div>
+        <div class="card-footer text-muted">
+            
+        </div>
+    </div>
+    
    
 
 {% endblock contenido %}

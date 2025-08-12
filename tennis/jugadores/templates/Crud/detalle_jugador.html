@@ -1,0 +1,25 @@
+{% extends 'paginas_base/base.html' %}
+
+{% block contenido %}
+<div class="container mt-4">
+    <h2>Datos del Jugador</h2>
+    <ul>
+        <li><strong>Nombre:</strong> {{ jugador.nom }}</li>
+        <li><strong>DNI:</strong> {{ jugador.DNI }}</li>
+        <li><strong>Fecha de nacimiento:</strong> {{ jugador.fechan }}</li>
+        <li><strong>Altura:</strong> {{ jugador.altura }} cm</li>
+        <li><strong>Peso:</strong> {{ jugador.peso }} kg</li>
+        <li><strong>Dirección:</strong> {{ jugador.dire }}</li>
+        <li><strong>Código postal:</strong> {{ jugador.cd }}</li>
+        <li><strong>Talla:</strong> {{ jugador.talla }}</li>
+        <li><strong>Deporte:</strong> {{ jugador.descripcion }}</li>
+    </ul>
+</div>
+
+
+    <div class="mt-4">
+        <a href="{% url 'pagina_listado' %}" class="btn btn-secondary">Volver al listado</a>
+        <a href="{% url 'crear_editarJugador' jugador.id %}" class="btn btn-primary">Editar</a>
+    </div>
+</div>
+{% endblock contenido %}

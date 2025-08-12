@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import get_object_or_404, render, redirect
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Submit
 from django.http import HttpResponse
@@ -46,28 +46,37 @@ def listaContratacion(request):
     contratacion=Contratacion.objects.all()
     return render(request,"CrudContratacion/listado.html",{'contratacion':contratacion})
 
+def crear_editarContratacion(request, idContratacion=None):
+    """
+    Maneja tanto la creación como la edición de Contratacion.
+    - Si idContratacion es None o 0: se crea una nueva Contratacion.
+    - Si idContratacion es un id válido: se edita la Contratacion existente.
+    """
+    if idContratacion in (0, None):
+        contratacion = None
+    else:
+        contratacion = get_object_or_404(Contratacion, pk=idContratacion)
 
-
-
-    
-def crear_editarContratacion(request,idContratacion=0):
-      if request.method=="GET":
-        if idContratacion==0:
-            formulario=ContratacionForm()   
+    if request.method == "POST":
+        if contratacion is None:
+            formulario = ContratacionForm(request.POST)
         else:
-            contratacionid=Contratacion.objects.get(pk=idContratacion)
-            formulario=ContratacionForm(instance=contratacionid)
-        return render(request,'CrudContratacion/Crear.html',{'formulario':formulario})
-      else:
-        if idContratacion==0:
-            formulario=ContratacionForm(request.POST or None, request.FILES or None)
-        else:
-            contratacionid=Contratacion.objects.get(pk=idContratacion)
-            formulario=ContratacionForm(request.POST or None, request.FILES or None ,instance=contratacionid)
+            formulario = ContratacionForm(request.POST, instance=contratacion)
+
         if formulario.is_valid():
-            formulario.save()
-        return redirect('listaContratacion')
-        
+            contrato = formulario.save(commit=False)
+            contrato.save()
+            formulario.save_m2m()  # guarda relaciones ManyToMany
+            return redirect('listaContratacion')
+    else:
+        if contratacion is None:
+            formulario = ContratacionForm()
+        else:
+            formulario = ContratacionForm(instance=contratacion)
+
+    return render(request, 'CrudContratacion/Crear.html', {'formulario': formulario})
+
+
 def eliminarContratacion(request, idContratacion):
     bc = Contratacion.objects.get(idContratacion=idContratacion)
     bc.delete()

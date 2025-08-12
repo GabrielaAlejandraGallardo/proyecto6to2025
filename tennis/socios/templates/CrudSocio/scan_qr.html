@@ -14,7 +14,7 @@
 function onScanSuccess(decodedText, decodedResult) {
     console.log('QR escaneado:', decodedText);
     // Enviar al backend
-    fetch("{% url 'buscar_por_qr' %}", {
+    fetch("{% url 'buscar_por_qrS' %}", {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -25,7 +25,7 @@ function onScanSuccess(decodedText, decodedResult) {
     .then(res => res.json())
     .then(data => {
         if (data.status === 'success') {
-            const j = data.jugador;
+            const j = data.socio;
             document.getElementById('resultado').innerHTML =
                 `<strong>Nombre:</strong> ${j.nom}<br>
                  <strong>DNI:</strong> ${j.DNI}<br>

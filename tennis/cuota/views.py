@@ -1,10 +1,11 @@
 from collections import defaultdict
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Submit
 from .forms import CuotaForm
-from cuota.models import Cuota
+from cuota.models import Cuota, Jugador
+
 
 # Create your views here
 
@@ -68,4 +69,11 @@ def eliminaCuota(request, idCuota):
     bc=Cuota.objects.get(pk=idCuota)
     bc.delete()
     return redirect('listaCuota')
+        
+def obtener_nombre_jugador(request, pk):
+    try:
+        jugador = Jugador.objects.get(pk=pk)
+        return JsonResponse({'nom': jugador.nom})
+    except Jugador.DoesNotExist:
+        return JsonResponse({'nom': ''}, status=404)        
         
