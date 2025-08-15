@@ -8,6 +8,10 @@ from .forms import ServicioForm, ContratacionForm
 from django.db import models
 from django.conf import settings
 from django.contrib.staticfiles.urls import static
+from django.db.models import Max
+from django.db.models.functions import TruncMonth
+from django.db.models import Sum
+
 # Create your views here
 def listaServicio(request):
     servicio=Servicio.objects.all()
@@ -19,33 +23,58 @@ def inicio(request):
 def nosotros(request):
     return render(request,'paginas_base/nosotros.html')      
   
-def crear_editarServicio(request,idServicio=None):
-      if request.method=="GET":
-        if idServicio==None:
-            formulario=ServicioForm()   
-        else:
-            Servicioid=Servicio.objects.get(pk=idServicio)
-            formulario=ServicioForm(instance=Servicioid)
-        return render(request,'CrudServicio/Crear.html',{'formulario':formulario})
-      else:
-        if idServicio==0:
-            formulario=ServicioForm(request.POST or None, request.FILES or None)
-        else:
-            Servicioid=Servicio.objects.get(pk=idServicio)
-            formulario=ServicioForm(request.POST or None, request.FILES or None ,instance=Servicioid)            
+
+
+
+def crear_editarServicio(request, idServicio):
+    if idServicio != 0:
+        servicio = get_object_or_404(Servicio, pk=idServicio)
+    else:
+        # Usar el nombre correcto del campo de clave primaria
+        ultimo_id = Servicio.objects.aggregate(Max('idServicio'))['idServicio__max']
+        nuevo_id = (ultimo_id or 0) + 1
+        servicio = Servicio(idServicio=nuevo_id)
+
+    if request.method == 'POST':
+        formulario = ServicioForm(request.POST, instance=servicio)
         if formulario.is_valid():
             formulario.save()
-        return redirect('listaServicio')
-        
+            return redirect('listaServicio')
+    else:
+        formulario = ServicioForm(instance=servicio)
+
+  
+    return render(request, 'CrudServicio/Crear.html', {'formulario': formulario})
+
 def eliminarS(request, idServicio):
     bc=Servicio.objects.get(pk=idServicio)
     bc.delete()
     return redirect('listaServicio')
         
-        
+
 def listaContratacion(request):
-    contrataciones = Contratacion.objects.all()
-    return render(request, 'CrudContratacion/listado.html', {'contrataciones': contrataciones})
+    contrataciones = Contratacion.objects.all().prefetch_related('servicios')
+
+    # Total general acumulado
+    total_general = sum(
+        sum(servicio.costo for servicio in c.servicios.all())
+        for c in contrataciones
+    )
+
+    # Totales por mes
+    contrataciones_por_mes = (
+        Contratacion.objects
+        .annotate(mes=TruncMonth('fecha'))
+        .values('mes')
+        .annotate(total_mes=Sum('servicios__costo'))
+        .order_by('mes')
+    )
+
+    return render(request, 'CrudContratacion/listado.html', {
+        'contrataciones': contrataciones,
+        'total_general': total_general,
+        'contrataciones_por_mes': contrataciones_por_mes,
+    })
 
 def crear_editarContratacion(request, idContratacion=None):
     if idContratacion in [None, 0, '0']:
