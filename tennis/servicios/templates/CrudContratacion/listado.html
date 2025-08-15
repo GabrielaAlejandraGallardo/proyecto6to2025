@@ -1,51 +1,71 @@
 {% extends 'paginas_base/base.html' %}
 
-{% block titulo %}Página Lista de Contrataciones {% endblock titulo %}
-{% block contenido %}
-    <div class="card">
-        <div class="card-header">
-            <a name="btnuevo" id="btnuevo" class="btn btn-primary" href="{% url 'crear_editarContratacion' idContratacion=0  %}" role="button">Nueva Contratacion</a>
-        </div>
-        <div class="card-body">
-            <h4 class="card-title">Contratacioness</h4>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Nro de Contratación</th>
-                        <th>Fecha</th>
-                        <th>Código de Servicio</th>
-                        <th>Nombre Contratante</th>
-                      
-                        
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for s in contratacion %}
-                    
-                    <tr>  
-                                         
-                        <td>{{ s.fecha}}</td>
-                        <td>{{ s.idServicio}}</td>
-                        <td>{{ s.nomContratante}}</td>
-                                          
-                      
-                        <td>
-                            <a name="bteditar" id="bteditar" class="btn btn-info" href="{% url 'crear_editarContratacion' s.idContratacion  %}" role="button">Editar</a>
-                            <a name="bteliminar" id="bteliminar" class="btn btn-danger" href="{% url 'eliminarContratacion' s.idContratacion  %}" role="button">Eliminar</a>
-                        </td>                        
-                    </tr>
-                    {% endfor %}
-                    
-                </tbody>
-            </table>
-            
-            
-        </div>
-        <div class="card-footer text-muted">
-        
-        </div>
-    </div>
-   
-   
+{% block titulo %}Página Lista de Contrataciones{% endblock titulo %}
 
+{% block contenido %}
+<div class="card mt-4">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h4 class="mb-0">Contrataciones</h4>
+        <a class="btn btn-primary" href="{% url 'crear_editarContratacion'  %}" role="button">Nueva Contratación</a>
+    </div>
+
+    <div class="card-body">
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-success">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+
+        <table class="table table-bordered table-hover">
+            <thead class="table-dark">
+                <tr>
+                    <th>Nro de Contratación</th>
+                    <th>Fecha</th>
+                    <th>Servicios Contratados</th>
+                    <th>Nombre Contratante</th>
+                    <th>Total Costo</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for c in contrataciones %}
+                    <tr>
+                        <td>{{ c.idContratacion }}</td>
+                        <td>{{ c.fecha }}</td>
+                        <td>
+                            <ul class="list-unstyled mb-0">
+                                {% for s in c.servicios.all %}
+                                    <li>{{ s.descripcion }} (${{ s.costo }})</li>
+                                {% empty %}
+                                    <li><em>Sin servicios</em></li>
+                                {% endfor %}
+                            </ul>
+                        </td>
+                        <td>{{ c.nomContratante }}</td>
+                        <td>${{ c.total_costo|floatformat:2 }}</td>
+                        <td>
+                            <div class="btn-group" role="group">
+                                <a class="btn btn-info" href="{% url 'crear_editarContratacion' idContratacion=c.idContratacion %}">Editar</a>
+                                <a class="btn btn-danger" href="{% url 'eliminarContratacion' idContratacion=c.idContratacion %}">Eliminar</a>
+                            </div>
+                        </td>
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="6" class="text-center">No hay contrataciones registradas.</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="card-footer text-muted text-end">
+        Total: {{ contratacion|length }} contrataciones
+        <div class="card-footer text-muted text-end">
+ 
+    Total acumulado: <strong>${{ total_general|floatformat:2 }}</strong>
+</div>
+
+    </div>
+</div>
 {% endblock contenido %}

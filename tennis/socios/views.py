@@ -31,7 +31,7 @@ def inicio(request):
 def nosotros(request):
     return render(request,'paginas_base/nosotros.html')        
 
-def buscar_por_qr(request):
+def buscar_por_qrS(request):
     if request.method == "POST":
         try:
             body = json.loads(request.body)

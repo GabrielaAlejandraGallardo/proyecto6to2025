@@ -14,7 +14,7 @@
 function onScanSuccess(decodedText, decodedResult) {
     console.log('QR escaneado:', decodedText);
     // Enviar al backend
-    fetch("{% url 'buscar_por_qr' %}", {
+    fetch("{% url 'buscar_por_qrS' %}", {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

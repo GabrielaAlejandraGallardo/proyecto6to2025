@@ -1,30 +1,19 @@
 from django.db import models
-
-
-    
-# Create your models here.
 class Servicio(models.Model):
-    idServicio = models.AutoField(primary_key=True, db_column='Código del Servicio')
-    descripcion=models.TextField(verbose_name="Descripción del Servicio")
-    costo= models.FloatField(max_length=50,verbose_name="Costo del Servicio")
-          
-    
-    def __str__(self):
-        fila=str(self.idServicio)+"-"+self.descripcion+"-"+str(self.costo)
-        return fila
-    
-    
-# Create your models here.
-class Contratacion(models.Model):
-    idContratacion = models.AutoField(primary_key=True, db_column='idContratacion')
-    fecha=models.DateField(verbose_name="fecha")
-    idServicio= models.ForeignKey(Servicio,verbose_name="idServicio",on_delete=models.CASCADE)
-    nomContratante=models.TextField(max_length=25,verbose_name="nomContratante")
-    
-       
-    def __str__(self):
-        fila=str(self.idContratacion)+"-"+self.fecha+"-"+self.nomContaratante
-        return fila
-    
+    idServicio = models.AutoField(primary_key=True)
+    descripcion = models.CharField(max_length=100)
+    costo = models.DecimalField(max_digits=10, decimal_places=2)
 
-    
+    def __str__(self):
+        return self.descripcion
+
+class Contratacion(models.Model):
+    idContratacion = models.AutoField(primary_key=True)
+    fecha = models.DateField()
+    nomContratante = models.CharField(max_length=100)
+    servicios = models.ManyToManyField(Servicio)
+    total_costo = models.DecimalField(max_digits=10, decimal_places=2, default=0)
+
+
+    def __str__(self):
+        return f"Contratación {self.idContratacion} - {self.nomContratante}"

@@ -1,37 +1,104 @@
 {% extends 'paginas_base/base.html' %}
 {% load crispy_forms_tags %}
+
 {% block titulo %}Página Nueva Contratación{% endblock titulo %}
+
 {% block contenido %}
-    <div class="bg-success-subtle p-2 text-white">
-        <div class="card-header"> Crear Nuevo Contratación
-        </div>
-        <div class="card-body">
-            <h4 class="card-title">Contratación</h4>
-            <form action="" method="post"  enctype="multipart/form-data" autocomplete="off">
-                {% csrf_token %}
-                    
-                
-                {{formulario.fecha|as_crispy_field}}
-                {{formulario.idServicio|as_crispy_field}}
-                {{formulario.nomContratante|as_crispy_field}}
-                
-                          
-                <br>
-                           
-            <br>
-            <input name="btn-guardar" id="btn_guardar" class="btn btn-success border border-dark" type="submit" value="Guardar">
-            <a name="btnCancelar" id="btnCancelar" class="btn btn-primary border-dark" href="{% url 'listaContratacion' %}" role="button">Cancelar</a>
+<div class="bg-success-subtle p-2 text-white">
+    <div class="card-header">Crear Nueva Contratación</div>
+    <div class="card-body">
+        <h4 class="card-title">Contratación</h4>
+ <form method="post" autocomplete="off">
+    {% csrf_token %}
+    {{ formulario.fecha|as_crispy_field }}
+    {{ formulario.nomContratante|as_crispy_field }}
 
-            </form>           
-            
-            
-        </div>
-        <div class="card-footer text-muted">
-            
-        </div>
+    <h5>Servicios</h5>
+    <table class="table" id="tabla-servicios">
+        <thead>
+            <tr>
+                <th>Servicio</th>
+                <th>Descripción</th>
+                <th>Costo</th>
+                <th>Acción</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <select name="servicio[]" class="form-control servicio-select" onchange="actualizarFila(this)">
+                        {% for servicio in servicios %}
+                            <option value="{{ servicio.idServicio }}" data-descripcion="{{ servicio.descripcion }}" data-costo="{{ servicio.costo }}">
+                                {{ servicio.descripcion }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                </td>
+                <td class="descripcion"></td>
+                <td class="costo"></td>
+                <td><button type="button" class="btn btn-danger" onclick="eliminarFila(this)">Eliminar</button></td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="2"><strong>Total</strong></td>
+                <td id="total-costo"><strong>$0.00</strong></td>
+                <td></td>
+            </tr>
+        </tfoot>
+    </table>
+
+    <button type="button" class="btn btn-secondary" onclick="agregarFila()">Agregar Servicio</button>
+
+    <br><br>
+    <button type="submit" class="btn btn-primary">Guardar</button>
+
+
+    <a href="{% url 'listaContratacion' %}" class="btn btn-danger" type="button">Cancelar</a>
+</form>
+</div>
+<div class="card-footer text-muted"></div>
+        </form>
     </div>
-    
-   
-   
+    <div class="card-footer text-muted"></div>
+</div>
+<script>
+function actualizarFila(select) {
+    const fila = select.closest('tr');
+    const opcion = select.selectedOptions[0];
+    fila.querySelector('.descripcion').innerText = opcion.dataset.descripcion;
+    fila.querySelector('.costo').innerText = opcion.dataset.costo;
+    actualizarTotal();
+}
 
+function agregarFila() {
+    const tabla = document.getElementById('tabla-servicios').querySelector('tbody');
+    const nuevaFila = tabla.rows[0].cloneNode(true);
+    nuevaFila.querySelector('.descripcion').innerText = '';
+    nuevaFila.querySelector('.costo').innerText = '';
+    tabla.appendChild(nuevaFila);
+    actualizarTotal();
+}
+
+function eliminarFila(btn) {
+    const fila = btn.closest('tr');
+    const tabla = document.getElementById('tabla-servicios').querySelector('tbody');
+    if (tabla.rows.length > 1) {
+        fila.remove();
+        actualizarTotal();
+    }
+}
+
+function actualizarTotal() {
+    let total = 0;
+    const filas = document.querySelectorAll('#tabla-servicios tbody tr');
+    filas.forEach(fila => {
+        const costoText = fila.querySelector('.costo').innerText;
+        const costo = parseFloat(costoText) || 0;
+        total += costo;
+    });
+    document.getElementById('total-costo').innerHTML = `<strong>$${total.toFixed(2)}</strong>`;
+}
+</script>
 {% endblock contenido %}
+
