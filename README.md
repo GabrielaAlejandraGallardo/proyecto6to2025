@@ -38,13 +38,12 @@ Casos de Uso: https://lucid.app/lucidchart/dfcd86d7-2de8-4fde-8307-0370d333ff13/
 Modelos Clase Nombre:cuotas de jugador 
 | Nombre atributo   | Tipo de dato      |
 |-------------------|-------------------|
-| id_cuota          | AutoField(PK      |
-| id_jugador        | ForeignKey        |
-| Monto             | FloatField        |
-| Fecha_emision     | DateTimeField     |
-| Fecha_vencimiento | DateTimeField     |
-| Estado            | TextField         |
-| Fecha_pago        | DateTimeField     |
+| id_cuota          | AutoField         |
+| id                | ForeignKey        |
+| nom               | CharField         |
+| cuotaMe           | DateField         |
+| fechap            | DateField         |
+| importe           | FloatField        |
 
 Pruebas funcionales Unitarias bajo Selenium: 
 
