@@ -1,59 +1,45 @@
-from django import forms
-from django.forms import SelectMultiple
+from django import forms 
 from .models import Servicio, Contratacion
 
 class ServicioForm(forms.ModelForm):
- class Meta:
-  model = Servicio
-  fields = ('descripcion', 'costo')
-  labels = {
-'descripcion': 'Descripción:',
-'costo': 'Costo',
-}
+    class Meta:
+        model = Servicio
+        fields = ('descripcion', 'costo')
+        labels = {
+            
+            'descripcion': 'Descripción:',
+            'costo': 'Costo',
+        }
 
-def init(self, *args, **kwargs):
- super(ServicioForm, self).init(*args, **kwargs)
- self.fields['descripcion'].empty_label = "Selecciona"
- self.fields['descripcion'].required = True
- self.fields['costo'].required = False
+    def __init__(self, *args, **kwargs):
+        super(ServicioForm, self).__init__(*args, **kwargs)
+        
+        self.fields['descripcion'].required = True
+        self.fields['costo'].required = False
+
 
 class ContratacionForm(forms.ModelForm):
-  class Meta:
-   model = Contratacion
-   fields = ('fecha', 'idServicio', 'servicios', 'nomContratante')
-   labels = {
-'fecha': 'Fecha contratación:',
-'idServicio': 'Cód de Servicio',
-'servicios': 'Servicios',
-'nomContratante': 'Nombre del Contratante',
-}
-   widgets = {
-'fecha': forms.DateInput(attrs={'type': 'date'}),
-'servicios': SelectMultiple(attrs={'size': 6}),
-}
+    servicios = forms.ModelMultipleChoiceField(
+        queryset=Servicio.objects.all(),
+        required=False
+    )
+    class Meta:
+        model = Contratacion
+        fields = ('fecha', 'servicios', 'nomContratante')
+        labels = {
+            
+            'fecha': 'Fecha contratación:',
+            'servicios': 'Servicios contratados:',
+            'nomContratante': 'Nombre del Contratante',
+        }
+        widgets = {
+            'fecha': forms.DateInput(attrs={'type': 'date'}),
+            'servicios': forms.SelectMultiple(attrs={'class': 'form-control'}),
+        }
 
-def init(self, *args, **kwargs):
- super(ContratacionForm, self).init(*args, **kwargs)
- self.fields['idServicio'].required = True
- self.fields['servicios'].required = True # obligatorio si quieres al menos un servicio
- self.fields['fecha'].required = True
- self.fields['nomContratante'].required = False
-
-def clean_servicios(self):
- servicios = self.cleaned_data.get('servicios')
- if not servicios or len(servicios) == 0:
-    raise forms.ValidationError("Debe seleccionar al menos un servicio.")
- return servicios
-
-
-
-
-
-
-
-
-
-      
-   
-
-
+    def __init__(self, *args, **kwargs):
+        super(ContratacionForm, self).__init__(*args, **kwargs)
+        self.fields['fecha'].required = True
+        self.fields['nomContratante'].required = False
+        self.fields['servicios'].queryset = Servicio.objects.all()
+        self.fields['servicios'].empty_label = "Seleccione"

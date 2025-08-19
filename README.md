@@ -23,6 +23,9 @@ nombre-apellido |   TextField           |
 senia           |   Floatfield          |
 saldo           |   floatfield          |
 
+Pruebas funcionales Unitarias bajo Selenium: 
+
+
 ________________________________________________________________________________________________
 
 
@@ -43,6 +46,9 @@ Modelos Clase Nombre:cuotas de jugador
 | Estado            | TextField         |
 | Fecha_pago        | DateTimeField     |
 
+Pruebas funcionales Unitarias bajo Selenium: 
+
+
 __________________________________________________________________________________
 Grupo 3 Integrantes:
 
@@ -54,6 +60,7 @@ Modelos Clase Nombre: Nombre atributo | tipo de dato | |---------------|--------
 
 
 
+Pruebas funcionales Unitarias bajo Selenium: 
 
 
 _______________________
@@ -119,6 +126,9 @@ Clase Nombre: Socios
 | estado              | TextField             |
 
 
+
+Pruebas funcionales Unitarias bajo Selenium:
+https://docs.google.com/document/d/1HnpchmA9sOiAc5XKZigmrkwDr8Ja23_ml53VI9uOKBo/edit?usp=sharing
 
 
 
