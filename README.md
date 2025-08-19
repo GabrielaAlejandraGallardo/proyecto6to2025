@@ -96,7 +96,6 @@ Clase Nombre:Eventos
 
 
 
-Pruebas funcionales Unitarias bajo Selenium: 
 
 
 
@@ -128,8 +127,8 @@ Clase Nombre: Socios
 
 
 
-Pruebas funcionales Unitarias bajo Selenium: 
-
+Pruebas funcionales Unitarias bajo Selenium:
+https://docs.google.com/document/d/1HnpchmA9sOiAc5XKZigmrkwDr8Ja23_ml53VI9uOKBo/edit?usp=sharing
 
 
 
