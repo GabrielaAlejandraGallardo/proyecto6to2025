@@ -91,8 +91,8 @@ Clase Nombre:Eventos
 | ultima_modificacion | DataTimeField         |
 | estado              | TextField             |
 
-
-
+Pruebas funcionales Unitarias bajo Selenium:
+https://docs.google.com/document/d/1NSutDIHI4d444MvBqQYlLqybN3gqtC5oLmU85ObSLRs/edit?usp=sharing
 
 
 
