@@ -7,26 +7,1029 @@ from .forms import SocioCuotaForm
 from collections import defaultdict
 from socios.models import Socio  # Asegúrate de importar tu modelo Socio
 
+from django.db.models import Q
+from .models import SociosCuota
+
+from collections import defaultdict
+from django.db.models import Q
+from django.shortcuts import render
 
 def listaSocioCuota(request):
-    socios_cuota = SociosCuota.objects.all().order_by('cuotaMes')
+    query = request.GET.get('q', '').strip()
+
+    cuotas = SociosCuota.objects.all().order_by('cuotaMes')
+
+    if query:
+        cuotas = cuotas.filter(nom__icontains=query)
+
     pagos_por_mes = defaultdict(list)
     total_por_mes = defaultdict(float)
 
-    for sc in socios_cuota:
+    for sc in cuotas:
         mes = sc.cuotaMes
         pagos_por_mes[mes].append(sc)
-        total_por_mes[mes] += float(sc.importe)
+        total_por_mes[mes] += float(sc.importe or 0)
 
-    # Convertir a lista de tuplas para el template
     pagos_y_totales = [
         (mes, pagos_por_mes[mes], total_por_mes[mes])
         for mes in pagos_por_mes
     ]
 
-    return render(request, 'CrudSocioCuota/listado.html', {
-        'pagos_y_totales': pagos_y_totales,
-    })
+    return render(
+        request,
+        'CrudSocioCuota/listado.html',
+        {'pagos_y_totales': pagos_y_totales, 'query': query}
+    )
+from collections import defaultdict
+from django.db.models import Q
+from django.shortcuts import render
+
+def listaSocioCuota(request):
+    query = request.GET.get('q', '').strip()
+
+    cuotas = SociosCuota.objects.all().order_by('cuotaMes')
+
+    if query:
+        cuotas = cuotas.filter(nom__icontains=query)
+
+    pagos_por_mes = defaultdict(list)
+    total_por_mes = defaultdict(float)
+
+    for sc in cuotas:
+        mes = sc.cuotaMes
+        pagos_por_mes[mes].append(sc)
+        total_por_mes[mes] += float(sc.importe or 0)
+
+    pagos_y_totales = [
+        (mes, pagos_por_mes[mes], total_por_mes[mes])
+        for mes in pagos_por_mes
+    ]
+
+    return render(
+        request,
+        'CrudSocioCuota/listado.html',
+        {'pagos_y_totales': pagos_y_totales, 'query': query}
+    )
+from collections import defaultdict
+from django.db.models import Q
+from django.shortcuts import render
+
+def listaSocioCuota(request):
+    query = request.GET.get('q', '').strip()
+
+    cuotas = SociosCuota.objects.all().order_by('cuotaMes')
+
+    if query:
+        cuotas = cuotas.filter(nom__icontains=query)
+
+    pagos_por_mes = defaultdict(list)
+    total_por_mes = defaultdict(float)
+
+    for sc in cuotas:
+        mes = sc.cuotaMes
+        pagos_por_mes[mes].append(sc)
+        total_por_mes[mes] += float(sc.importe or 0)
+
+    pagos_y_totales = [
+        (mes, pagos_por_mes[mes], total_por_mes[mes])
+        for mes in pagos_por_mes
+    ]
+
+    return render(
+        request,
+        'CrudSocioCuota/listado.html',
+        {'pagos_y_totales': pagos_y_totales, 'query': query}
+    )
+from collections import defaultdict
+from django.db.models import Q
+from django.shortcuts import render
+
+def listaSocioCuota(request):
+    query = request.GET.get('q', '').strip()
+
+    cuotas = SociosCuota.objects.all().order_by('cuotaMes')
+
+    if query:
+        cuotas = cuotas.filter(nom__icontains=query)
+
+    pagos_por_mes = defaultdict(list)
+    total_por_mes = defaultdict(float)
+
+    for sc in cuotas:
+        mes = sc.cuotaMes
+        pagos_por_mes[mes].append(sc)
+        total_por_mes[mes] += float(sc.importe or 0)
+
+    pagos_y_totales = [
+        (mes, pagos_por_mes[mes], total_por_mes[mes])
+        for mes in pagos_por_mes
+    ]
+
+    return render(
+        request,
+        'CrudSocioCuota/listado.html',
+        {'pagos_y_totales': pagos_y_totales, 'query': query}
+    )
+from collections import defaultdict
+from django.db.models import Q
+from django.shortcuts import render
+
+def listaSocioCuota(request):
+    query = request.GET.get('q', '').strip()
+
+    cuotas = SociosCuota.objects.all().order_by('cuotaMes')
+
+    if query:
+        cuotas = cuotas.filter(nom__icontains=query)
+
+    pagos_por_mes = defaultdict(list)
+    total_por_mes = defaultdict(float)
+
+    for sc in cuotas:
+        mes = sc.cuotaMes
+        pagos_por_mes[mes].append(sc)
+        total_por_mes[mes] += float(sc.importe or 0)
+
+    pagos_y_totales = [
+        (mes, pagos_por_mes[mes], total_por_mes[mes])
+        for mes in pagos_por_mes
+    ]
+
+    return render(
+        request,
+        'CrudSocioCuota/listado.html',
+        {'pagos_y_totales': pagos_y_totales, 'query': query}
+    )
+from collections import defaultdict
+from django.db.models import Q
+from django.shortcuts import render
+
+def listaSocioCuota(request):
+    query = request.GET.get('q', '').strip()
+
+    cuotas = SociosCuota.objects.all().order_by('cuotaMes')
+
+    if query:
+        cuotas = cuotas.filter(nom__icontains=query)
+
+    pagos_por_mes = defaultdict(list)
+    total_por_mes = defaultdict(float)
+
+    for sc in cuotas:
+        mes = sc.cuotaMes
+        pagos_por_mes[mes].append(sc)
+        total_por_mes[mes] += float(sc.importe or 0)
+
+    pagos_y_totales = [
+        (mes, pagos_por_mes[mes], total_por_mes[mes])
+        for mes in pagos_por_mes
+    ]
+
+    return render(
+        request,
+        'CrudSocioCuota/listado.html',
+        {'pagos_y_totales': pagos_y_totales, 'query': query}
+    )
+from collections import defaultdict
+from django.db.models import Q
+from django.shortcuts import render
+
+def listaSocioCuota(request):
+    query = request.GET.get('q', '').strip()
+
+    cuotas = SociosCuota.objects.all().order_by('cuotaMes')
+
+    if query:
+        cuotas = cuotas.filter(nom__icontains=query)
+
+    pagos_por_mes = defaultdict(list)
+    total_por_mes = defaultdict(float)
+
+    for sc in cuotas:
+        mes = sc.cuotaMes
+        pagos_por_mes[mes].append(sc)
+        total_por_mes[mes] += float(sc.importe or 0)
+
+    pagos_y_totales = [
+        (mes, pagos_por_mes[mes], total_por_mes[mes])
+        for mes in pagos_por_mes
+    ]
+
+    return render(
+        request,
+        'CrudSocioCuota/listado.html',
+        {'pagos_y_totales': pagos_y_totales, 'query': query}
+    )
+from collections import defaultdict
+from django.db.models import Q
+from django.shortcuts import render
+
+def listaSocioCuota(request):
+    query = request.GET.get('q', '').strip()
+
+    cuotas = SociosCuota.objects.all().order_by('cuotaMes')
+
+    if query:
+        cuotas = cuotas.filter(nom__icontains=query)
+
+    pagos_por_mes = defaultdict(list)
+    total_por_mes = defaultdict(float)
+
+    for sc in cuotas:
+        mes = sc.cuotaMes
+        pagos_por_mes[mes].append(sc)
+        total_por_mes[mes] += float(sc.importe or 0)
+
+    pagos_y_totales = [
+        (mes, pagos_por_mes[mes], total_por_mes[mes])
+        for mes in pagos_por_mes
+    ]
+
+    return render(
+        request,
+        'CrudSocioCuota/listado.html',
+        {'pagos_y_totales': pagos_y_totales, 'query': query}
+    )
+from collections import defaultdict
+from django.db.models import Q
+from django.shortcuts import render
+
+def listaSocioCuota(request):
+    query = request.GET.get('q', '').strip()
+
+    cuotas = SociosCuota.objects.all().order_by('cuotaMes')
+
+    if query:
+        cuotas = cuotas.filter(nom__icontains=query)
+
+    pagos_por_mes = defaultdict(list)
+    total_por_mes = defaultdict(float)
+
+    for sc in cuotas:
+        mes = sc.cuotaMes
+        pagos_por_mes[mes].append(sc)
+        total_por_mes[mes] += float(sc.importe or 0)
+
+    pagos_y_totales = [
+        (mes, pagos_por_mes[mes], total_por_mes[mes])
+        for mes in pagos_por_mes
+    ]
+
+    return render(
+        request,
+        'CrudSocioCuota/listado.html',
+        {'pagos_y_totales': pagos_y_totales, 'query': query}
+    )
+from collections import defaultdict
+from django.db.models import Q
+from django.shortcuts import render
+
+def listaSocioCuota(request):
+    query = request.GET.get('q', '').strip()
+
+    cuotas = SociosCuota.objects.all().order_by('cuotaMes')
+
+    if query:
+        cuotas = cuotas.filter(nom__icontains=query)
+
+    pagos_por_mes = defaultdict(list)
+    total_por_mes = defaultdict(float)
+
+    for sc in cuotas:
+        mes = sc.cuotaMes
+        pagos_por_mes[mes].append(sc)
+        total_por_mes[mes] += float(sc.importe or 0)
+
+    pagos_y_totales = [
+        (mes, pagos_por_mes[mes], total_por_mes[mes])
+        for mes in pagos_por_mes
+    ]
+
+    return render(
+        request,
+        'CrudSocioCuota/listado.html',
+        {'pagos_y_totales': pagos_y_totales, 'query': query}
+    )
+from collections import defaultdict
+from django.db.models import Q
+from django.shortcuts import render
+
+def listaSocioCuota(request):
+    query = request.GET.get('q', '').strip()
+
+    cuotas = SociosCuota.objects.all().order_by('cuotaMes')
+
+    if query:
+        cuotas = cuotas.filter(nom__icontains=query)
+
+    pagos_por_mes = defaultdict(list)
+    total_por_mes = defaultdict(float)
+
+    for sc in cuotas:
+        mes = sc.cuotaMes
+        pagos_por_mes[mes].append(sc)
+        total_por_mes[mes] += float(sc.importe or 0)
+
+    pagos_y_totales = [
+        (mes, pagos_por_mes[mes], total_por_mes[mes])
+        for mes in pagos_por_mes
+    ]
+
+    return render(
+        request,
+        'CrudSocioCuota/listado.html',
+        {'pagos_y_totales': pagos_y_totales, 'query': query}
+    )
+from collections import defaultdict
+from django.db.models import Q
+from django.shortcuts import render
+
+def listaSocioCuota(request):
+    query = request.GET.get('q', '').strip()
+
+    cuotas = SociosCuota.objects.all().order_by('cuotaMes')
+
+    if query:
+        cuotas = cuotas.filter(nom__icontains=query)
+
+    pagos_por_mes = defaultdict(list)
+    total_por_mes = defaultdict(float)
+
+    for sc in cuotas:
+        mes = sc.cuotaMes
+        pagos_por_mes[mes].append(sc)
+        total_por_mes[mes] += float(sc.importe or 0)
+
+    pagos_y_totales = [
+        (mes, pagos_por_mes[mes], total_por_mes[mes])
+        for mes in pagos_por_mes
+    ]
+
+    return render(
+        request,
+        'CrudSocioCuota/listado.html',
+        {'pagos_y_totales': pagos_y_totales, 'query': query}
+    )
+from collections import defaultdict
+from django.db.models import Q
+from django.shortcuts import render
+
+def listaSocioCuota(request):
+    query = request.GET.get('q', '').strip()
+
+    cuotas = SociosCuota.objects.all().order_by('cuotaMes')
+
+    if query:
+        cuotas = cuotas.filter(nom__icontains=query)
+
+    pagos_por_mes = defaultdict(list)
+    total_por_mes = defaultdict(float)
+
+    for sc in cuotas:
+        mes = sc.cuotaMes
+        pagos_por_mes[mes].append(sc)
+        total_por_mes[mes] += float(sc.importe or 0)
+
+    pagos_y_totales = [
+        (mes, pagos_por_mes[mes], total_por_mes[mes])
+        for mes in pagos_por_mes
+    ]
+
+    return render(
+        request,
+        'CrudSocioCuota/listado.html',
+        {'pagos_y_totales': pagos_y_totales, 'query': query}
+    )
+from collections import defaultdict
+from django.db.models import Q
+from django.shortcuts import render
+
+def listaSocioCuota(request):
+    query = request.GET.get('q', '').strip()
+
+    cuotas = SociosCuota.objects.all().order_by('cuotaMes')
+
+    if query:
+        cuotas = cuotas.filter(nom__icontains=query)
+
+    pagos_por_mes = defaultdict(list)
+    total_por_mes = defaultdict(float)
+
+    for sc in cuotas:
+        mes = sc.cuotaMes
+        pagos_por_mes[mes].append(sc)
+        total_por_mes[mes] += float(sc.importe or 0)
+
+    pagos_y_totales = [
+        (mes, pagos_por_mes[mes], total_por_mes[mes])
+        for mes in pagos_por_mes
+    ]
+
+    return render(
+        request,
+        'CrudSocioCuota/listado.html',
+        {'pagos_y_totales': pagos_y_totales, 'query': query}
+    )
+from collections import defaultdict
+from django.db.models import Q
+from django.shortcuts import render
+
+def listaSocioCuota(request):
+    query = request.GET.get('q', '').strip()
+
+    cuotas = SociosCuota.objects.all().order_by('cuotaMes')
+
+    if query:
+        cuotas = cuotas.filter(nom__icontains=query)
+
+    pagos_por_mes = defaultdict(list)
+    total_por_mes = defaultdict(float)
+
+    for sc in cuotas:
+        mes = sc.cuotaMes
+        pagos_por_mes[mes].append(sc)
+        total_por_mes[mes] += float(sc.importe or 0)
+
+    pagos_y_totales = [
+        (mes, pagos_por_mes[mes], total_por_mes[mes])
+        for mes in pagos_por_mes
+    ]
+
+    return render(
+        request,
+        'CrudSocioCuota/listado.html',
+        {'pagos_y_totales': pagos_y_totales, 'query': query}
+    )
+from collections import defaultdict
+from django.db.models import Q
+from django.shortcuts import render
+
+def listaSocioCuota(request):
+    query = request.GET.get('q', '').strip()
+
+    cuotas = SociosCuota.objects.all().order_by('cuotaMes')
+
+    if query:
+        cuotas = cuotas.filter(nom__icontains=query)
+
+    pagos_por_mes = defaultdict(list)
+    total_por_mes = defaultdict(float)
+
+    for sc in cuotas:
+        mes = sc.cuotaMes
+        pagos_por_mes[mes].append(sc)
+        total_por_mes[mes] += float(sc.importe or 0)
+
+    pagos_y_totales = [
+        (mes, pagos_por_mes[mes], total_por_mes[mes])
+        for mes in pagos_por_mes
+    ]
+
+    return render(
+        request,
+        'CrudSocioCuota/listado.html',
+        {'pagos_y_totales': pagos_y_totales, 'query': query}
+    )
+from collections import defaultdict
+from django.db.models import Q
+from django.shortcuts import render
+
+def listaSocioCuota(request):
+    query = request.GET.get('q', '').strip()
+
+    cuotas = SociosCuota.objects.all().order_by('cuotaMes')
+
+    if query:
+        cuotas = cuotas.filter(nom__icontains=query)
+
+    pagos_por_mes = defaultdict(list)
+    total_por_mes = defaultdict(float)
+
+    for sc in cuotas:
+        mes = sc.cuotaMes
+        pagos_por_mes[mes].append(sc)
+        total_por_mes[mes] += float(sc.importe or 0)
+
+    pagos_y_totales = [
+        (mes, pagos_por_mes[mes], total_por_mes[mes])
+        for mes in pagos_por_mes
+    ]
+
+    return render(
+        request,
+        'CrudSocioCuota/listado.html',
+        {'pagos_y_totales': pagos_y_totales, 'query': query}
+    )
+from collections import defaultdict
+from django.db.models import Q
+from django.shortcuts import render
+
+def listaSocioCuota(request):
+    query = request.GET.get('q', '').strip()
+
+    cuotas = SociosCuota.objects.all().order_by('cuotaMes')
+
+    if query:
+        cuotas = cuotas.filter(nom__icontains=query)
+
+    pagos_por_mes = defaultdict(list)
+    total_por_mes = defaultdict(float)
+
+    for sc in cuotas:
+        mes = sc.cuotaMes
+        pagos_por_mes[mes].append(sc)
+        total_por_mes[mes] += float(sc.importe or 0)
+
+    pagos_y_totales = [
+        (mes, pagos_por_mes[mes], total_por_mes[mes])
+        for mes in pagos_por_mes
+    ]
+
+    return render(
+        request,
+        'CrudSocioCuota/listado.html',
+        {'pagos_y_totales': pagos_y_totales, 'query': query}
+    )
+from collections import defaultdict
+from django.db.models import Q
+from django.shortcuts import render
+
+def listaSocioCuota(request):
+    query = request.GET.get('q', '').strip()
+
+    cuotas = SociosCuota.objects.all().order_by('cuotaMes')
+
+    if query:
+        cuotas = cuotas.filter(nom__icontains=query)
+
+    pagos_por_mes = defaultdict(list)
+    total_por_mes = defaultdict(float)
+
+    for sc in cuotas:
+        mes = sc.cuotaMes
+        pagos_por_mes[mes].append(sc)
+        total_por_mes[mes] += float(sc.importe or 0)
+
+    pagos_y_totales = [
+        (mes, pagos_por_mes[mes], total_por_mes[mes])
+        for mes in pagos_por_mes
+    ]
+
+    return render(
+        request,
+        'CrudSocioCuota/listado.html',
+        {'pagos_y_totales': pagos_y_totales, 'query': query}
+    )
+from collections import defaultdict
+from django.db.models import Q
+from django.shortcuts import render
+
+def listaSocioCuota(request):
+    query = request.GET.get('q', '').strip()
+
+    cuotas = SociosCuota.objects.all().order_by('cuotaMes')
+
+    if query:
+        cuotas = cuotas.filter(nom__icontains=query)
+
+    pagos_por_mes = defaultdict(list)
+    total_por_mes = defaultdict(float)
+
+    for sc in cuotas:
+        mes = sc.cuotaMes
+        pagos_por_mes[mes].append(sc)
+        total_por_mes[mes] += float(sc.importe or 0)
+
+    pagos_y_totales = [
+        (mes, pagos_por_mes[mes], total_por_mes[mes])
+        for mes in pagos_por_mes
+    ]
+
+    return render(
+        request,
+        'CrudSocioCuota/listado.html',
+        {'pagos_y_totales': pagos_y_totales, 'query': query}
+    )
+from collections import defaultdict
+from django.db.models import Q
+from django.shortcuts import render
+
+def listaSocioCuota(request):
+    query = request.GET.get('q', '').strip()
+
+    cuotas = SociosCuota.objects.all().order_by('cuotaMes')
+
+    if query:
+        cuotas = cuotas.filter(nom__icontains=query)
+
+    pagos_por_mes = defaultdict(list)
+    total_por_mes = defaultdict(float)
+
+    for sc in cuotas:
+        mes = sc.cuotaMes
+        pagos_por_mes[mes].append(sc)
+        total_por_mes[mes] += float(sc.importe or 0)
+
+    pagos_y_totales = [
+        (mes, pagos_por_mes[mes], total_por_mes[mes])
+        for mes in pagos_por_mes
+    ]
+
+    return render(
+        request,
+        'CrudSocioCuota/listado.html',
+        {'pagos_y_totales': pagos_y_totales, 'query': query}
+    )
+from collections import defaultdict
+from django.db.models import Q
+from django.shortcuts import render
+
+def listaSocioCuota(request):
+    query = request.GET.get('q', '').strip()
+
+    cuotas = SociosCuota.objects.all().order_by('cuotaMes')
+
+    if query:
+        cuotas = cuotas.filter(nom__icontains=query)
+
+    pagos_por_mes = defaultdict(list)
+    total_por_mes = defaultdict(float)
+
+    for sc in cuotas:
+        mes = sc.cuotaMes
+        pagos_por_mes[mes].append(sc)
+        total_por_mes[mes] += float(sc.importe or 0)
+
+    pagos_y_totales = [
+        (mes, pagos_por_mes[mes], total_por_mes[mes])
+        for mes in pagos_por_mes
+    ]
+
+    return render(
+        request,
+        'CrudSocioCuota/listado.html',
+        {'pagos_y_totales': pagos_y_totales, 'query': query}
+    )
+from collections import defaultdict
+from django.db.models import Q
+from django.shortcuts import render
+
+def listaSocioCuota(request):
+    query = request.GET.get('q', '').strip()
+
+    cuotas = SociosCuota.objects.all().order_by('cuotaMes')
+
+    if query:
+        cuotas = cuotas.filter(nom__icontains=query)
+
+    pagos_por_mes = defaultdict(list)
+    total_por_mes = defaultdict(float)
+
+    for sc in cuotas:
+        mes = sc.cuotaMes
+        pagos_por_mes[mes].append(sc)
+        total_por_mes[mes] += float(sc.importe or 0)
+
+    pagos_y_totales = [
+        (mes, pagos_por_mes[mes], total_por_mes[mes])
+        for mes in pagos_por_mes
+    ]
+
+    return render(
+        request,
+        'CrudSocioCuota/listado.html',
+        {'pagos_y_totales': pagos_y_totales, 'query': query}
+    )
+from collections import defaultdict
+from django.db.models import Q
+from django.shortcuts import render
+
+def listaSocioCuota(request):
+    query = request.GET.get('q', '').strip()
+
+    cuotas = SociosCuota.objects.all().order_by('cuotaMes')
+
+    if query:
+        cuotas = cuotas.filter(nom__icontains=query)
+
+    pagos_por_mes = defaultdict(list)
+    total_por_mes = defaultdict(float)
+
+    for sc in cuotas:
+        mes = sc.cuotaMes
+        pagos_por_mes[mes].append(sc)
+        total_por_mes[mes] += float(sc.importe or 0)
+
+    pagos_y_totales = [
+        (mes, pagos_por_mes[mes], total_por_mes[mes])
+        for mes in pagos_por_mes
+    ]
+
+    return render(
+        request,
+        'CrudSocioCuota/listado.html',
+        {'pagos_y_totales': pagos_y_totales, 'query': query}
+    )
+from collections import defaultdict
+from django.db.models import Q
+from django.shortcuts import render
+
+def listaSocioCuota(request):
+    query = request.GET.get('q', '').strip()
+
+    cuotas = SociosCuota.objects.all().order_by('cuotaMes')
+
+    if query:
+        cuotas = cuotas.filter(nom__icontains=query)
+
+    pagos_por_mes = defaultdict(list)
+    total_por_mes = defaultdict(float)
+
+    for sc in cuotas:
+        mes = sc.cuotaMes
+        pagos_por_mes[mes].append(sc)
+        total_por_mes[mes] += float(sc.importe or 0)
+
+    pagos_y_totales = [
+        (mes, pagos_por_mes[mes], total_por_mes[mes])
+        for mes in pagos_por_mes
+    ]
+
+    return render(
+        request,
+        'CrudSocioCuota/listado.html',
+        {'pagos_y_totales': pagos_y_totales, 'query': query}
+    )
+from collections import defaultdict
+from django.db.models import Q
+from django.shortcuts import render
+
+def listaSocioCuota(request):
+    query = request.GET.get('q', '').strip()
+
+    cuotas = SociosCuota.objects.all().order_by('cuotaMes')
+
+    if query:
+        cuotas = cuotas.filter(nom__icontains=query)
+
+    pagos_por_mes = defaultdict(list)
+    total_por_mes = defaultdict(float)
+
+    for sc in cuotas:
+        mes = sc.cuotaMes
+        pagos_por_mes[mes].append(sc)
+        total_por_mes[mes] += float(sc.importe or 0)
+
+    pagos_y_totales = [
+        (mes, pagos_por_mes[mes], total_por_mes[mes])
+        for mes in pagos_por_mes
+    ]
+
+    return render(
+        request,
+        'CrudSocioCuota/listado.html',
+        {'pagos_y_totales': pagos_y_totales, 'query': query}
+    )
+from collections import defaultdict
+from django.db.models import Q
+from django.shortcuts import render
+
+def listaSocioCuota(request):
+    query = request.GET.get('q', '').strip()
+
+    cuotas = SociosCuota.objects.all().order_by('cuotaMes')
+
+    if query:
+        cuotas = cuotas.filter(nom__icontains=query)
+
+    pagos_por_mes = defaultdict(list)
+    total_por_mes = defaultdict(float)
+
+    for sc in cuotas:
+        mes = sc.cuotaMes
+        pagos_por_mes[mes].append(sc)
+        total_por_mes[mes] += float(sc.importe or 0)
+
+    pagos_y_totales = [
+        (mes, pagos_por_mes[mes], total_por_mes[mes])
+        for mes in pagos_por_mes
+    ]
+
+    return render(
+        request,
+        'CrudSocioCuota/listado.html',
+        {'pagos_y_totales': pagos_y_totales, 'query': query}
+    )
+from collections import defaultdict
+from django.db.models import Q
+from django.shortcuts import render
+
+def listaSocioCuota(request):
+    query = request.GET.get('q', '').strip()
+
+    cuotas = SociosCuota.objects.all().order_by('cuotaMes')
+
+    if query:
+        cuotas = cuotas.filter(nom__icontains=query)
+
+    pagos_por_mes = defaultdict(list)
+    total_por_mes = defaultdict(float)
+
+    for sc in cuotas:
+        mes = sc.cuotaMes
+        pagos_por_mes[mes].append(sc)
+        total_por_mes[mes] += float(sc.importe or 0)
+
+    pagos_y_totales = [
+        (mes, pagos_por_mes[mes], total_por_mes[mes])
+        for mes in pagos_por_mes
+    ]
+
+    return render(
+        request,
+        'CrudSocioCuota/listado.html',
+        {'pagos_y_totales': pagos_y_totales, 'query': query}
+    )
+from collections import defaultdict
+from django.db.models import Q
+from django.shortcuts import render
+
+def listaSocioCuota(request):
+    query = request.GET.get('q', '').strip()
+
+    cuotas = SociosCuota.objects.all().order_by('cuotaMes')
+
+    if query:
+        cuotas = cuotas.filter(nom__icontains=query)
+
+    pagos_por_mes = defaultdict(list)
+    total_por_mes = defaultdict(float)
+
+    for sc in cuotas:
+        mes = sc.cuotaMes
+        pagos_por_mes[mes].append(sc)
+        total_por_mes[mes] += float(sc.importe or 0)
+
+    pagos_y_totales = [
+        (mes, pagos_por_mes[mes], total_por_mes[mes])
+        for mes in pagos_por_mes
+    ]
+
+    return render(
+        request,
+        'CrudSocioCuota/listado.html',
+        {'pagos_y_totales': pagos_y_totales, 'query': query}
+    )
+from collections import defaultdict
+from django.db.models import Q
+from django.shortcuts import render
+
+def listaSocioCuota(request):
+    query = request.GET.get('q', '').strip()
+
+    cuotas = SociosCuota.objects.all().order_by('cuotaMes')
+
+    if query:
+        cuotas = cuotas.filter(nom__icontains=query)
+
+    pagos_por_mes = defaultdict(list)
+    total_por_mes = defaultdict(float)
+
+    for sc in cuotas:
+        mes = sc.cuotaMes
+        pagos_por_mes[mes].append(sc)
+        total_por_mes[mes] += float(sc.importe or 0)
+
+    pagos_y_totales = [
+        (mes, pagos_por_mes[mes], total_por_mes[mes])
+        for mes in pagos_por_mes
+    ]
+
+    return render(
+        request,
+        'CrudSocioCuota/listado.html',
+        {'pagos_y_totales': pagos_y_totales, 'query': query}
+    )
+from collections import defaultdict
+from django.db.models import Q
+from django.shortcuts import render
+
+def listaSocioCuota(request):
+    query = request.GET.get('q', '').strip()
+
+    cuotas = SociosCuota.objects.all().order_by('cuotaMes')
+
+    if query:
+        cuotas = cuotas.filter(nom__icontains=query)
+
+    pagos_por_mes = defaultdict(list)
+    total_por_mes = defaultdict(float)
+
+    for sc in cuotas:
+        mes = sc.cuotaMes
+        pagos_por_mes[mes].append(sc)
+        total_por_mes[mes] += float(sc.importe or 0)
+
+    pagos_y_totales = [
+        (mes, pagos_por_mes[mes], total_por_mes[mes])
+        for mes in pagos_por_mes
+    ]
+
+    return render(
+        request,
+        'CrudSocioCuota/listado.html',
+        {'pagos_y_totales': pagos_y_totales, 'query': query}
+    )
+from collections import defaultdict
+from django.db.models import Q
+from django.shortcuts import render
+
+def listaSocioCuota(request):
+    query = request.GET.get('q', '').strip()
+
+    cuotas = SociosCuota.objects.all().order_by('cuotaMes')
+
+    if query:
+        cuotas = cuotas.filter(nom__icontains=query)
+
+    pagos_por_mes = defaultdict(list)
+    total_por_mes = defaultdict(float)
+
+    for sc in cuotas:
+        mes = sc.cuotaMes
+        pagos_por_mes[mes].append(sc)
+        total_por_mes[mes] += float(sc.importe or 0)
+
+    pagos_y_totales = [
+        (mes, pagos_por_mes[mes], total_por_mes[mes])
+        for mes in pagos_por_mes
+    ]
+
+    return render(
+        request,
+        'CrudSocioCuota/listado.html',
+        {'pagos_y_totales': pagos_y_totales, 'query': query}
+    )
+from collections import defaultdict
+from django.db.models import Q
+from django.shortcuts import render
+
+def listaSocioCuota(request):
+    query = request.GET.get('q', '').strip()
+
+    cuotas = SociosCuota.objects.all().order_by('cuotaMes')
+
+    if query:
+        cuotas = cuotas.filter(nom__icontains=query)
+
+    pagos_por_mes = defaultdict(list)
+    total_por_mes = defaultdict(float)
+
+    for sc in cuotas:
+        mes = sc.cuotaMes
+        pagos_por_mes[mes].append(sc)
+        total_por_mes[mes] += float(sc.importe or 0)
+
+    pagos_y_totales = [
+        (mes, pagos_por_mes[mes], total_por_mes[mes])
+        for mes in pagos_por_mes
+    ]
+
+    return render(
+        request,
+        'CrudSocioCuota/listado.html',
+        {'pagos_y_totales': pagos_y_totales, 'query': query}
+    )
+from collections import defaultdict
+from django.db.models import Q
+from django.shortcuts import render
+
+def listaSocioCuota(request):
+    query = request.GET.get('q', '').strip()
+
+    cuotas = SociosCuota.objects.all().order_by('cuotaMes')
+
+    if query:
+        cuotas = cuotas.filter(nom__icontains=query)
+
+    pagos_por_mes = defaultdict(list)
+    total_por_mes = defaultdict(float)
+
+    for sc in cuotas:
+        mes = sc.cuotaMes
+        pagos_por_mes[mes].append(sc)
+        total_por_mes[mes] += float(sc.importe or 0)
+
+    pagos_y_totales = [
+        (mes, pagos_por_mes[mes], total_por_mes[mes])
+        for mes in pagos_por_mes
+    ]
+
+    return render(
+        request,
+        'CrudSocioCuota/listado.html',
+        {'pagos_y_totales': pagos_y_totales, 'query': query}
+    )
 def inicio(request):
     return render(request,'paginas_base/inicio.html')
 
