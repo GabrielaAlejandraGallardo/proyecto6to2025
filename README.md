@@ -142,8 +142,9 @@ Casos de Uso y Casos de Prueba:https://docs.google.com/document/d/1LBT1cmzwNFe60
 
 * Modelos
 Clase Nombre: Jugadores
+
 |Nombre atributo        |  tipo de dato     |
-|-----------------------|-------------------|
+|---------------------- |------------------ |
 |id                     | Autofield   PK    |
 |DNI                    | textfield         |
 |nom                    | charfield         |
