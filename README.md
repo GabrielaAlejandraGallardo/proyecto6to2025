@@ -144,20 +144,20 @@ Casos de Uso y Casos de Prueba:https://docs.google.com/document/d/1LBT1cmzwNFe60
 Clase Nombre: Jugadores
 |Nombre atributo        |  tipo de dato     |
 |-----------------------|-------------------|
-|id                     |Autofield   PK     |
-|DNI                    |textfield          |
-|nom                    |charfield          |
-|fechan                 |integerfield       |
-|altura                 |floatfield         |
-|peso                   |floatfield         |
-|dire                   |charfield          |
-|cd                     |charfield          |
-|talla                  |FK                 |
-|descripcion            |FK                 |
-|qr                     |imagefield         |
+|id                     | Autofield   PK    |
+|DNI                    | textfield         |
+|nom                    | charfield         |
+|fechan                 | integerfield      |
+|altura                 | floatfield        |
+|peso                   | floatfield        |
+|dire                   | charfield         |
+|cd                     | charfield         |
+|talla                  | FK                |
+|descripcion            | FK                |
+|qr                     | imagefield        |
 
-Pruebas Bajo seleninum:
-________________________________________________________________________________________________
+Pruebas funcionales Unitarias bajo Selenium:
+_______________________________________________________________________
 
 Grupo 7
 Integrantes: Bautista Serrano, Ludmila Luna, Pablo Perez, Morena Castillo 
@@ -196,6 +196,8 @@ Modelo Clase: Deportes
 | edad\_maxima      | Campo entero             |
 | fecha\_creacion   | Campo de tiempo de datos |
 
+
+Pruebas funcionales Unitarias bajo Selenium:
 ________________________________________________________________________________________________
 
 Grupo 8
@@ -210,9 +212,13 @@ https://docs.google.com/document/d/1_q2GTvpaEPmQ4I0n5rEYUpU0H-Br2dbrBbeiLvGO7e0/
   
 | Nombre atributo    | Tipo de dato             |
 | ------------------ | ------------------------ |
-| idCuota	         |  AutoField PK            |
+| idCuota	           |  AutoField PK            |
 | id                 |  ForeignKey FK           |
 | nom                |	CharField               |
 | cuotaMes           |	DateField               |
 | fechap             |	DateField               |
 | importe   	       |  DateField               |
+
+
+
+Pruebas funcionales Unitarias bajo Selenium:
