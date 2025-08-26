@@ -11,24 +11,42 @@ from cuota.models import Cuota, Jugador
 
 def listaCuota(request):
     
-    cuota = Cuota.objects.all().order_by('cuotaMes')
-    pagos_por_mes = defaultdict(list)
-    total_por_mes = defaultdict(float)
-
-    for sc in cuota:
+     query = request.GET.get('q', '').strip()
+     cuotas = Cuota.objects.all().order_by('cuotaMes')
+     if query:
+      cuotas = cuotas.filter(nom__icontains=query)
+     pagos_por_mes = defaultdict(list)
+     total_por_mes = defaultdict(float)
+     for sc in cuotas:
         mes = sc.cuotaMes
         pagos_por_mes[mes].append(sc)
-        total_por_mes[mes] += float(sc.importe)
+     total_por_mes[mes] += float(sc.importe or 0)
+     pagos_y_totales = [
+      (mes, pagos_por_mes[mes], total_por_mes[mes])
+      for mes in pagos_por_mes
+     ]
+     return render(
+     request,
+     'CrudSocioCuota/listado.html',
+     {'pagos_y_totales': pagos_y_totales, 'query': query}
+     )
+    
+    
 
-    # Convertir a lista de tuplas para el template
-    pagos_y_totales = [
-        (mes, pagos_por_mes[mes], total_por_mes[mes])
-        for mes in pagos_por_mes
-    ]
+    
+    
+    
+    
 
-    return render(request, 'CrudCuotas/listado.html', {
-        'pagos_y_totales': pagos_y_totales,
-    })
+    
+    
+    
+    
+    
+
+    
+    
+    
 
 
 def inicio(request):

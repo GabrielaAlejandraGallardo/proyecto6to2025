@@ -10,7 +10,7 @@ urlpatterns = [
     path('sociosCuota/listaSocioCuota',views.listaSocioCuota,name='listaSocioCuota'),
     path('sociosCuota/crear_editarSocioCuota/<int:id>/',views.crear_editarSocioCuota,name='crear_editarSocioCuota'),
     path('sociosCuota/eliminarCuotaSocio/<int:id>',views.eliminarCuotaSocio,name='eliminarCuotaSocio'),
-      path('sociosCuota/', views.listaSocioCuota, name='lista_socio_cuota'),
+    path('sociosCuota/', views.listaSocioCuota, name='lista_socio_cuota'),
     
 
 
