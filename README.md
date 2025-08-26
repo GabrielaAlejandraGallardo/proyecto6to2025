@@ -38,13 +38,12 @@ Casos de Uso: https://lucid.app/lucidchart/dfcd86d7-2de8-4fde-8307-0370d333ff13/
 Modelos Clase Nombre:cuotas de jugador 
 | Nombre atributo   | Tipo de dato      |
 |-------------------|-------------------|
-| id_cuota          | AutoField(PK      |
-| id_jugador        | ForeignKey        |
-| Monto             | FloatField        |
-| Fecha_emision     | DateTimeField     |
-| Fecha_vencimiento | DateTimeField     |
-| Estado            | TextField         |
-| Fecha_pago        | DateTimeField     |
+| id_cuota          | AutoField         |
+| id                | ForeignKey        |
+| nom               | CharField         |
+| cuotaMe           | DateField         |
+| fechap            | DateField         |
+| importe           | FloatField        |
 
 Pruebas funcionales Unitarias bajo Selenium: 
 
@@ -92,8 +91,8 @@ Clase Nombre:Eventos
 | ultima_modificacion | DataTimeField         |
 | estado              | TextField             |
 
-
-
+Pruebas funcionales Unitarias bajo Selenium:
+https://docs.google.com/document/d/1NSutDIHI4d444MvBqQYlLqybN3gqtC5oLmU85ObSLRs/edit?usp=sharing
 
 
 
@@ -143,21 +142,23 @@ Casos de Uso y Casos de Prueba:https://docs.google.com/document/d/1LBT1cmzwNFe60
 
 * Modelos
 Clase Nombre: Jugadores
-|Nombre atributo        |  tipo de dato     |
-|-----------------------|-------------------|
-|id           |Autofield   PK     |
-|DNI                    |textfield          |
-|nom                    |charfield          |
-|fechan                 |integerfield       |
-|altura                 |floatfield         |
-|peso                   |floatfield         |
-|dire                   |charfield          |
-|cd                     |charfield          |
-|talla                  |FK                 |
-|descripcion            |FK                 |
-|qr                     |imagefield         |
 
-________________________________________________________________________________________________
+|Nombre atributo        |  tipo de dato     |
+|---------------------- |------------------ |
+|id                     | Autofield   PK    |
+|DNI                    | textfield         |
+|nom                    | charfield         |
+|fechan                 | integerfield      |
+|altura                 | floatfield        |
+|peso                   | floatfield        |
+|dire                   | charfield         |
+|cd                     | charfield         |
+|talla                  | FK                |
+|descripcion            | FK                |
+|qr                     | imagefield        |
+
+Pruebas funcionales Unitarias bajo Selenium:
+_______________________________________________________________________
 
 Grupo 7
 Integrantes: Bautista Serrano, Ludmila Luna, Pablo Perez, Morena Castillo 
@@ -196,6 +197,8 @@ Modelo Clase: Deportes
 | edad\_maxima      | Campo entero             |
 | fecha\_creacion   | Campo de tiempo de datos |
 
+
+Pruebas funcionales Unitarias bajo Selenium:
 ________________________________________________________________________________________________
 
 Grupo 8
@@ -206,13 +209,17 @@ Historia de Usuario:https://docs.google.com/document/d/1_q2GTvpaEPmQ4I0n5rEYUpU0
 Casos de Uso  y Casos de Prueba:
 https://docs.google.com/document/d/1_q2GTvpaEPmQ4I0n5rEYUpU0H-Br2dbrBbeiLvGO7e0/edit?usp=drivesdk
 
-* Modelo clase: Cuotas
+* Modelo clase: Cuotas Socios
   
 | Nombre atributo    | Tipo de dato             |
 | ------------------ | ------------------------ |
-| idCuota	         |  AutoField PK            |
+| idCuota	           |  AutoField PK            |
 | id                 |  ForeignKey FK           |
 | nom                |	CharField               |
 | cuotaMes           |	DateField               |
 | fechap             |	DateField               |
 | importe   	       |  DateField               |
+
+
+
+Pruebas funcionales Unitarias bajo Selenium:
