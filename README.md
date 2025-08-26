@@ -144,7 +144,7 @@ Casos de Uso y Casos de Prueba:https://docs.google.com/document/d/1LBT1cmzwNFe60
 Clase Nombre: Jugadores
 |Nombre atributo        |  tipo de dato     |
 |-----------------------|-------------------|
-|id           |Autofield   PK     |
+|id                     |Autofield   PK     |
 |DNI                    |textfield          |
 |nom                    |charfield          |
 |fechan                 |integerfield       |
@@ -156,6 +156,7 @@ Clase Nombre: Jugadores
 |descripcion            |FK                 |
 |qr                     |imagefield         |
 
+Pruebas Bajo seleninum:
 ________________________________________________________________________________________________
 
 Grupo 7
