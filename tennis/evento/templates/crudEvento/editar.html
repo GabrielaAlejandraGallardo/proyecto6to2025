@@ -1,22 +1,22 @@
-{% extends 'paginas_base/base.html' %}
+{% extends 'paginas_base/base.html' %} {#La plantilla hereda de base.html, que define la estructura general de la página (menús, estilos, etc.).#}
 
-{% block titulo %}Página Editar Evento{% endblock titulo %}
-{% block contenido %}
-    <div class="card">
-        <div class="card-header">
+{% block titulo %}Página Editar Evento{% endblock titulo %} {#Define el título de la página, que se insertará en el bloque titulo de la plantilla base.#}
+{% block contenido %} {#Comienza el bloque principal de contenido de la página.#}
+    <div class="card"> {#Contenedor con estilo de tarjeta de Bootstrap.#}
+        <div class="card-header"> {#Encabezado de la tarjeta.#}
             Editar Jugador
         </div>
-        <div class="card-body">
-            <h4 class="card-title"> Editando Evento</h4>
-            {% include  'CrudEvento/form.html' %}
+        <div class="card-body"> {#Cuerpo de la tarjeta:#}
+            <h4 class="card-title"> Editando Evento</h4> {#Título “Editando Evento”.#}
+            {% include  'CrudEvento/form.html' %} {#Usa {% include 'CrudEvento/form.html' %} para incluir el formulario que ya definiste en otra plantilla (form.html). Eso evita duplicar código y mantiene el formulario centralizado.#}
             
         </div>
-        <div class="card-footer text-muted">
+        <div class="card-footer text-muted"> {#Cierra el cuerpo de la tarjeta. Pie de la tarjeta (card-footer), vacío pero con estilo text-muted (texto gris tenue).#}
             
         </div>
-    </div>
+    </div> {#Cierra la tarjeta completa.#}
     
    
    
 
-{% endblock contenido %}
+{% endblock contenido %} {#Cierra el bloque de contenido.#}

@@ -1,55 +1,75 @@
-{% extends 'paginas_base/base.html' %}
+{% extends 'paginas_base/base.html' %} {#Indica que esta plantilla hereda de base.html (diseño común para todas las páginas).#}
+{% load l10n %} {#permite formatos locales (ej: fecha, moneda según configuración).#}
+{% load humanize %} {#mejora la presentación de datos (ej: “1,000” → “1.000”, o mostrar “ayer” en vez de fecha).#}
 
-{% block titulo %}Página Lista de Eventos {% endblock titulo %}
-{% block contenido %}
-    <div class="card">
+
+{% block titulo %}Página Lista de Eventos {% endblock titulo %} {#Define el título de la página que se insertará en la plantilla base.#}
+{% block contenido %} {#Comienza el bloque principal del contenido de la página.#}
+    <div class="card"> {#Crea una tarjeta Bootstrap con un encabezado que contiene un botón “Nuevo Evento”.#}
+{#Ese botón redirige a la URL crear_editarEvento con idEvento=0 (crear uno nuevo).#}
         <div class="card-header">
             <a name="btnuevo" id="btnuevo" class="btn btn-primary" href="{% url 'crear_editarEvento' idEvento=0  %}" role="button">Nuevo Evento</a>
         </div>
-        <div class="card-body">
+        <div class="card-body"> {#Cuerpo de la tarjeta con un título “Eventos”.#}
             <h4 class="card-title">Eventos</h4>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Código Evento</th>
-                        <th>Nombre Evento</th>                      
-                        <th>Fecha Evento</th>
-                        <th>Ubicación</th>
-                        <th>Código del Organizador</th>
-                               
-                      
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for e in eventos %}
-                    <tr>  
-                        <td>{{ e.idEvento}}</td>     
-                        <td>{{ e.nom}}</td>       
-                        <td>{{ e.fecha}}</td>
-                        <td>{{ e.ubicacion }}</td>
-                        <td>{{ e.idOrganizador }}</td>
-                       
-                      {% comment %}
-                        <td>
-                            <img src="{{ cl.foto.url }}" height="60">
-                        </td>  {% endcomment %}
-                        <td>
-                            <a name="bteditar" id="bteditar" class="btn btn-info" href="{% url 'crear_editarEvento' e.idEvento  %}" role="button">Editar</a>
-                            <a name="bteliminar" id="bteliminar" class="btn btn-danger" href="{% url 'eliminaEvento' e.idEvento %}" role="button">Eliminar</a>
-                        </td>                        
-                    </tr>
-                    {% endfor %}
-                    
-                </tbody>
-            </table>
+           <table class="table"> {#Tabla de eventos#}
+    <thead> {#Define la cabecera de la tabla con todas las columnas necesarias: código, nombre, fechas, capacidad, tipo, estado, organizador, costo y acciones.#}
+        <tr>
+            <th>Código Evento</th>
+            <th>Nombre</th>
+            <th>Descripción</th>
+            <th>Fecha Inicio</th>
+            <th>Fecha Fin</th>
+            <th>Ubicación</th>
+            <th>Capacidad</th>
+            <th>Tipo</th>
+            <th>Estado</th>
+            <th>Organizador</th>
+            <th class="costo-col">Costo</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for e in eventos %} {#Recorre la lista eventos y crea una fila por cada evento:#}
+        <tr>
+            <td>{{ e.idEvento }}</td>
+            <td>{{ e.nom }}</td>
+            <td>{{ e.descripcion|default:"-" }}</td>
+            <td>{{ e.fecha|date:"d/m/Y H:i" }}</td>
+            <td>{{ e.fecha_fin|date:"d/m/Y H:i"|default:"-" }}</td>
+            <td>{{ e.ubicacion }}</td>
+            <td>{{ e.capacidad_max|default:"Sin límite" }}</td>
+            <td>{{ e.get_tipo_display }}</td>
+            <td> {#Estado del evento#} {#Según el estado del evento, muestra un badge Bootstrap de color distinto: Verde → Activo. Gris → Finalizado. Rojo → Cancelado.#}
+                {% if e.estado == "ACTIVO" %}
+                    <span class="badge bg-success">Activo</span>
+                {% elif e.estado == "FINALIZADO" %}
+                    <span class="badge bg-secondary">Finalizado</span>
+                {% else %}
+                    <span class="badge bg-danger">Cancelado</span>
+                {% endif %}
+            </td>
+            <td>{{ e.idOrganizador.nom }}</td> {#Muestra el nombre del organizador (campo relacionado).#}
             
-            
-        </div>
-        <div class="card-footer text-muted">
-        
-        </div>
-    </div>
-   
+   <td> {#Costo#}
+                    {% if not e.costo %} {#Si el evento no tiene costo → muestra “Gratis”.#}
+                        Gratis
+                    {% else %}
+                        {{ e.costo_formateado }} {#Si tiene → muestra costo_formateado (probablemente con símbolo $ o separador de miles).#}
+                    {% endif %}
+                </td>
+
+            {#Acciones#}
+            <td> {#Dos botones por cada fila: Editar → abre la vista de edición con el id del evento. Y Eliminar → abre la vista que elimina el evento.#}
+                <a class="btn btn-info btn-sm" href="{% url 'crear_editarEvento' e.idEvento %}">Editar</a>
+                <a class="btn btn-danger btn-sm" href="{% url 'eliminaEvento' e.idEvento %}">Eliminar</a>
+            </td>
+        </tr>
+        {% endfor %} {#Termina la fila del evento y cierra el bucle for.#}
+    </tbody>
+</table> {#Termina el cuerpo de la tabla.#}
+
    
 
-{% endblock contenido %}
+{% endblock contenido %} {#Cierra el bloque de contenido que comenzó arriba.#}
+

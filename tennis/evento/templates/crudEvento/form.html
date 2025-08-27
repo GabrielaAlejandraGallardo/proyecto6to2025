@@ -1,30 +1,31 @@
-<form enctype="multipart/form-data" method="POST">
-    {% csrf_token %}
+{#Inicio del formulario HTML#}
+<form enctype="multipart/form-data" method="POST"> {#necesario si el formulario incluye archivos (ej: imágenes). se enviará con el método POST, típico en formularios que crean o editan datos.#}
+    {% csrf_token %} {#Token de seguridad contra CSRF (Cross Site Request Forgery). Obligatorio en formularios POST en Django.#}
     
-    {% for campo in formulario %}
-        <div class="mb-3">
-            <label for="" class="form-label">{{ campo.label }}</label>
+    {% for campo in formulario %} {#Bucle que recorre todos los campos del formulario (pasado desde la vista en Django).#}
+        <div class="mb-3"> {#Crea un bloque con margen (mb-3) para cada campo.#}
+            <label for="" class="form-label">{{ campo.label }}</label> {#Muestra la etiqueta del campo (campo.label).#}
     
             {% if campo.field.widget.input_type == 'file' and campo.value %}
             <img src="{{MEDIA_URL}}/imagenes/{{campo.value}}" alt="" width="80">
             {% endif %}
     
-            <input 
-            type="{{campo.field.widget.input_type}}"
-            class="form-control"
-            name="{{ campo.name }}"
-            id="{{ campo.name }}"
-            aria-describedby="helId"
-            placeholder="{{ campo.label }}"
-            value="{{ campo.value | default:''}}"
+            <input  {#Genera el input dinámicamente con los atributos del campo:#}
+            type="{{campo.field.widget.input_type}}" {#el tipo (text, email, file, number, etc.).#}
+            class="form-control" {#estilo de Bootstrap.#}
+            name="{{ campo.name }}" {#nombre del campo (clave del form).#}
+            id="{{ campo.name }}" {#identificador único.#}
+            aria-describedby="helId" 
+            placeholder="{{ campo.label }}" {#texto de ayuda dentro del input.#}
+            value="{{ campo.value | default:''}}" {#valor actual (útil al editar).#}
             />
-        </div>
+        </div> {#Cierra el bloque del campo.#}
     
-        <div class="col-12 help-text">{{ campo.errors }}</div>
+        <div class="col-12 help-text">{{ campo.errors }}</div> {#Muestra los errores de validación del campo si existen.#}
     
-    {% endfor %}
+    {% endfor %} {#Cierra el bucle → se procesaron todos los campos del formulario.#}
+    {#Botones de acción#}
+    <input name="btn-guardar" id="btn_guardar" class="btn btn-success" type="submit" value="Guardar"> {#Botón Guardar → envía el formulario.#}
+    <a name="btnCancelar" id="btnCancelar" class="btn btn-primary" href="{% url 'listaEvento' %}" role="button">Cancelar</a> {#Botón Cancelar → redirige a la vista listaEvento sin guardar cambios.#}
     
-    <input name="btn-guardar" id="btn_guardar" class="btn btn-success" type="submit" value="Guardar">
-    <a name="btnCancelar" id="btnCancelar" class="btn btn-primary" href="{% url 'listaEvento' %}" role="button">Cancelar</a>
-    
-    </form>
+    </form> {#Cierre del formulario.#}
