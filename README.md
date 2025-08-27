@@ -31,9 +31,8 @@ ________________________________________________________________________________
 
 Grupo 2 Integrantes: Gonzalo, Antü y lucas
 
-Historial de usuario:! https://docs.google.com/document/d/e/2PACX-1vS7SSm2pEEnbepzp6vj_CpLwp2asbPds_AkkE6K0Y2oPyV9_PD0myi35V--hKM_F0FfwDe8KZ_2fNSU/pub
-
-Casos de Uso y de prueba: 
+Historial de usuario:! https://docs.google.com/document/d/e/2PACX-1vQn37N4ttDof0rS3FvltWk2Rodd4Di40hPXEkdAFA1Ed5WKjV_w_cC8YMlClYZFnSXG-7MAFYtmr-jy/pub
+Casos de Uso y de prueba: https://docs.google.com/document/d/e/2PACX-1vTJN_tfCB2AtQJ35I1-tm4Xmvwajwt5Q9QQ61CGstT5FL8Zhu2cUyzHgcNhlyPFr3bqmOxkhQWyGC-s/pub
 
 Modelos Clase Nombre:cuotas de jugador 
 | Nombre atributo   | Tipo de dato      |
