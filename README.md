@@ -126,11 +126,11 @@ Clase Nombre: Socios
 
 
 
-Pruebas funcionales Unitarias bajo Selenium:
+Pruebas funcionales Unitarias e integración  bajo Selenium:
 https://docs.google.com/document/d/1HnpchmA9sOiAc5XKZigmrkwDr8Ja23_ml53VI9uOKBo/edit?usp=sharing
 
 
-
+Pruebas de Performance o Rendimiento: 
 
 ________________________________________________________________________________________________
 Grupo 6 Integrantes: Valentin Chacoma, Khalil Maccagno, Aileen Koning
