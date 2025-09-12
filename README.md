@@ -23,9 +23,9 @@ nombre-apellido |   TextField           |
 senia           |   Floatfield          |
 saldo           |   floatfield          |
 
-Pruebas funcionales Unitarias bajo Selenium: 
+Pruebas funcionales Unitarias y de Integración bajo Selenium: 
 
-
+Pruebas de Performance o rendimiento:
 ________________________________________________________________________________________________
 
 
@@ -45,9 +45,9 @@ Modelos Clase Nombre:cuotas de jugador
 | fechap            | DateField         |
 | importe           | FloatField        |
 
-Pruebas funcionales Unitarias bajo Selenium: 
+Pruebas funcionales Unitarias y de Integración bajo Selenium: 
 
-
+Pruebas de Performance o rendimiento:
 __________________________________________________________________________________
 Grupo 3 Integrantes:
 
@@ -59,9 +59,9 @@ Modelos Clase Nombre: Nombre atributo | tipo de dato | |---------------|--------
 
 
 
-Pruebas funcionales Unitarias bajo Selenium: 
+Pruebas funcionales Unitarias y de Integración bajo Selenium: 
 
-
+Pruebas de Performance o rendimiento:
 _______________________
 
 Grupo 4
@@ -91,12 +91,11 @@ Clase Nombre:Eventos
 | ultima_modificacion | DataTimeField         |
 | estado              | TextField             |
 
-Pruebas funcionales Unitarias bajo Selenium:
+Pruebas funcionales Unitarias y de Integración bajo Selenium:
 https://docs.google.com/document/d/1NSutDIHI4d444MvBqQYlLqybN3gqtC5oLmU85ObSLRs/edit?usp=sharing
 
 
-
-
+Pruebas de Performance o rendimiento:
 
 ________________________________________________________________________________________________
 
@@ -157,7 +156,9 @@ Clase Nombre: Jugadores
 |descripcion            | FK                |
 |qr                     | imagefield        |
 
-Pruebas funcionales Unitarias bajo Selenium:
+Pruebas funcionales Unitarias y de Integración bajo Selenium:
+
+Pruebas de Performance o rendimiento:
 _______________________________________________________________________
 
 Grupo 7
@@ -198,7 +199,9 @@ Modelo Clase: Deportes
 | fecha\_creacion   | Campo de tiempo de datos |
 
 
-Pruebas funcionales Unitarias bajo Selenium:
+Pruebas funcionales Unitarias  y de Integración bajo Selenium:
+
+Pruebas de Performance o rendimiento:
 ________________________________________________________________________________________________
 
 Grupo 8
@@ -222,4 +225,6 @@ https://docs.google.com/document/d/1_q2GTvpaEPmQ4I0n5rEYUpU0H-Br2dbrBbeiLvGO7e0/
 
 
 
-Pruebas funcionales Unitarias bajo Selenium:
+Pruebas funcionales Unitarias y de Integración bajo Selenium:
+
+Pruebas de Performance o rendimiento:
