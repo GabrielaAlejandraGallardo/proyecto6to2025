@@ -95,7 +95,7 @@ Pruebas funcionales Unitarias y de Integración bajo Selenium:
 https://docs.google.com/document/d/1NSutDIHI4d444MvBqQYlLqybN3gqtC5oLmU85ObSLRs/edit?usp=sharing
 
 
-Pruebas de Performance o rendimiento:
+Pruebas de Performance o rendimiento: https://docs.google.com/document/d/1WJ7qGyZOpHeZvNcy8c3bnI849mF-Szb9Mf5XjCQPdk8/edit?usp=sharing
 
 ________________________________________________________________________________________________
 
