@@ -31,7 +31,7 @@ ________________________________________________________________________________
 
 Grupo 2 Integrantes: Gonzalo, Antü y lucas
 
-Historial de usuario:! https://docs.google.com/document/d/e/2PACX-1vQn37N4ttDof0rS3FvltWk2Rodd4Di40hPXEkdAFA1Ed5WKjV_w_cC8YMlClYZFnSXG-7MAFYtmr-jy/pub
+Historia de usuario:! https://docs.google.com/document/d/e/2PACX-1vQn37N4ttDof0rS3FvltWk2Rodd4Di40hPXEkdAFA1Ed5WKjV_w_cC8YMlClYZFnSXG-7MAFYtmr-jy/pub
 
 Casos de Uso y de prueba: https://docs.google.com/document/d/e/2PACX-1vTJN_tfCB2AtQJ35I1-tm4Xmvwajwt5Q9QQ61CGstT5FL8Zhu2cUyzHgcNhlyPFr3bqmOxkhQWyGC-s/pub
 
@@ -51,7 +51,7 @@ Pruebas de Performance o rendimiento:
 __________________________________________________________________________________
 Grupo 3 Integrantes:
 
-Historial de usuario:
+Historia de usuario:
 
 Casos de Uso y Casos de Prueba:
 
@@ -134,7 +134,7 @@ Pruebas de Performance o Rendimiento:
 ________________________________________________________________________________________________
 Grupo 6 Integrantes: Valentin Chacoma, Khalil Maccagno, Aileen Koning
 
-Historial de usuario:https://docs.google.com/document/d/1LBT1cmzwNFe60B2__iOJUBPxASC7cXkq_rjfWBvrgxY/edit?tab=t.0
+Historia de usuario:https://docs.google.com/document/d/1LBT1cmzwNFe60B2__iOJUBPxASC7cXkq_rjfWBvrgxY/edit?tab=t.0
 
 Casos de Uso y Casos de Prueba:https://docs.google.com/document/d/1LBT1cmzwNFe60B2__iOJUBPxASC7cXkq_rjfWBvrgxY/edit?tab=t.0
 
