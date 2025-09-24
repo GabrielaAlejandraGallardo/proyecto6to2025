@@ -39,7 +39,7 @@ Modelos Clase Nombre:cuotas de jugador
 | Nombre atributo   | Tipo de dato      |
 |-------------------|-------------------|
 | id_cuota          | AutoField         |
-| id                | ForeignKey        |
+| id_evento         | ForeignKey        |
 | nom               | CharField         |
 | cuotaMe           | DateField         |
 | fechap            | DateField         |
