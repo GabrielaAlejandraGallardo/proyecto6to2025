@@ -23,7 +23,8 @@ nombre-apellido |   TextField           |
 senia           |   Floatfield          |
 saldo           |   floatfield          |
 
-Pruebas funcionales Unitarias y de Integración bajo Selenium: 
+Pruebas funcionales Unitarias y de Integración bajo Selenium:  https://docs.google.com/document/d/1jIe9Eq3tHq6z5T_yinMCVz96VfYXgomL7-2FqFp7OQ8/edit?usp=sharing
+
 
 Pruebas de Performance o rendimiento:
 ________________________________________________________________________________________________
