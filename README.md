@@ -158,8 +158,9 @@ Clase Nombre: Jugadores
 |qr                     | imagefield        |
 
 Pruebas funcionales Unitarias y de Integración bajo Selenium:
+https://docs.google.com/document/d/14GYLFV5kouXbUlLYrkoqAXZFr9hLHfrGpebKX8MEuJA/edit?usp=sharing
 
-Pruebas de Performance o rendimiento:
+Pruebas de Performance o rendimiento: 
 _______________________________________________________________________
 
 Grupo 7
