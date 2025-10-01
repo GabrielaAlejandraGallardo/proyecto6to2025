@@ -11,25 +11,46 @@ from jugadores.models import Jugador
 # Create your views here
 
 def listaCuota(request):
-    
-    cuota = Cuota.objects.all().order_by('cuotaMes')
+    query = request.GET.get('q', '').strip()
+
+    # Inicialización por defecto para evitar UnboundLocalError
     pagos_por_mes = defaultdict(list)
     total_por_mes = defaultdict(float)
 
-    for sc in cuota:
-        mes = sc.cuotaMes
-        pagos_por_mes[mes].append(sc)
-        total_por_mes[mes] += float(sc.importe)
+    cuotas = Cuota.objects.all().order_by('cuotaMes')
+    if query:
+        cuotas = cuotas.filter(nom__icontains=query)
+        for sc in cuotas:
+            mes = sc.cuotaMes
+            pagos_por_mes[mes].append(sc)
+            total_por_mes[mes] += float(sc.importe or 0)
 
-    # Convertir a lista de tuplas para el template
+    # Construcción de la lista de resultados, incluso si no hay query
     pagos_y_totales = [
         (mes, pagos_por_mes[mes], total_por_mes[mes])
         for mes in pagos_por_mes
     ]
 
-    return render(request, 'CrudCuotas/listado.html', {
-        'pagos_y_totales': pagos_y_totales,
-    })
+    return render(
+        request,
+        'CrudSocioCuota/listado.html',
+        {'pagos_y_totales': pagos_y_totales, 'query': query}
+    )
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+
+    
+    
+    
 
 
 def inicio(request):

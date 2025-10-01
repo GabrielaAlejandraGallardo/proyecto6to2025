@@ -3,7 +3,13 @@
 {% block titulo %}Página Lista de Cuotas Jugadores {% endblock titulo %}
 {% block contenido %}
 <div class="card">
-    <div class="card-header">
+      <div class="card-header">
+        <!-- Busca por nombre o código de socio -->  
+        <form method="get" action="." class="form-inline" role="search" style="display:flex;gap:8px;align-items:center;">
+        <input type="text" name="q" value="{{ query|default_if_none:'' }}" class="form-control" placeholder="Buscar por nombre del socio"/>
+        <button type="submit" class="btn btn-secondary">Buscar</button>
+        </form>
+    
         <a class="btn btn-primary" href="{% url 'crear_editarCuota' idCuota=0 %}" role="button">Nueva Cuota Jugador</a>
     </div>
     <div class="card-body">

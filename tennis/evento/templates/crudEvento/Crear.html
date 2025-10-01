@@ -1,59 +1,25 @@
-{% extends 'paginas_base/base.html' %}
-{% load crispy_forms_tags %}
+{% extends 'paginas_base/base.html' %} {#La plantilla hereda de base.html (estructura general de la página).#}
+{% load crispy_forms_tags %} {#Carga las etiquetas de la librería Crispy Forms → permite renderizar formularios con estilos de Bootstrap automáticamente.#}
+{% load l10n %} {#Carga la librería de localización (l10n) → para adaptar números, fechas y formatos al idioma configurado.#}
 
-
-{% block titulo %}Cargar Evento
-
-al Sistema{% endblock titulo %}
-{% block contenido %}
-    <div class="bg-success-subtle p-2 text-white">
-        <div class="card-header">
-            Crear Nueva Evento
-        </div>
-        <div class="card-body">
-            <h4 class="card-title">Evento</h4>
-            <form action="" method="post"  enctype="multipart/form-data" autocomplete="off">
-                {% csrf_token %}
-              
-              {% comment %}
-                
-                
-                {{formulario.idEvento|as_crispy_field}}
-              {% endcomment %}
-                {{formulario.nom|as_crispy_field}}   
-                {% if formulario.fecha.value and formulario.ubicacion.value %}
-                    {% for evento in eventos_existentes %}
-                        {% if evento.fecha == formulario.fecha.value and evento.ubicacion == formulario.ubicacion.value %}
-                            <span class="alert alert-warning mt-2 d-inline-block p-2 rounded" role="alert">
-                                Ya existe un evento en esta ubicación y fecha. Por favor, cambie la fecha, hora o ubicación.
-                            </span>
-                               <h4> Ya existe un evento en esta ubicación y fecha. Por favor, cambie la fecha, hora o ubicación.</h4>
-
-                            
-                        {% endif %}
-                    {% endfor %}
-                {% endif %}
-                {{formulario.fecha|as_crispy_field}}
-                {{formulario.ubicacion|as_crispy_field}}
-                {{formulario.idOrganizador|as_crispy_field}}
-            
-                         
-                <br>
-                  
-            <br>
-            <input name="btn-guardar" id="btn_guardar" class="btn btn-success border border-dark" type="submit"  value="Guardar">
-            <a name="btnCancelar" id="btnCancelar" class="btn btn-primary border-dark" href="{% url 'listaEvento' %}" role="button">Cancelar</a>
-
-            </form>           
-            
-            
-        </div>
-        <div class="card-footer text-muted">
-            
-        </div>
+{% block titulo %}Cargar Evento al Sistema{% endblock titulo %} {#Define el título de la página → “Cargar Evento al Sistema”.#}
+{% block contenido %} {#Comienza el bloque principal de contenido de la página.#}
+<div class="bg-success-subtle p-2 text-white"> {#Crea un contenedor con fondo verde claro, padding (p-2) y texto blanco.#}
+    <div class="card-header"> {#Encabezado de la tarjeta con el título: “Crear Nuevo Evento”.#}
+        Crear Nuevo Evento
     </div>
-    
-   
-   
+    <div class="card-body"> {#Cuerpo de la tarjeta, con un título “Evento”#}
+        <h4 class="card-title">Evento</h4>
+        <form action="" method="post" enctype="multipart/form-data" autocomplete="off"> {#action="": enviará al mismo endpoint. method="post" → envío con POST. enctype="multipart/form-data" → necesario si hay archivos (ej: imágenes). autocomplete="off" → desactiva el autocompletado del navegador.#}
+            {% csrf_token %} {#Token de seguridad CSRF obligatorio en formularios POST en Django.#}
+            {{ formulario|crispy }} {#Renderiza el formulario pasado desde la vista con el filtro crispy, aplicando automáticamente estilos de Bootstrap.#}
 
-{% endblock contenido %}
+            <br>
+            <input name="btn-guardar" id="btn_guardar" class="btn btn-success border border-dark" type="submit" value="Guardar"> {#Botón Guardar → envía el formulario al servidor. Estilizado como botón verde con borde negro.#}
+            <a name="btnCancelar" id="btnCancelar" class="btn btn-primary border-dark" href="{% url 'listaEvento' %}" role="button">Cancelar</a> {#Botón Cancelar → redirige a la vista listaEvento sin guardar. Se muestra como botón azul con borde negro.#}
+        </form> {#Cierra el formulario y el cuerpo de la tarjeta.#}
+    </div>
+    <div class="card-footer text-muted"></div> {#Pie de la tarjeta, vacío pero con estilo text-muted (texto gris tenue).#}
+</div>
+
+{% endblock contenido %} {#Cierra el bloque de contenido.#}

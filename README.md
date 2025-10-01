@@ -23,30 +23,36 @@ nombre-apellido |   TextField           |
 senia           |   Floatfield          |
 saldo           |   floatfield          |
 
+Pruebas funcionales Unitarias y de Integración bajo Selenium:  https://docs.google.com/document/d/1jIe9Eq3tHq6z5T_yinMCVz96VfYXgomL7-2FqFp7OQ8/edit?usp=sharing
+
+
+Pruebas de Performance o rendimiento:
 ________________________________________________________________________________________________
 
 
 Grupo 2 Integrantes: Gonzalo, Antü y lucas
 
-Historial de usuario:!
+Historia de usuario:! https://docs.google.com/document/d/e/2PACX-1vQn37N4ttDof0rS3FvltWk2Rodd4Di40hPXEkdAFA1Ed5WKjV_w_cC8YMlClYZFnSXG-7MAFYtmr-jy/pub
 
-Casos de Uso: https://lucid.app/lucidchart/dfcd86d7-2de8-4fde-8307-0370d333ff13/edit?viewport_loc=-471%2C160%2C2465%2C1118%2C0_0&invitationId=inv_56be0290-abfd-4fcb-81e0-17673f9362ed
+Casos de Uso y de prueba: https://docs.google.com/document/d/e/2PACX-1vTJN_tfCB2AtQJ35I1-tm4Xmvwajwt5Q9QQ61CGstT5FL8Zhu2cUyzHgcNhlyPFr3bqmOxkhQWyGC-s/pub
 
 Modelos Clase Nombre:cuotas de jugador 
 | Nombre atributo   | Tipo de dato      |
 |-------------------|-------------------|
-| id_cuota          | AutoField(PK      |
-| id_jugador        | ForeignKey        |
-| Monto             | FloatField        |
-| Fecha_emision     | DateTimeField     |
-| Fecha_vencimiento | DateTimeField     |
-| Estado            | TextField         |
-| Fecha_pago        | DateTimeField     |
+| id_cuota          | AutoField         |
+| id_evento         | ForeignKey        |
+| nom               | CharField         |
+| cuotaMe           | DateField         |
+| fechap            | DateField         |
+| importe           | FloatField        |
 
+Pruebas funcionales Unitarias y de Integración bajo Selenium: 
+
+Pruebas de Performance o rendimiento:
 __________________________________________________________________________________
 Grupo 3 Integrantes:
 
-Historial de usuario:
+Historia de usuario:
 
 Casos de Uso y Casos de Prueba:
 
@@ -54,8 +60,9 @@ Modelos Clase Nombre: Nombre atributo | tipo de dato | |---------------|--------
 
 
 
+Pruebas funcionales Unitarias y de Integración bajo Selenium: 
 
-
+Pruebas de Performance o rendimiento:
 _______________________
 
 Grupo 4
@@ -85,12 +92,11 @@ Clase Nombre:Eventos
 | ultima_modificacion | DataTimeField         |
 | estado              | TextField             |
 
+Pruebas funcionales Unitarias y de Integración bajo Selenium:
+https://docs.google.com/document/d/1NSutDIHI4d444MvBqQYlLqybN3gqtC5oLmU85ObSLRs/edit?usp=sharing
 
 
-
-
-
-
+Pruebas de Performance o rendimiento: https://docs.google.com/document/d/1WJ7qGyZOpHeZvNcy8c3bnI849mF-Szb9Mf5XjCQPdk8/edit?usp=sharing
 
 ________________________________________________________________________________________________
 
@@ -120,34 +126,42 @@ Clase Nombre: Socios
 
 
 
+Pruebas funcionales Unitarias e integración  bajo Selenium:
+https://docs.google.com/document/d/1HnpchmA9sOiAc5XKZigmrkwDr8Ja23_ml53VI9uOKBo/edit?usp=sharing
 
 
+Pruebas de Performance o Rendimiento: 
 
 ________________________________________________________________________________________________
 Grupo 6 Integrantes: Valentin Chacoma, Khalil Maccagno, Aileen Koning
 
-Historial de usuario:https://docs.google.com/document/d/1LBT1cmzwNFe60B2__iOJUBPxASC7cXkq_rjfWBvrgxY/edit?tab=t.0
+Historia de usuario:https://docs.google.com/document/d/1LBT1cmzwNFe60B2__iOJUBPxASC7cXkq_rjfWBvrgxY/edit?tab=t.0
 
 Casos de Uso y Casos de Prueba:https://docs.google.com/document/d/1LBT1cmzwNFe60B2__iOJUBPxASC7cXkq_rjfWBvrgxY/edit?tab=t.0
 
 
 * Modelos
 Clase Nombre: Jugadores
-|Nombre atributo        |  tipo de dato     |
-|-----------------------|-------------------|
-|id           |Autofield   PK     |
-|DNI                    |textfield          |
-|nom                    |charfield          |
-|fechan                 |integerfield       |
-|altura                 |floatfield         |
-|peso                   |floatfield         |
-|dire                   |charfield          |
-|cd                     |charfield          |
-|talla                  |FK                 |
-|descripcion            |FK                 |
-|qr                     |imagefield         |
 
-________________________________________________________________________________________________
+|Nombre atributo        |  tipo de dato     |
+|---------------------- |------------------ |
+|id                     | Autofield   PK    |
+|DNI                    | textfield         |
+|nom                    | charfield         |
+|fechan                 | integerfield      |
+|altura                 | floatfield        |
+|peso                   | floatfield        |
+|dire                   | charfield         |
+|cd                     | charfield         |
+|talla                  | FK                |
+|descripcion            | FK                |
+|qr                     | imagefield        |
+
+Pruebas funcionales Unitarias y de Integración bajo Selenium:
+https://docs.google.com/document/d/14GYLFV5kouXbUlLYrkoqAXZFr9hLHfrGpebKX8MEuJA/edit?usp=sharing
+
+Pruebas de Performance o rendimiento: 
+_______________________________________________________________________
 
 Grupo 7
 Integrantes: Bautista Serrano, Ludmila Luna, Pablo Perez, Morena Castillo 
@@ -170,22 +184,19 @@ Modelo Clase: Deportes
 
 | Nombre atributo       | Tipo de dato             |
 | --------------------- | -------------------------|
-| id\_deporte           | PK de campo automático   |
-| nombre\_deporte       | Campo de texto           |
-| descripcion           | Campo de texto           |
-| cupos\_disponibles    | Campo entero             |
-| fecha\_creacion       | Campo de tiempo de datos |
-| ultima\_actualizacion | Campo de tiempo de datos |
+| id\_deporte           | Primay Key               |
+| iddescripciondeporte  | ForeignKey               |
+| idCategoria           | ForeignKey               |
+| horario               | DateTimeField            |
 
 | Nombre atributo   | Tipo de dato             |
-| ----------------- | ------------------------ |
-| id\_categoria     | PK de campo automático   |
-| nombre\_categoria | Campo de texto           |
-| descripcion       | Campo de texto           |
-| edad\_minima      | Campo entero             |
-| edad\_maxima      | Campo entero             |
-| fecha\_creacion   | Campo de tiempo de datos |
+| ----------------- | ------------------------  
+| idcategoria       | primary_key              |
+| descripcion       | CharField                |
 
+Pruebas funcionales Unitarias  y de Integración bajo Selenium:
+
+Pruebas de Performance o rendimiento:
 ________________________________________________________________________________________________
 
 Grupo 8
@@ -196,13 +207,19 @@ Historia de Usuario:https://docs.google.com/document/d/1_q2GTvpaEPmQ4I0n5rEYUpU0
 Casos de Uso  y Casos de Prueba:
 https://docs.google.com/document/d/1_q2GTvpaEPmQ4I0n5rEYUpU0H-Br2dbrBbeiLvGO7e0/edit?usp=drivesdk
 
-* Modelo clase: Cuotas
+* Modelo clase: Cuotas Socios
   
 | Nombre atributo    | Tipo de dato             |
 | ------------------ | ------------------------ |
-| idCuota	         |  AutoField PK            |
+| idCuota	           |  AutoField PK            |
 | id                 |  ForeignKey FK           |
 | nom                |	CharField               |
 | cuotaMes           |	DateField               |
 | fechap             |	DateField               |
 | importe   	       |  DateField               |
+
+
+
+Pruebas funcionales Unitarias y de Integración bajo Selenium:
+
+Pruebas de Performance o rendimiento:

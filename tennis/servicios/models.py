@@ -13,7 +13,8 @@ class Contratacion(models.Model):
     nomContratante = models.CharField(max_length=100)
     servicios = models.ManyToManyField(Servicio)
     total_costo = models.DecimalField(max_digits=10, decimal_places=2, default=0)
-
+    
+    
 
     def __str__(self):
         return f"Contratación {self.idContratacion} - {self.nomContratante}"
