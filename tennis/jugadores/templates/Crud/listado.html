@@ -40,7 +40,7 @@
                     <th>talla</th>
                     <th>Deporte</th>
                     <th>QR</th>
-                    <th>Acciones</th>
+                    <th>Estado Cuotas</th>
                 </tr>
             </thead>
             <tbody>
@@ -64,9 +64,16 @@
                         {% endif %}
                     </td>
                     <td>
+                        {% if ju.cuota %}
+                            Importe: {{ ju.cuota.importe }} - {% if ju.esta_al_dia %}Al día{% else %}Debe{% endif %}
+                        {% else %}
+                            Sin cuota
+                        {% endif %}
+                    </td>
+                    <td>
                         <a class="btn btn-info" href="{% url 'crear_editarJugador' ju.id %}">Editar</a>
                         <a class="btn btn-danger" href="{% url 'eliminar' ju.id %}">Eliminar</a>
-                    </td>                        
+                    </td>
                 </tr>
                 {% endfor %}
             </tbody>

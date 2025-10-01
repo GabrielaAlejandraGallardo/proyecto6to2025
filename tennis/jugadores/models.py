@@ -28,6 +28,7 @@ class Jugador(models.Model):
   cd = models.CharField(max_length=6, verbose_name="codigo postal")
   talla = models.ForeignKey(Talla, verbose_name="talla", on_delete=models.CASCADE)
   descripcion = models.ForeignKey(Deporte, verbose_name="descripcion", on_delete=models.CASCADE)
+  idCuota = models.ForeignKey('cuota.Cuota', verbose_name="idCuota", null=True, blank=True, on_delete=models.SET_NULL)
   qr = models.ImageField(upload_to='jugadores/qr/', blank=True, null=True, verbose_name="QR")
  
 
@@ -37,7 +38,7 @@ class Jugador(models.Model):
 
   def save(self, *args, **kwargs):
     # Generar el contenido del QR (puedes personalizar esto)
-    qr_content = f'Jugador: {self.nom}, DNI: {self.DNI}, Fecha Nacimiento: {self.fechan}, Altura: {self.altura}, Peso: {self.peso}, Direccion: {self.dire}, Codigo Postal: {self.cd}, Talla: {self.talla}, Deporte: {self.descripcion}'
+    qr_content = f'Jugador: {self.nom}, DNI: {self.DNI}, Fecha Nacimiento: {self.fechan}, Altura: {self.altura}, Peso: {self.peso}, Direccion: {self.dire}, Codigo Postal: {self.cd}, Talla: {self.talla}, Deporte: {self.descripcion}, Cuota: {self.cuota_id}'
     qr_img = qrcode.make(qr_content)
     buffer = BytesIO()
     qr_img.save(buffer, format='PNG')

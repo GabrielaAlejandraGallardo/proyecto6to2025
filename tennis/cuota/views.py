@@ -4,7 +4,8 @@ from django.http import HttpResponse, JsonResponse
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Submit
 from .forms import CuotaForm
-from cuota.models import Cuota, Jugador
+from cuota.models import Cuota
+from jugadores.models import Jugador
 
 
 # Create your views here
