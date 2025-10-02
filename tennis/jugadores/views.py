@@ -12,20 +12,47 @@ from reportlab.lib.pagesizes import letter
 from django.http import FileResponse
 import json
 from django.http import JsonResponse
+from .utils import enviar_mensaje_whatsapp
 
 # Create your views here
 
 def lista(request):
-    jugadores=Jugador.objects.all()
-    
-    return render(request,"Crud/listado.html",{'jugadores':jugadores})
+    jugadores = Jugador.objects.all()
+
+    # Para cada jugador, verificar si está al día con las cuotas
+    from datetime import date
+    hoy = date.today()
+    for jugador in jugadores:
+        # El modelo Jugador no tiene atributo cuota, revisar relación inversa con Cuota
+        # Obtener la última cuota del jugador
+        ultima_cuota = jugador.cuota_set.order_by('-cuotaMes').first()
+        if ultima_cuota:
+            jugador.esta_al_dia = (ultima_cuota.cuotaMes.year == hoy.year and
+                                   ultima_cuota.cuotaMes.month == hoy.month)
+            jugador.cuota = ultima_cuota
+        else:
+            jugador.esta_al_dia = False
+            jugador.cuota = None
+
+        # Enviar mensaje de WhatsApp si debe y no se ha enviado aún
+        if not jugador.esta_al_dia and jugador.whatsapp and not jugador.enviado_whatsapp:
+            try:
+                mensaje = f"Hola {jugador.nom}, tienes una deuda pendiente de {jugador.cuota.importe if jugador.cuota else 'N/A'} por la cuota."
+                enviar_mensaje_whatsapp(jugador.whatsapp, mensaje)
+                jugador.enviado_whatsapp = True
+                jugador.save()
+            except Exception as e:
+                # Log the error or handle it
+                pass
+    return render(request, "Crud/listado.html", {'jugadores': jugadores})
 
 
 def inicio(request):
-    return render(request,'paginas_base/inicio.html')
+    return render(request, 'paginas_base/inicio.html')
+
 
 def nosotros(request):
-    return render(request,'paginas_base/nosotros.html')        
+    return render(request, 'paginas_base/nosotros.html')
 
 
 def buscar_por_qr(request):
@@ -50,7 +77,11 @@ def buscar_por_qr(request):
                     'Código Postal': jugador.cd,
                     'Talla': jugador.talla,
                     'Deporte': jugador.descripcion,
+<<<<<<< HEAD
                     'cuota': jugador.idCuota.nom,
+=======
+                    'Cuota': str(jugador.idCuota),
+>>>>>>> 6ff99a50df9f6520d682238863655c9741b16512
                 }
                 return JsonResponse({'status': 'success', 'jugador': jugador_data})
             except Jugador.DoesNotExist:
@@ -59,6 +90,8 @@ def buscar_por_qr(request):
             return JsonResponse({'status': 'error', 'message': 'No QR data provided'})
     # Para otras solicitudes, renderiza la página de escaneo
     return render(request, 'Crud/scan_qr.html')
+
+
 def crear_editarJugador(request, id=0):
     if request.method == "GET":
         if id == 0:
@@ -77,6 +110,7 @@ def crear_editarJugador(request, id=0):
             jugador = formulario.save(commit=False)
             # Generar datos únicos para el QR (puedes usar el ID, nombre, etc.)
             qr_data = (
+<<<<<<< HEAD
             f"DNI: {jugador.DNI}\n"
             f"Nombre: {jugador.nom}\n"
             f"Fecha Nacimiento: {jugador.fechan}\n"
@@ -88,6 +122,19 @@ def crear_editarJugador(request, id=0):
             f"Deporte: {jugador.descripcion}\n"
             f"Cuota: {jugador.idCuota.nom}\n"
              )
+=======
+                f"DNI: {jugador.DNI}\n"
+                f"Nombre: {jugador.nom}\n"
+                f"Fecha Nacimiento: {jugador.fechan}\n"
+                f"Altura: {jugador.altura}\n"
+                f"Peso: {jugador.peso}\n"
+                f"Dirección: {jugador.dire}\n"
+                f"Código Postal: {jugador.cd}\n"
+                f"Talla: {jugador.talla}\n"
+                f"Deporte: {jugador.descripcion}\n"
+                f"Cuota: {jugador.idCuota}\n"
+            )
+>>>>>>> 6ff99a50df9f6520d682238863655c9741b16512
             jugador.qr_code_data = qr_data  # Asume que tienes este campo en tu modelo
             jugador.save()  # Guardar primero para asegurar que el ID existe y qr_code_data
             # Generar imagen QR
@@ -97,10 +144,13 @@ def crear_editarJugador(request, id=0):
             jugador.qr.save(f"qr_{jugador.id}.png", ContentFile(buffer.getvalue()), save=False)  # Usar el ID para el nombre del archivo
             jugador.save()
         return redirect('lista')
-    
+
+
 def eliminar(request, id):
-    bc=Jugador.objects.get(pk=id)
+    bc = Jugador.objects.get(pk=id)
     bc.delete()
     return redirect('lista')
+
+
 def pagina_scanner(request):
-    return render(request, 'CrudSocio/scan_qr.html')        
+    return render(request, 'CrudSocio/scan_qr.html')
