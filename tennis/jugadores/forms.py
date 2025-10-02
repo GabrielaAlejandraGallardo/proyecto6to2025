@@ -6,7 +6,7 @@ class JugadorForm(forms.ModelForm):
   class Meta:
         model=Jugador
        #fields='__all__'
-        fields=('DNI','nom','fechan','altura',"peso","dire","cd","talla","descripcion", "qr")
+        fields=('DNI','nom','fechan','altura',"peso","dire","cd","talla","descripcion", "idCuota", "whatsapp", "qr")
         labels ={
            "DNI": "DNI",
           'nom': 'nombre y apellido',
@@ -17,6 +17,8 @@ class JugadorForm(forms.ModelForm):
           "cd": "Código postal",
           "talla": "Talla de indumentaria ",
           "descripcion": "Deporte al que pertenece",
+          "idCuota": "Cuota",
+          "whatsapp": "WhatsApp",
           "qr": "Código QR",
       }
         widgets = {

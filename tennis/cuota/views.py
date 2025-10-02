@@ -33,7 +33,7 @@ def listaCuota(request):
 
     return render(
         request,
-        'CrudSocioCuota/listado.html',
+        'CrudCuotas/listado.html',
         {'pagos_y_totales': pagos_y_totales, 'query': query}
     )
 

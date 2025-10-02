@@ -12,6 +12,7 @@ from reportlab.lib.pagesizes import letter
 from django.http import FileResponse
 import json
 from django.http import JsonResponse
+from .utils import enviar_mensaje_whatsapp
 
 # Create your views here
 
@@ -32,6 +33,17 @@ def lista(request):
         else:
             jugador.esta_al_dia = False
             jugador.cuota = None
+
+        # Enviar mensaje de WhatsApp si debe y no se ha enviado aún
+        if not jugador.esta_al_dia and jugador.whatsapp and not jugador.enviado_whatsapp:
+            try:
+                mensaje = f"Hola {jugador.nom}, tienes una deuda pendiente de {jugador.cuota.importe if jugador.cuota else 'N/A'} por la cuota."
+                enviar_mensaje_whatsapp(jugador.whatsapp, mensaje)
+                jugador.enviado_whatsapp = True
+                jugador.save()
+            except Exception as e:
+                # Log the error or handle it
+                pass
     return render(request, "Crud/listado.html", {'jugadores': jugadores})
 
 
