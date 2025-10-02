@@ -48,19 +48,3 @@ class Jugador(models.Model):
 
 
     
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

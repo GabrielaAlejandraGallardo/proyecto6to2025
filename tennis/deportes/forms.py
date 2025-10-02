@@ -1,6 +1,6 @@
 from socket import fromshare
 from django import forms 
-from .models import DeporteD, Categoria,D
+from .models import DeporteD, Categoria
 
 class DeporteDForm(forms.ModelForm):
   class Meta:
@@ -46,7 +46,7 @@ class CategoriaForm(forms.ModelForm):
       
       
       
-      
+"""      
 class DForm(forms.ModelForm):
       class Meta:
         model=D
@@ -66,7 +66,7 @@ def __init__(self, *args, **kwargs):
         super(CategoriaForm,self).__init__(*args,**kwargs)
         self.fields['nombre'].empty_label="Selecciona"
        
-      
+   """   
       
       
       

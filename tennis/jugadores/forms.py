@@ -1,7 +1,6 @@
 from socket import fromshare
 from django import forms 
-from .models import Jugador, Talla
-
+from .models import Jugador 
 class JugadorForm(forms.ModelForm):
   class Meta:
         model=Jugador
@@ -18,6 +17,7 @@ class JugadorForm(forms.ModelForm):
           "talla": "Talla de indumentaria ",
           "descripcion": "Deporte al que pertenece",
           "qr": "Código QR",
+       
       }
         widgets = {
          'fechan': forms.DateInput(attrs={'type': 'date'}),

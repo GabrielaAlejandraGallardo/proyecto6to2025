@@ -50,6 +50,7 @@ def buscar_por_qr(request):
                     'Código Postal': jugador.cd,
                     'Talla': jugador.talla,
                     'Deporte': jugador.descripcion,
+                    'cuota': jugador.idCuota.nom,
                 }
                 return JsonResponse({'status': 'success', 'jugador': jugador_data})
             except Jugador.DoesNotExist:
@@ -85,6 +86,7 @@ def crear_editarJugador(request, id=0):
             f"Código Postal: {jugador.cd}\n"
             f"Talla: {jugador.talla}\n"
             f"Deporte: {jugador.descripcion}\n"
+            f"Cuota: {jugador.idCuota.nom}\n"
              )
             jugador.qr_code_data = qr_data  # Asume que tienes este campo en tu modelo
             jugador.save()  # Guardar primero para asegurar que el ID existe y qr_code_data
