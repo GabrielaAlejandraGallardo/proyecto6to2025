@@ -51,13 +51,15 @@ Pruebas funcionales Unitarias y de Integración bajo Selenium:
 
 Pruebas de Performance o rendimiento:
 __________________________________________________________________________________
-Grupo 3 Integrantes: Axel Agustin Delsoglio, Abril Bustos, Uriel Capdevila y Elias Godoy. 
+
+Grupo 3 
+Integrantes: Axel Agustin Delsoglio, Abril Bustos, Uriel Capdevila y Elias Godoy. 
 
 Historial de usuario: https://docs.google.com/document/d/1Xf1EZb7n0XtGJMPTMSYRVjTgE97q6SklVYZzDtXm9vg/edit?usp=sharing
 
 Casos de Uso y Casos de Prueba: https://docs.google.com/document/d/1Xf1EZb7n0XtGJMPTMSYRVjTgE97q6SklVYZzDtXm9vg/edit?usp=sharing
 
-Modelos Clase Nombre: 
+Modelos Clase Nombre: Jugadores
 | Nombre atributo | Tipo de dato | 
 ----------------------------------
 | id              | AutoField    |
