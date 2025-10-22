@@ -51,15 +51,25 @@ Pruebas funcionales Unitarias y de Integración bajo Selenium:
 
 Pruebas de Performance o rendimiento:
 __________________________________________________________________________________
-Grupo 3 Integrantes:
+Grupo 3 Integrantes: Axel Agustin Delsoglio, Abril Bustos, Uriel Capdevila y Elias Godoy. 
 
-Historia de usuario:
+Historial de usuario: https://docs.google.com/document/d/1Xf1EZb7n0XtGJMPTMSYRVjTgE97q6SklVYZzDtXm9vg/edit?usp=sharing
 
-Casos de Uso y Casos de Prueba:
+Casos de Uso y Casos de Prueba: https://docs.google.com/document/d/1Xf1EZb7n0XtGJMPTMSYRVjTgE97q6SklVYZzDtXm9vg/edit?usp=sharing
 
-Modelos Clase Nombre: Nombre atributo | tipo de dato | |---------------|-------------------| |---------------|-------------------| |---------------|-------------------| |---------------|-------------------| |---------------|-------------------| |---------------|-------------------| |---------------|-------------------| |---------------|-------------------| |---------------|-------------------| |---------------|-------------------|
-
-
+Modelos Clase Nombre: 
+| Nombre atributo | Tipo de dato | 
+----------------------------------
+| id              | AutoField    |
+| DNI             | IntegerField |
+| nom             | CharField    |
+| fechan          | DateField    |
+| altura          | FloatField   |
+| peso            | FloatField   |
+| cd              | CharField    |
+| talla           | ForeignKey   |
+| descripcion     | ForeignKey   |
+| qr              | ImageField   |
 
 Pruebas funcionales Unitarias y de Integración bajo Selenium: 
 
