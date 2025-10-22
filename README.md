@@ -61,7 +61,7 @@ Casos de Uso y Casos de Prueba: https://docs.google.com/document/d/1Xf1EZb7n0XtG
 
 Modelos Clase Nombre: Jugadores
 | Nombre atributo | Tipo de dato | 
-|--------------------------------|
+|-----------------|--------------|
 | id              | AutoField    |
 | DNI             | IntegerField |
 | nom             | CharField    |
