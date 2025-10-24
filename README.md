@@ -49,7 +49,7 @@ Modelos Clase Nombre:cuotas de jugador
 
 Pruebas funcionales Unitarias y de Integración bajo Selenium: 
 
-Pruebas de Performance o rendimiento:
+Pruebas de Performance o rendimiento :https://docs.google.com/document/d/e/2PACX-1vRR8s500jb0FblxJX6iHiuAkzzALGbz0qtMvSAu3LIG3CzAFj2QboTTSPSshjBq66UgCIfg3OhC_Yzi/pub
 __________________________________________________________________________________
 
 Grupo 3 
