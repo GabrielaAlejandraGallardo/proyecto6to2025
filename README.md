@@ -26,7 +26,8 @@ saldo           |   floatfield          |
 Pruebas funcionales Unitarias y de Integración bajo Selenium:  https://docs.google.com/document/d/1jIe9Eq3tHq6z5T_yinMCVz96VfYXgomL7-2FqFp7OQ8/edit?usp=sharing
 
 
-Pruebas de Performance o rendimiento:
+Pruebas de Performance o rendimiento:https://docs.google.com/document/d/1jIe9Eq3tHq6z5T_yinMCVz96VfYXgomL7-2FqFp7OQ8/edit?usp=sharing
+
 ________________________________________________________________________________________________
 
 
@@ -48,19 +49,31 @@ Modelos Clase Nombre:cuotas de jugador
 
 Pruebas funcionales Unitarias y de Integración bajo Selenium: 
 
-Pruebas de Performance o rendimiento:
+Pruebas de Performance o rendimiento :https://docs.google.com/document/d/e/2PACX-1vRR8s500jb0FblxJX6iHiuAkzzALGbz0qtMvSAu3LIG3CzAFj2QboTTSPSshjBq66UgCIfg3OhC_Yzi/pub
 __________________________________________________________________________________
-Grupo 3 Integrantes:
 
-Historia de usuario:
+Grupo 3 
+Integrantes: Axel Agustin Delsoglio, Abril Bustos, Uriel Capdevila y Elias Godoy. 
 
-Casos de Uso y Casos de Prueba:
+Historial de usuario: https://docs.google.com/document/d/1Xf1EZb7n0XtGJMPTMSYRVjTgE97q6SklVYZzDtXm9vg/edit?usp=sharing
 
-Modelos Clase Nombre: Nombre atributo | tipo de dato | |---------------|-------------------| |---------------|-------------------| |---------------|-------------------| |---------------|-------------------| |---------------|-------------------| |---------------|-------------------| |---------------|-------------------| |---------------|-------------------| |---------------|-------------------| |---------------|-------------------|
+Casos de Uso y Casos de Prueba: https://docs.google.com/document/d/1Xf1EZb7n0XtGJMPTMSYRVjTgE97q6SklVYZzDtXm9vg/edit?usp=sharing
 
+Modelos Clase Nombre: Jugadores
+| Nombre atributo | Tipo de dato | 
+|-----------------|--------------|
+| id              | AutoField    |
+| DNI             | IntegerField |
+| nom             | CharField    |
+| fechan          | DateField    |
+| altura          | FloatField   |
+| peso            | FloatField   |
+| cd              | CharField    |
+| talla           | ForeignKey   |
+| descripcion     | ForeignKey   |
+| qr              | ImageField   |
 
-
-Pruebas funcionales Unitarias y de Integración bajo Selenium: 
+Pruebas funcionales Unitarias y de Integración bajo Selenium: https://docs.google.com/document/d/1G6ePCmjCY9w8ZybDvoITtZotgj3e8JJF41hFsUJlIHM/edit?usp=sharing
 
 Pruebas de Performance o rendimiento:
 _______________________
