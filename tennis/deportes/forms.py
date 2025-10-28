@@ -1,26 +1,24 @@
-from socket import fromshare
-from django import forms 
+from django import forms
 from .models import DeporteD, Categoria
 
 class DeporteDForm(forms.ModelForm):
   class Meta:
         model=DeporteD
        #fields='__all__'
-                         
+
         fields=('iddescripciondeporte','idCategoria','horario')
+        widgets = {
+            'iddescripciondeporte': forms.TextInput(),
+        }
         labels ={
             "iddescripciondeporte" : "Nombre de deporte" ,
             'idCategoria': 'Código de Categoria:',
             "horario" : "Horario" ,
-                  
-                   
-        
         }
         
     
   def __init__(self, *args, **kwargs):
         super(DeporteDForm,self).__init__(*args,**kwargs)
-        self.fields['iddescripciondeporte'].empty_label="Selecciona"
         self.fields['idCategoria'].required=True
         self.fields['horario'].required=False
 
@@ -33,9 +31,7 @@ class CategoriaForm(forms.ModelForm):
         labels ={          
          
             "descripcion" : "Nombre categoria" ,
-                  
-                   
-        
+            
         }
         
     

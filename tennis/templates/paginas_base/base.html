@@ -84,12 +84,12 @@
                 <a class="nav-link protected-link" href="{% url 'nosotros' %}" data-protected="true">
                   Nosotros
                 </a>
-              </li>{% endcomment %} 
+              </li>{% endcomment %}
               <li class="nav-item">
                 <a class="nav-link protected-link" href="{% url 'listaD' %}" data-protected="true">Deporte
                 </a>
               </li>
-              
+
             </ul>
             <form class="d-flex">
               <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -159,6 +159,21 @@
         modal.show();  // Muestra el modal
       });
     });
+
+    // Asegurar que el menú de navegación se despliegue en dispositivos móviles
+    const navbarToggler = document.querySelector('.navbar-toggler');
+    const navbarCollapse = document.querySelector('#navbarSupportedContent');
+    if (navbarToggler && navbarCollapse) {
+      navbarToggler.addEventListener('click', function() {
+        navbarCollapse.classList.toggle('show');
+      });
+      // Cerrar el menú al hacer clic en un enlace
+      document.querySelectorAll('#navbarSupportedContent .nav-link').forEach(link => {
+        link.addEventListener('click', function() {
+          navbarCollapse.classList.remove('show');
+        });
+      });
+    }
   });
 </script>
   </body>

@@ -6,6 +6,7 @@ from crispy_forms.layout import Submit
 from .forms import CuotaForm
 from cuota.models import Cuota
 from jugadores.models import Jugador
+from django.db.models import Q
 
 
 # Create your views here
@@ -13,40 +14,64 @@ from jugadores.models import Jugador
 def listaCuota(request):
     query = request.GET.get('q', '').strip()
 
-    # Inicialización por defecto para evitar UnboundLocalError
-    pagos_por_mes = defaultdict(list)
-    total_por_mes = defaultdict(float)
-
-    cuotas = Cuota.objects.all().order_by('cuotaMes')
+    # Obtener todos los jugadores
+    jugadores = Jugador.objects.all().order_by('nom')
     if query:
-        cuotas = cuotas.filter(nom__icontains=query)
-        for sc in cuotas:
-            mes = sc.cuotaMes
-            pagos_por_mes[mes].append(sc)
-            total_por_mes[mes] += float(sc.importe or 0)
+        jugadores = jugadores.filter(nom__icontains=query)
 
-    # Construcción de la lista de resultados, incluso si no hay query
-    pagos_y_totales = [
-        (mes, pagos_por_mes[mes], total_por_mes[mes])
-        for mes in pagos_por_mes
-    ]
+    # Obtener todas las cuotas pagadas
+    cuotas_pagadas = Cuota.objects.all()
+
+    # Agrupar cuotas por mes
+    cuotas_por_mes = defaultdict(list)
+    for cuota in cuotas_pagadas:
+        cuotas_por_mes[cuota.cuotaMes].append(cuota)
+
+    # Para cada mes, crear lista de jugadores con estado
+    meses = sorted(cuotas_por_mes.keys())
+    if not meses:
+        # Si no hay cuotas, obtener meses únicos de cuotas existentes o usar un mes por defecto
+        meses = list(set(cuota.cuotaMes for cuota in Cuota.objects.all()))
+        if not meses:
+            meses = []  # O manejar caso sin cuotas
+
+    pagos_y_totales = []
+    for mes in meses:
+        lista_jugadores = []
+        total_mes = 0.0
+        for jugador in jugadores:
+            # Verificar si el jugador pagó en este mes
+            pago = next((c for c in cuotas_por_mes[mes] if c.id == jugador), None)
+            if pago:
+                estado = "Al día"
+                importe = pago.importe
+                fechap = pago.fechap
+                cuota_id = pago.idCuota
+                total_mes += float(importe or 0)
+            else:
+                estado = "Debe cuota"
+                importe = None
+                fechap = None
+                cuota_id = None
+            lista_jugadores.append({
+                'id': jugador.id,
+                'nom': jugador.nom,
+                'estado': estado,
+                'importe': importe,
+                'fechap': fechap,
+                'whatsapp': jugador.whatsapp,
+                'cuota_id': cuota_id,
+            })
+        pagos_y_totales.append((mes, lista_jugadores, total_mes))
 
     return render(
         request,
-        'CrudCuotas/listado.html',
+        'crudCuotas/listado.html',
         {'pagos_y_totales': pagos_y_totales, 'query': query}
     )
 
     
-    
-    
-    
-
-    
-    
-    
-    
-    
+     
 
     
     

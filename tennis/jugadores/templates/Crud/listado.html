@@ -41,11 +41,8 @@
                     <th>Deporte</th>
                     <th>WhatsApp</th>
                     <th>QR</th>
-<<<<<<< HEAD
-                    <th>Coutas</th>
-=======
                     <th>Estado Cuotas</th>
->>>>>>> 6ff99a50df9f6520d682238863655c9741b16512
+
                 </tr>
             </thead>
             <tbody>
@@ -61,11 +58,8 @@
                     <td>{{ ju.cd}}</td>
                     <td>{{ ju.talla }}</td>
                     <td>{{ ju.descripcion}}</td>
-<<<<<<< HEAD
-                    <td>{{ ju.idCuota.nom}}</td>
-=======
                     <td>{{ ju.whatsapp }}</td>
->>>>>>> 6ff99a50df9f6520d682238863655c9741b16512
+
                     <td>
                         {% if ju.qr %}
                             <img src="{{ ju.qr.url }}" alt="QR {{ ju.qr_code_data }}" width="100" height="100">
@@ -75,7 +69,7 @@
                     </td>
                     <td>
                         {% if ju.cuota %}
-                            - {% if ju.esta_al_dia %}Al día{% else %}Debe{% endif %}
+                            - {% if ju.esta_al_dia %}Al día{% else %}La comisión Club Tennis le informa que tiene deuda pendiente {% endif %}
                         {% else %}
                             Sin cuota
                         {% endif %}
@@ -84,7 +78,7 @@
                         <a class="btn btn-info" href="{% url 'crear_editarJugador' ju.id %}">Editar</a>
                         <a class="btn btn-danger" href="{% url 'eliminar' ju.id %}">Eliminar</a>
                         {% if not ju.esta_al_dia and ju.whatsapp %}
-                        <a class="btn btn-success" href="https://wa.me/{{ ju.whatsapp }}?text=Hola%20{{ ju.nom|urlencode }},%20tienes%20una%20deuda%20pendiente%20de%20{{ ju.cuota.importe }}%20por%20la%20cuota." target="_blank">Enviar WhatsApp</a>
+                        <a class="btn btn-success bg-primary" href="https://wa.me/{{ ju.whatsapp }}?text=Hola%20{{ ju.nom|urlencode }},%20tienes%20una%20deuda%20pendiente%20de%20{{ ju.cuota.importe }}%20por%20la%20cuota." target="_blank">Enviar WhatsApp</a>
                         {% endif %}
                     </td>
                 </tr>

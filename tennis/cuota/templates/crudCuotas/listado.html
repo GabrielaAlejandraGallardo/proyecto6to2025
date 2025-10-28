@@ -6,7 +6,7 @@
       <div class="card-header">
         <!-- Busca por nombre o código de socio -->  
         <form method="get" action="." class="form-inline" role="search" style="display:flex;gap:8px;align-items:center;">
-        <input type="text" name="q" value="{{ query|default_if_none:'' }}" class="form-control" placeholder="Buscar por nombre del socio"/>
+        <input type="text" name="q" value="{{ query|default_if_none:'' }}" class="form-control" placeholder="Buscar por nombre del Jugador"/>
         <button type="submit" class="btn btn-secondary">Buscar</button>
         </form>
     
@@ -22,23 +22,43 @@
                     <th>Nombre</th>
                     <th>Fecha de Pago</th>
                     <th>Importe</th>
+                    <th>Estado</th>
+                    <th>WhatsApp</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
             <tbody>
-                {% for mes, lista_cuotas, total in pagos_y_totales %}
-                    {% for cuota in lista_cuotas %}
+                {% for mes, lista_jugadores, total in pagos_y_totales %}
+                    {% for jugador in lista_jugadores %}
                     <tr>
                         {% if forloop.first %}
-                            <td rowspan="{{ lista_cuotas|length }}">{{ mes }}</td>
+                            <td rowspan="{{ lista_jugadores|length }}">{{ mes }}</td>
                         {% endif %}
-                        <td>{{ cuota.id }}</td>
-                        <td>{{ cuota.nom }}</td>
-                        <td>{{ cuota.fechap }}</td>
-                        <td>${{ cuota.importe }}</td>
+                        <td>{{ jugador.id }}</td>
+                        <td>{{ jugador.nom }}</td>
+                        <td>{{ jugador.fechap|default:"-" }}</td>
+                        <td>${{ jugador.importe|default:"-" }}</td>
                         <td>
-                            <a class="btn btn-info" href="{% url 'crear_editarCuota' idCuota=cuota.pk %}">Editar</a>
-                            <a class="btn btn-danger" href="{% url 'eliminaCuota' idCuota=cuota.pk %}">Eliminar</a>
+                            {% if jugador.estado == "Al día" %}
+                                <span class="badge badge-success">{{ jugador.estado }}</span>
+                            {% else %}
+                                <span class="badge badge-danger">{{ jugador.estado }}</span>
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if jugador.whatsapp %}
+                                <a class="btn btn-success btn-sm" href="https://wa.me/{{ jugador.whatsapp }}" target="_blank">WhatsApp</a>
+                            {% else %}
+                                -
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if jugador.estado == "Al día" %}
+                                <a class="btn btn-info" href="{% url 'crear_editarCuota' idCuota=jugador.cuota_id %}">Editar</a>
+                                <a class="btn btn-danger" href="{% url 'eliminaCuota' idCuota=jugador.cuota_id %}">Eliminar</a>
+                            {% else %}
+                                <a class="btn btn-primary" href="{% url 'crear_editarCuota' idCuota=0 %}?jugador={{ jugador.id }}">Registrar Pago</a>
+                            {% endif %}
                         </td>
                     </tr>
                     {% endfor %}
@@ -47,6 +67,7 @@
                         <td><strong>${{ total }}</strong></td>
                         <td><strong>Pago Administrador (10%):</strong></td>
                         <td><strong>${% widthratio total 10 1 %}</strong></td>
+                        <td></td>
                     </tr>
                 {% endfor %}
             </tbody>

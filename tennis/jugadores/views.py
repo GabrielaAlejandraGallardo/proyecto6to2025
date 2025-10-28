@@ -37,7 +37,7 @@ def lista(request):
         # Enviar mensaje de WhatsApp si debe y no se ha enviado aún
         if not jugador.esta_al_dia and jugador.whatsapp and not jugador.enviado_whatsapp:
             try:
-                mensaje = f"Hola {jugador.nom}, tienes una deuda pendiente de {jugador.cuota.importe if jugador.cuota else 'N/A'} por la cuota."
+                mensaje = f"Hola {jugador.nom},La comisión del club Lawn Tennis Club tienes una deuda pendiente de {jugador.cuota.importe if jugador.cuota else 'tiene deuda'} por la cuota."
                 enviar_mensaje_whatsapp(jugador.whatsapp, mensaje)
                 jugador.enviado_whatsapp = True
                 jugador.save()
@@ -77,11 +77,10 @@ def buscar_por_qr(request):
                     'Código Postal': jugador.cd,
                     'Talla': jugador.talla,
                     'Deporte': jugador.descripcion,
-<<<<<<< HEAD
+
                     'cuota': jugador.idCuota.nom,
-=======
                     'Cuota': str(jugador.idCuota),
->>>>>>> 6ff99a50df9f6520d682238863655c9741b16512
+
                 }
                 return JsonResponse({'status': 'success', 'jugador': jugador_data})
             except Jugador.DoesNotExist:
@@ -110,7 +109,7 @@ def crear_editarJugador(request, id=0):
             jugador = formulario.save(commit=False)
             # Generar datos únicos para el QR (puedes usar el ID, nombre, etc.)
             qr_data = (
-<<<<<<< HEAD
+
             f"DNI: {jugador.DNI}\n"
             f"Nombre: {jugador.nom}\n"
             f"Fecha Nacimiento: {jugador.fechan}\n"
@@ -119,22 +118,10 @@ def crear_editarJugador(request, id=0):
             f"Dirección: {jugador.dire}\n"
             f"Código Postal: {jugador.cd}\n"
             f"Talla: {jugador.talla}\n"
-            f"Deporte: {jugador.descripcion}\n"
-            f"Cuota: {jugador.idCuota.nom}\n"
-             )
-=======
-                f"DNI: {jugador.DNI}\n"
-                f"Nombre: {jugador.nom}\n"
-                f"Fecha Nacimiento: {jugador.fechan}\n"
-                f"Altura: {jugador.altura}\n"
-                f"Peso: {jugador.peso}\n"
-                f"Dirección: {jugador.dire}\n"
-                f"Código Postal: {jugador.cd}\n"
-                f"Talla: {jugador.talla}\n"
-                f"Deporte: {jugador.descripcion}\n"
-                f"Cuota: {jugador.idCuota}\n"
+            f"Deporte: {jugador.descripcion}\n" 
+            f"Cuota: {jugador.idCuota}\n"
+            
             )
->>>>>>> 6ff99a50df9f6520d682238863655c9741b16512
             jugador.qr_code_data = qr_data  # Asume que tienes este campo en tu modelo
             jugador.save()  # Guardar primero para asegurar que el ID existe y qr_code_data
             # Generar imagen QR
@@ -153,4 +140,4 @@ def eliminar(request, id):
 
 
 def pagina_scanner(request):
-    return render(request, 'CrudSocio/scan_qr.html')
+    return render(request, 'Crud/scan_qr.html')
