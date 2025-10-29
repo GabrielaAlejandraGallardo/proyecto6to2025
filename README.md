@@ -207,7 +207,7 @@ Modelo Clase: Deportes
 | idcategoria       | primary_key              |
 | descripcion       | CharField                |
 
-Pruebas funcionales Unitarias  y de Integración bajo Selenium:
+Pruebas funcionales Unitarias  y de Integración bajo Selenium: https://docs.google.com/document/d/156HZm3IYWwyfPXmLf1q_kwi2hocNUqG_MIzB1VcFbUo/edit?usp=sharing
 
 Pruebas de Performance o rendimiento:
 ________________________________________________________________________________________________
