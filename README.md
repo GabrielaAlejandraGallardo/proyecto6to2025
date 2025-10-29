@@ -209,7 +209,7 @@ Modelo Clase: Deportes
 
 Pruebas funcionales Unitarias  y de Integración bajo Selenium: https://docs.google.com/document/d/156HZm3IYWwyfPXmLf1q_kwi2hocNUqG_MIzB1VcFbUo/edit?usp=sharing
 
-Pruebas de Performance o rendimiento:
+Pruebas de Performance o rendimiento: https://docs.google.com/document/d/1_tgjDlGSiujbeS40atFvOiTxKQDNkA-wH5K--F5YOtg/edit?usp=sharing
 ________________________________________________________________________________________________
 
 Grupo 8
