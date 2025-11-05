@@ -75,7 +75,7 @@ Modelos Clase Nombre: Jugadores
 
 Pruebas funcionales Unitarias y de Integración bajo Selenium: https://docs.google.com/document/d/1G6ePCmjCY9w8ZybDvoITtZotgj3e8JJF41hFsUJlIHM/edit?usp=sharing
 
-Pruebas de Performance o rendimiento:
+Pruebas de Performance o rendimiento: https://docs.google.com/document/d/1WdNKh8TBm72FIftDgxnW1Z7mMPs_N2Eo6qoTqr38urk/edit?usp=sharing
 _______________________
 
 Grupo 4
