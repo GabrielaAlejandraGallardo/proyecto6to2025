@@ -47,7 +47,7 @@ Modelos Clase Nombre:cuotas de jugador
 | fechap            | DateField         |
 | importe           | FloatField        |
 
-Pruebas funcionales Unitarias y de Integración bajo Selenium: 
+Pruebas funcionales Unitarias y de Integración bajo Selenium: https://docs.google.com/document/d/e/2PACX-1vSyfSIEgFcVxlFdwygOWriH1YUoWeLrKN4g5KwLY1xwoD6TYKfnh1oeoAJtNo6SFu_azrDmrZbAmckp/pub
 
 Pruebas de Performance o rendimiento :https://docs.google.com/document/d/e/2PACX-1vRR8s500jb0FblxJX6iHiuAkzzALGbz0qtMvSAu3LIG3CzAFj2QboTTSPSshjBq66UgCIfg3OhC_Yzi/pub
 __________________________________________________________________________________
