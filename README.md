@@ -1,4 +1,4 @@
-Grupo:1 Integrantes: Marco Fichetti, Nahiara Nieto y Benja Corina
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/1982b544-9752-4764-bd48-a2c8eb4a8630" />Grupo:1 Integrantes: Marco Fichetti, Nahiara Nieto y Benja Corina
 
 Historia de usuario: https://docs.google.com/document/d/1jIe9Eq3tHq6z5T_yinMCVz96VfYXgomL7-2FqFp7OQ8/edit?usp=sharing
 
@@ -173,7 +173,7 @@ Clase Nombre: Jugadores
 Pruebas funcionales Unitarias y de Integración bajo Selenium:
 https://docs.google.com/document/d/14GYLFV5kouXbUlLYrkoqAXZFr9hLHfrGpebKX8MEuJA/edit?usp=sharing
 
-Pruebas de Performance o rendimiento: 
+Pruebas de Performance o rendimiento: https://docs.google.com/document/d/1LBT1cmzwNFe60B2__iOJUBPxASC7cXkq_rjfWBvrgxY/edit?tab=t.0
 _______________________________________________________________________
 
 Grupo 7
