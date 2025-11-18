@@ -1,4 +1,4 @@
-<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/1982b544-9752-4764-bd48-a2c8eb4a8630" />Grupo:1 Integrantes: Marco Fichetti, Nahiara Nieto y Benja Corina
+/>Grupo:1 Integrantes: Marco Fichetti, Nahiara Nieto y Benja Corina
 
 Historia de usuario: https://docs.google.com/document/d/1jIe9Eq3tHq6z5T_yinMCVz96VfYXgomL7-2FqFp7OQ8/edit?usp=sharing
 
